@@ -13,7 +13,7 @@ date: 2024-05-16
 All the "input" files (scripts and data files) are located in one folder, no
 subfolders are used for storing these "input" files. All the files are available and
 [version-controlled](https://en.wikipedia.org/wiki/Version_control) at
-https://github.com/alekrutkowski/JAF2R.
+https://github.com/COM-EMPL-Analysis-Statistics/JAF2R.
 
 ### Scripts
 
