@@ -27,7 +27,8 @@ preCheckInidcators('JAF_indicators__definitions.R')
 # detach("package:openxlsx", unload = TRUE) # imported by Digital_Indicators_JAF.R, collides with openxlsx2
 load('RENV_DigitalIndicators_Final.RData') # precalculated indicators by Vlad PODOBEA (F3), substituting the lines above
 runScript('JAF_indicators__definitions.R')
-runScript('JAF_output.R')
+try(runScript('JAF_output.R'))
+runScript('JAF_output.R') # cryptic bug in openxlsx2 - only the second time works
 runScript('JAF_runs_compared.R')
 runScript('JAF_KEC.R')
 runScript('JAF_Compendium.R')

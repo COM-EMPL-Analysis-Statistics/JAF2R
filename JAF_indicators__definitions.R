@@ -1,4 +1,4 @@
-### Based on Vlad's input on 15 April 2025 ###
+
 
 inside(JAF_INDICATORS, indicator_named = "PA15b.O1.") =
 specification(
@@ -2365,8 +2365,11 @@ unit_of_change = "pp",
 indicator_groups = "INPUT CONTEXT COMPENDIUM 9 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = FALSE,
-value = fromBenefitsAndWages("tax_ben_traps", 
-    with_filters(indicator = "IT.2EC67.67.0.0"))
+value = fromTaxAndBenefits("tab_tr_it", 
+    with_filters(indicator="IT",
+                 family_composition="2EC67",
+                 earning_taking_up=67,
+                 decomposition='METR'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11b.C5.INAC") = 
@@ -5923,8 +5926,12 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = TRUE,
-value = fromBenefitsAndWages("nrr_ub", 
-    with_filters(indicator = "S.7.67"))
+value = fromTaxAndBenefits("tab_nrr", 
+    with_filters(indicator="NRRUB",
+                 family_composition="SINGLE",
+                 duration=7,
+                 previous_earning=67,
+                 decomposition='TOT'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.1.S2.A1_2DCH") = 
@@ -5935,8 +5942,12 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = TRUE,
-value = fromBenefitsAndWages("nrr_ub", 
-    with_filters(indicator = "1EC.7.67"))
+value = fromTaxAndBenefits("tab_nrr", 
+    with_filters(indicator="NRRUB",
+                 family_composition="1EC",
+                 duration=7,
+                 previous_earning=67,
+                 decomposition='TOT'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.1.S2.A2") = 
@@ -5947,8 +5958,12 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = TRUE,
-value = fromBenefitsAndWages("nrr_ub", 
-    with_filters(indicator = "S2C.7.67"))
+value = fromTaxAndBenefits("tab_nrr", 
+    with_filters(indicator="NRRUB",
+                 family_composition="S2C",
+                 duration=7,
+                 previous_earning=67,
+                 decomposition='TOT'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.1.S2.A2_2DCH") = 
@@ -5959,8 +5974,12 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = TRUE,
-value = fromBenefitsAndWages("nrr_ub", 
-    with_filters(indicator = "1EC2C.7.67"))
+value = fromTaxAndBenefits("tab_nrr", 
+    with_filters(indicator="NRRUB",
+                 family_composition="1EC2C",
+                 duration=7,
+                 previous_earning=67,
+                 decomposition='TOT'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.1.S3.A1") = 
@@ -5971,8 +5990,12 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = TRUE,
-value = fromBenefitsAndWages("nrr_ub", 
-    with_filters(indicator = "S.13.67"))
+value = fromTaxAndBenefits("tab_nrr", 
+    with_filters(indicator="NRRUB",
+                 family_composition="SINGLE",
+                 duration=13,
+                 previous_earning=67,
+                 decomposition='TOT'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.1.S3.A1_2DCH") = 
@@ -5983,8 +6006,12 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = TRUE,
-value = fromBenefitsAndWages("nrr_ub", 
-    with_filters(indicator = "1EC.13.67"))
+value = fromTaxAndBenefits("tab_nrr", 
+    with_filters(indicator="NRRUB",
+                 family_composition="1EC",
+                 duration=13,
+                 previous_earning=67,
+                 decomposition='TOT'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.1.S3.A2") = 
@@ -5995,8 +6022,12 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = TRUE,
-value = fromBenefitsAndWages("nrr_ub", 
-    with_filters(indicator = "S2C.13.67"))
+value = fromTaxAndBenefits("tab_nrr", 
+    with_filters(indicator="NRRUB",
+                 family_composition="S2C",
+                 duration=13,
+                 previous_earning=67,
+                 decomposition='TOT'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.1.S3.A2_2DCH") = 
@@ -6007,8 +6038,12 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = TRUE,
-value = fromBenefitsAndWages("nrr_ub", 
-    with_filters(indicator = "1EC2C.13.67"))
+value = fromTaxAndBenefits("tab_nrr", 
+    with_filters(indicator="NRRUB",
+                 family_composition="1EC2C",
+                 duration=13,
+                 previous_earning=67,
+                 decomposition='TOT'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.2.O1.") = 
@@ -6074,8 +6109,11 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = FALSE,
-value = fromBenefitsAndWages("tax_ben_traps", 
-    with_filters(indicator = "IT.2EC67.67.0.0"))
+value = fromTaxAndBenefits("tab_tr_it", 
+    with_filters(indicator="IT",
+                 family_composition="2EC67",
+                 earning_taking_up=67,
+                 decomposition='METR'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.2.S5.") = 
@@ -6086,8 +6124,12 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = FALSE,
-value = fromBenefitsAndWages("tax_ben_traps", 
-    with_filters(indicator = "LW.2EC67.0.67.33"))
+value = fromTaxAndBenefits("tab_tr_lw", 
+    with_filters(indicator="LW",
+                 family_composition="2EC67",
+                 earning_before_increase=67,
+                 increase=33,
+                 decomposition='METR'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA5.C1.F") = 
@@ -6990,8 +7032,11 @@ unit_of_change = "pp",
 indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 6 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = FALSE,
-value = fromBenefitsAndWages("tax_ben_traps", 
-    with_filters(indicator = "IT.2EC67.67.0.0"))
+value = fromTaxAndBenefits("tab_tr_it", 
+    with_filters(indicator="IT",
+                 family_composition="2EC67",
+                 earning_taking_up=67,
+                 decomposition='METR'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA7.1.S6.") = 
@@ -7134,8 +7179,11 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 6 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = FALSE,
-value = fromBenefitsAndWages("tax_ben_traps", 
-    with_filters(indicator = "IT.2EC67.67.0.0"))
+value = fromTaxAndBenefits("tab_tr_it", 
+    with_filters(indicator="IT",
+                 family_composition="2EC67",
+                 earning_taking_up=67,
+                 decomposition='METR'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA7.2.S4.") = 
@@ -7146,8 +7194,12 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 6 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = FALSE,
-value = fromBenefitsAndWages("tax_ben_traps", 
-    with_filters(indicator = "LW.2EC67.0.67.33"))
+value = fromTaxAndBenefits("tab_tr_lw", 
+    with_filters(indicator="LW",
+                 family_composition="2EC67",
+                 earning_before_increase=67,
+                 increase=33,
+                 decomposition='METR'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA8.1.C1.F") = 

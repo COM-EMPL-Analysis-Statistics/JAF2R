@@ -496,61 +496,32 @@ LMPurlFilters <- function(ds_code, filters_list) {
 }
 
 
-fromBenefitsAndWages <- function(table_code, with_filters) {
-  url_dataset <-
-    table_code %>% 
-    switch(.,
-           "nrr_ub" = 'NRR/NRRUB',
-           "earn_nt_lowwtrp" = 'TR',
-           "tax_ben_traps" = 'TR',
-           .)
-  url_filters <-
-    with_filters$indicator %>% 
-    gsub('.','/',.,fixed=TRUE) %>% 
-    # sub('^S/',"1EC/",.) %>% 
-    `if`(table_code=='nrr_ub',
-         sub('^(.+)/(.+)/(.+)$',"\\1/\\3/\\2",.),
-         .) %>% 
-    `if`(table_code %in% c('earn_nt_lowwtrp','tax_ben_traps'),
-         sub('LW/(.+)/.+/(.+/.+)','LW/\\2/\\1',.) %>% 
-           sub('IT/(.+)/(.+)/.+/.+','IT/\\2/\\1',.),
-         .)
-  url_pfix <-
-    'https://europa.eu/economy_finance/db_indicators/tab/wq/details_all_webquery.php?url='
-  url_geos <-
-    EU_Members_geo_codes %>% 
-    c(EU_geo_code,.) %>% 
-    sub('EL','GR',.,fixed=TRUE) %>% 
-    sub(EU_geo_code,'EUBr',.,fixed=TRUE) %>% 
-    paste(collapse=',')
-  url_years <-
-    2000:as.integer(format(Sys.Date(),"%Y")) %>% 
-    paste(collapse=',')
-  url <-
-    paste0(url_pfix,url_dataset,'/',url_filters,'/filter/',url_geos,'/',url_years)
-  url %T>% message('Opening:\n',.) %>%
-    getTaxBenTable() %>% 
-    `if`(table_code=='nrr_ub',
-         Filter(\(colvals) !all(colvals==""), .) %>% 
-           .[, c(1,2,length(.)), with=FALSE] %>% 
-           setnames(colnames(.),
-                    c('Country','time','value_')),
-         .) %>%
-    `if`(table_code %in% c('earn_nt_lowwtrp','tax_ben_traps'),
-         setnames(., seq_along(.),
-                  as.character(.[1])) %>%
-           .[,.(Country,Year,METR)] %>% 
-           setnames(c('Year','METR'),
-                    c('time','value_')),
-         .) %>% 
-    .[, time := as.integer(time)] %>% 
-    .[, value_ := as.numeric(value_)] %>% 
-    .[!is.na(value_)] %>% 
-    .[, geo := countrycode(Country,
-                           origin='country.name',
-                           destination='eurostat')] %>% 
-    .[, geo := ifelse(grepl('European Union',Country),EU_geo_code,geo)] %>% 
-    .[, Country := NULL]
+fromTaxAndBenefits <- function(table_code, with_filters) {
+  url_pfix <- 
+    paste0('https://webgate.ec.europa.eu/ecfin/redisstat/api/dissemination/sdmx/3.0/',
+           'data/dataflow/ECFIN/',table_code,'/1.0/')
+  url_stars_infix <-
+    (length(with_filters) + 2) %>% 
+    rep.int('*',.) %>% 
+    paste(collapse='.') %>% 
+    paste0('?')
+  url_filetype_infix <-
+    'format=csvdata&compress=false'
+  url_countries_infix <- # EUBr = European Union 27 (from 2020)  i.e.  EU27_2020  # GR = EL
+    'c[COUNTRY]=EUBr,BE,BG,CZ,DK,DE,EE,IE,GR,ES,FR,HR,IT,CY,LV,LT,LU,HU,MT,NL,AT,PL,PT,RO,SI,SK,FI,SE'
+  url_params_suffix <-
+    names(with_filters) %>% 
+    sapply(function(param_name)
+      paste0('c[',toupper(param_name),']=',
+             paste(with_filters[[param_name]],collapse=','))) %>% 
+    paste(collapse='&')
+  paste0(url_pfix, url_stars_infix,
+         url_filetype_infix,'&',url_countries_infix,'&',url_params_suffix) %>% 
+    memoised_fread() %>% 
+    .[,.(COUNTRY,TIME_PERIOD,OBS_VALUE)] %>% 
+    .[, COUNTRY := COUNTRY %>% nswitch(.,'GR','EL','EUBr','EU27_2020',default=.)] %>% 
+    setnames(c('COUNTRY','TIME_PERIOD','OBS_VALUE'),
+             c('geo','time','value_'))
 }
 
 
@@ -708,7 +679,7 @@ fromDigitalIndicator <- function(indicator, with_filters=NULL)
   as.data.table() %>% 
   setnames('value','value_') %>% 
   .[, .(geo,value_,time)]
-  
+
 
 fromSpecialCalculation <- function(indicator, with_filters=NULL)
   tryCatch(get(indicator),
