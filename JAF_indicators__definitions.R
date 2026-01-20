@@ -3131,7 +3131,7 @@ indicator_groups = "SUBINDICATOR COMPENDIUM 9 COUNTRY",
 source = "NA",
 high_is_good = FALSE,
 value = fromEurostatDataset("ILC_PNP13", 
-    with_filters(age = "Y_GE65", unit = "AVG"))
+    with_filters(age = "Y_GE65", unit = "PC", statinfo="AVG"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.S3.") = 

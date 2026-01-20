@@ -28,8 +28,8 @@ large_EU_Members_geo_codes <-
 EU_geo_code <-
   'EU27_2020'
 
-EA_geo_code <-
-  'EA20'
+EA_geo_code <- NULL # temporary hack; incomplete data -> crashing scripts
+  # 'EA21'
 
 JAF_KEY__REGEX_PATTERN <-
   "^PA\\d+(\\.\\d)?[a-z]?(\\d+)?\\.[OSC]\\d+\\..*"
@@ -692,20 +692,20 @@ vacancy_rate <- function(with_filters=NULL) {
   f <- eurodata::importData
   dt1 <-
     f('jvs_q_nace2',
-      list(indic_em='JOBRATE', s_adj='NSA',
+      list(indic_em='JVR', s_adj='NSA',
            nace_r2='B-S', sizeclas='TOTAL',
            geo = c(EU_Members_geo_codes,EU_geo_code,EA_geo_code) %without% c('IT','DK','FR','MT') ))
   dt2 <-
     f('jvs_q_nace2', 
-      list(indic_em='JOBRATE', s_adj='NSA',
+      list(indic_em='JVR', s_adj='NSA',
            nace_r2='B-N', sizeclas='GE10', geo='IT'))
   dt3 <-
     f('jvs_q_nace2', 
-      list(indic_em='JOBRATE', s_adj='NSA',
+      list(indic_em='JVR', s_adj='NSA',
            nace_r2='B-N', sizeclas='TOTAL', geo='DK'))
   dt4 <-
     f('jvs_q_nace2', 
-      list(indic_em='JOBRATE', s_adj='NSA',
+      list(indic_em='JVR', s_adj='NSA',
            nace_r2='B-S', sizeclas='GE10', geo=c('FR','MT')))
   list(dt1, dt2, dt3, dt4) %>% 
     lapply(as.data.table) %>% 
