@@ -2380,7 +2380,7 @@ unit_of_change = "pp",
 indicator_groups = "INPUT CONTEXT COMPENDIUM 9 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_03", 
+value = fromEurostatDataset("trng_lfse_02", 
     with_filters(sex = "T", unit = "PC", wstatus = "INAC", age = "Y25-64"))
 )
 
@@ -2392,7 +2392,7 @@ unit_of_change = "pp",
 indicator_groups = "INPUT CONTEXT COMPENDIUM 9 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_03", 
+value = fromEurostatDataset("trng_lfse_02", 
     with_filters(sex = "T", unit = "PC", wstatus = "UNE", age = "Y25-64"))
 )
 
@@ -4479,7 +4479,7 @@ unit_of_change = "pp",
 indicator_groups = "OUTPUT CONTEXT COMPENDIUM 2 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_03", 
+value = fromEurostatDataset("trng_lfse_02", 
     with_filters(sex = "T", unit = "PC", wstatus = "EMP", age = "Y55-74"))
 )
 
@@ -4591,7 +4591,7 @@ unit_of_change = "NA",
 indicator_groups = "CONTEXT COMPENDIUM 8",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_01", 
+value = fromEurostatDataset("trng_lfse_01", 
     with_filters(sex = "M", unit = "PC", age = "Y55-64"))
 )
 
@@ -4603,7 +4603,7 @@ unit_of_change = "NA",
 indicator_groups = "CONTEXT COMPENDIUM 8",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_01", 
+value = fromEurostatDataset("trng_lfse_01", 
     with_filters(sex = "F", unit = "PC", age = "Y55-64"))
 )
 
@@ -4859,7 +4859,7 @@ unit_of_change = "pp",
 indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 2 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_01", 
+value = fromEurostatDataset("trng_lfse_01", 
     with_filters(sex = "T", unit = "PC", age = "Y55-64"))
 )
 
@@ -5903,7 +5903,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change_with_break_in_series = FALSE,
 value = fromEurostatDataset("ilc_li04", 
-    with_filters(sex = "T", wstatus = "UNE", indic_il = "LI_R_MD60", age = "Y_GE18"))
+    with_filters(sex = "T", wstatus = "UNE", indic_il = "LI_R_MD60", age = "Y_GE18", unit = "PC"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.1.S1.") = 
@@ -6073,14 +6073,14 @@ value = fromEurostatDataset("ilc_iw01",
 
 inside(JAF_INDICATORS, indicator_named = "PA4.2.S2.") = 
 specification(
-name = "Low wage trap – tax rate on low wage earners ",
+name = "Low wage trap – tax rate on low wage earners",
 unit_of_level = "% (of increase in gross earnings)",
 unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "Eurostat",
 high_is_good = FALSE,
 value = fromEurostatDataset("earn_nt_lowwtrp", 
-    with_filters(NA))
+    with_filters(ecase="P1_NCH_AW33-67"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.2.S3.T") = 
@@ -7357,17 +7357,17 @@ value = fromFormula(100 * ((a/b) - 1),
     with_filters(na_item = "RLPR_PER", unit = "I10"), time_period = -3)))
 )
 
-inside(JAF_INDICATORS, indicator_named = "PA8.1.S5.") = 
-specification(
-name = "Connectivity dimension of the Digital Economy and Society Index (DESI)",
-unit_of_level = "% (of popn 16-74)",
-unit_of_change = "NA",
-indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 7 COUNTRY",
-source = "DG CONNECT",
-high_is_good = TRUE,
-value = fromDESI("DESI_Connectivity", 
-    with_filters(NA))
-)
+# inside(JAF_INDICATORS, indicator_named = "PA8.1.S5.") = 
+# specification(
+# name = "Connectivity dimension of the Digital Economy and Society Index (DESI)",
+# unit_of_level = "% (of popn 16-74)",
+# unit_of_change = "NA",
+# indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 7 COUNTRY",
+# source = "DG CONNECT",
+# high_is_good = TRUE,
+# value = fromDESI("DESI_Connectivity", 
+#     with_filters(NA))
+# )
 
 inside(JAF_INDICATORS, indicator_named = "PA8.1.S6.") = 
 specification(
@@ -7389,7 +7389,7 @@ unit_of_change = "pp",
 indicator_groups = "INPUT CONTEXT COMPENDIUM 7 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_01", 
+value = fromEurostatDataset("trng_lfse_01", 
     with_filters(sex = "M", unit = "PC", age = "Y30-54"))
 )
 
@@ -7401,7 +7401,7 @@ unit_of_change = "pp",
 indicator_groups = "INPUT CONTEXT COMPENDIUM 7 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_01", 
+value = fromEurostatDataset("trng_lfse_01", 
     with_filters(sex = "F", unit = "PC", age = "Y30-54"))
 )
 
@@ -7413,7 +7413,7 @@ unit_of_change = "pp",
 indicator_groups = "INPUT CONTEXT COMPENDIUM 7 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_01", 
+value = fromEurostatDataset("trng_lfse_01", 
     with_filters(sex = "T", unit = "PC", age = "Y30-54"))
 )
 
@@ -7461,7 +7461,7 @@ value = fromEurostatDataset("trng_lfs_09",
 # indicator_groups = "INPUT CONTEXT COMPENDIUM 7 COUNTRY",
 # source = "Eurostat, EU Labour Force Survey",
 # high_is_good = TRUE,
-# value = fromEurostatDataset("trng_lfs_01", 
+# value = fromEurostatDataset("trng_lfse_01", 
 #     with_filters(sex = "M", unit = "PC", age = "Y25-64"))
 # )
 
@@ -7473,7 +7473,7 @@ unit_of_change = "pp",
 indicator_groups = "INPUT CONTEXT COMPENDIUM 7 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_01", 
+value = fromEurostatDataset("trng_lfse_01", 
     with_filters(sex = "M", unit = "PC", age = "Y25-64"))
 )
 
@@ -7485,7 +7485,7 @@ unit_of_change = "pp",
 indicator_groups = "INPUT CONTEXT COMPENDIUM 7 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_01", 
+value = fromEurostatDataset("trng_lfse_01", 
     with_filters(sex = "F", unit = "PC", age = "Y25-64"))
 )
 
@@ -7497,7 +7497,7 @@ unit_of_change = "pp",
 indicator_groups = "MAIN INPUT OVERALL COMPENDIUM 7 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_01", 
+value = fromEurostatDataset("trng_lfse_01", 
     with_filters(sex = "T", unit = "PC", age = "Y25-64"))
 )
 
