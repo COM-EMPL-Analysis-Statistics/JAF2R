@@ -819,6 +819,30 @@ value = fromEurostatDataset("lfsi_emp_a",
     with_filters(sex = "T", unit = "PC_POP", age = "Y55-64", indic_em = "EMP_LFS"))
 )
 
+inside(JAF_INDICATORS, indicator_named = "PA1.S4.M") = 
+specification(
+name = "Employment rate of older population aged 55-64 - men",
+unit_of_level = "% (of popn 55-64)",
+unit_of_change = "pp",
+indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 1 COUNTRY",
+source = "Eurostat, EU Labour Force Survey",
+high_is_good = TRUE,
+value = fromEurostatDataset("lfsi_emp_a", 
+    with_filters(sex = "M", unit = "PC_POP", age = "Y55-64", indic_em = "EMP_LFS"))
+)
+
+inside(JAF_INDICATORS, indicator_named = "PA1.S4.F") = 
+specification(
+name = "Employment rate of older population aged 55-64 - women",
+unit_of_level = "% (of popn 55-64)",
+unit_of_change = "pp",
+indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 1 COUNTRY",
+source = "Eurostat, EU Labour Force Survey",
+high_is_good = TRUE,
+value = fromEurostatDataset("lfsi_emp_a", 
+    with_filters(sex = "F", unit = "PC_POP", age = "Y55-64", indic_em = "EMP_LFS"))
+)
+
 inside(JAF_INDICATORS, indicator_named = "PA1.S2.") = 
 specification(
 name = "Employment rate of young people aged 20-29 - total",

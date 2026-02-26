@@ -37,5 +37,6 @@ runScript('JAF_PAs.R')
 runScript('JAF_Country_Profiles.R')
 runScript('JAF_pdf.R')
 runScript('JAF_EPM.R')
+runScript('JAF_ER_rate_tables_update.R')
 
 message('\nAll JAF scripts finished.')

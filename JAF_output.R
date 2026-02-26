@@ -450,7 +450,7 @@ JAF_SCORES <-
     , by=.(JAF_KEY,geo)] %>%
   .[, change := latest_value - previous_value] %>%
   .[time==latest_year_individual] %>%
-  .[, change := change %>% ifelse(JAF_KEY %in% TAXBEN_INDICATORS,0,.)] %>% # ⚠️⚠️⚠️ TEMPORARY EXCEPTION ⚠️⚠️⚠️
+  .[, change := change %>% fifelse(JAF_KEY %in% TAXBEN_INDICATORS,0,.)] %>% # ⚠️⚠️⚠️ TEMPORARY EXCEPTION ⚠️⚠️⚠️
   melt(id.vars=c('JAF_KEY','geo','time','high_is_good','flags_'),
        measure.vars=c('latest_value','change'),
        variable.name="variable", value.name="value",
