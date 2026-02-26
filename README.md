@@ -35,6 +35,13 @@ the output folder.
 - JAF_pdf.R
 ```
 
+Two scripts create files in the root output folder:
+
+```
+- JAF_EPM.R
+- JAF_ER_rate_tables_update.R
+```
+
 For SPPM VA:
 
 ```
@@ -216,7 +223,7 @@ second_object <- f(a, x=1)
 third_object <- g(y=2, second_object)
 ```
 
-Excel fles are created with the R package `openxlsx2`.
+Excel files are created with the R package `openxlsx2`.
 
 ### In `JAF_functions.R`
 
