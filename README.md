@@ -13,7 +13,7 @@ date: 2024-05-16
 All the "input" files (scripts and data files) are located in one folder, no
 subfolders are used for storing these "input" files. All the files are available and
 [version-controlled](https://en.wikipedia.org/wiki/Version_control) at
-https://github.com/alekrutkowski/JAF2R.
+https://github.com/COM-EMPL-Analysis-Statistics/JAF2R.
 
 ### Scripts
 
@@ -33,6 +33,13 @@ the output folder.
 - JAF_PAs.R
 - JAF_Country_Profiles.R
 - JAF_pdf.R
+```
+
+Two scripts create files in the root output folder:
+
+```
+- JAF_EPM.R
+- JAF_ER_rate_tables_update.R
 ```
 
 For SPPM VA:
@@ -216,7 +223,7 @@ second_object <- f(a, x=1)
 third_object <- g(y=2, second_object)
 ```
 
-Excel fles are created with the R package `openxlsx2`.
+Excel files are created with the R package `openxlsx2`.
 
 ### In `JAF_functions.R`
 

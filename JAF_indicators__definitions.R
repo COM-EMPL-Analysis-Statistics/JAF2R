@@ -1,4 +1,4 @@
-### Based on Vlad's input on 15 April 2025 ###
+
 
 inside(JAF_INDICATORS, indicator_named = "PA15b.O1.") =
 specification(
@@ -817,6 +817,30 @@ source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
 value = fromEurostatDataset("lfsi_emp_a", 
     with_filters(sex = "T", unit = "PC_POP", age = "Y55-64", indic_em = "EMP_LFS"))
+)
+
+inside(JAF_INDICATORS, indicator_named = "PA1.S4.M") = 
+specification(
+name = "Employment rate of older population aged 55-64 - men",
+unit_of_level = "% (of popn 55-64)",
+unit_of_change = "pp",
+indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 1 COUNTRY",
+source = "Eurostat, EU Labour Force Survey",
+high_is_good = TRUE,
+value = fromEurostatDataset("lfsi_emp_a", 
+    with_filters(sex = "M", unit = "PC_POP", age = "Y55-64", indic_em = "EMP_LFS"))
+)
+
+inside(JAF_INDICATORS, indicator_named = "PA1.S4.F") = 
+specification(
+name = "Employment rate of older population aged 55-64 - women",
+unit_of_level = "% (of popn 55-64)",
+unit_of_change = "pp",
+indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 1 COUNTRY",
+source = "Eurostat, EU Labour Force Survey",
+high_is_good = TRUE,
+value = fromEurostatDataset("lfsi_emp_a", 
+    with_filters(sex = "F", unit = "PC_POP", age = "Y55-64", indic_em = "EMP_LFS"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA1.S2.") = 
@@ -2365,8 +2389,11 @@ unit_of_change = "pp",
 indicator_groups = "INPUT CONTEXT COMPENDIUM 9 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = FALSE,
-value = fromBenefitsAndWages("tax_ben_traps", 
-    with_filters(indicator = "IT.2EC67.67.0.0"))
+value = fromTaxAndBenefits("tab_tr_it", 
+    with_filters(indicator="IT",
+                 family_composition="2EC67",
+                 earning_taking_up=67,
+                 decomposition='METR'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11b.C5.INAC") = 
@@ -2377,7 +2404,7 @@ unit_of_change = "pp",
 indicator_groups = "INPUT CONTEXT COMPENDIUM 9 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_03", 
+value = fromEurostatDataset("trng_lfse_02", 
     with_filters(sex = "T", unit = "PC", wstatus = "INAC", age = "Y25-64"))
 )
 
@@ -2389,7 +2416,7 @@ unit_of_change = "pp",
 indicator_groups = "INPUT CONTEXT COMPENDIUM 9 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_03", 
+value = fromEurostatDataset("trng_lfse_02", 
     with_filters(sex = "T", unit = "PC", wstatus = "UNE", age = "Y25-64"))
 )
 
@@ -3128,7 +3155,7 @@ indicator_groups = "SUBINDICATOR COMPENDIUM 9 COUNTRY",
 source = "NA",
 high_is_good = FALSE,
 value = fromEurostatDataset("ILC_PNP13", 
-    with_filters(age = "Y_GE65", unit = "AVG"))
+    with_filters(age = "Y_GE65", unit = "PC", statinfo="AVG"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.S3.") = 
@@ -4476,7 +4503,7 @@ unit_of_change = "pp",
 indicator_groups = "OUTPUT CONTEXT COMPENDIUM 2 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_03", 
+value = fromEurostatDataset("trng_lfse_02", 
     with_filters(sex = "T", unit = "PC", wstatus = "EMP", age = "Y55-74"))
 )
 
@@ -4588,7 +4615,7 @@ unit_of_change = "NA",
 indicator_groups = "CONTEXT COMPENDIUM 8",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_01", 
+value = fromEurostatDataset("trng_lfse_01", 
     with_filters(sex = "M", unit = "PC", age = "Y55-64"))
 )
 
@@ -4600,7 +4627,7 @@ unit_of_change = "NA",
 indicator_groups = "CONTEXT COMPENDIUM 8",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_01", 
+value = fromEurostatDataset("trng_lfse_01", 
     with_filters(sex = "F", unit = "PC", age = "Y55-64"))
 )
 
@@ -4856,7 +4883,7 @@ unit_of_change = "pp",
 indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 2 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_01", 
+value = fromEurostatDataset("trng_lfse_01", 
     with_filters(sex = "T", unit = "PC", age = "Y55-64"))
 )
 
@@ -5900,7 +5927,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change_with_break_in_series = FALSE,
 value = fromEurostatDataset("ilc_li04", 
-    with_filters(sex = "T", wstatus = "UNE", indic_il = "LI_R_MD60", age = "Y_GE18"))
+    with_filters(sex = "T", wstatus = "UNE", indic_il = "LI_R_MD60", age = "Y_GE18", unit = "PC"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.1.S1.") = 
@@ -5923,8 +5950,12 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = TRUE,
-value = fromBenefitsAndWages("nrr_ub", 
-    with_filters(indicator = "S.7.67"))
+value = fromTaxAndBenefits("tab_nrr", 
+    with_filters(indicator="NRRUB",
+                 family_composition="SINGLE",
+                 duration=7,
+                 previous_earning=67,
+                 decomposition='TOT'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.1.S2.A1_2DCH") = 
@@ -5935,8 +5966,12 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = TRUE,
-value = fromBenefitsAndWages("nrr_ub", 
-    with_filters(indicator = "1EC.7.67"))
+value = fromTaxAndBenefits("tab_nrr", 
+    with_filters(indicator="NRRUB",
+                 family_composition="1EC",
+                 duration=7,
+                 previous_earning=67,
+                 decomposition='TOT'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.1.S2.A2") = 
@@ -5947,8 +5982,12 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = TRUE,
-value = fromBenefitsAndWages("nrr_ub", 
-    with_filters(indicator = "S2C.7.67"))
+value = fromTaxAndBenefits("tab_nrr", 
+    with_filters(indicator="NRRUB",
+                 family_composition="S2C",
+                 duration=7,
+                 previous_earning=67,
+                 decomposition='TOT'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.1.S2.A2_2DCH") = 
@@ -5959,8 +5998,12 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = TRUE,
-value = fromBenefitsAndWages("nrr_ub", 
-    with_filters(indicator = "1EC2C.7.67"))
+value = fromTaxAndBenefits("tab_nrr", 
+    with_filters(indicator="NRRUB",
+                 family_composition="1EC2C",
+                 duration=7,
+                 previous_earning=67,
+                 decomposition='TOT'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.1.S3.A1") = 
@@ -5971,8 +6014,12 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = TRUE,
-value = fromBenefitsAndWages("nrr_ub", 
-    with_filters(indicator = "S.13.67"))
+value = fromTaxAndBenefits("tab_nrr", 
+    with_filters(indicator="NRRUB",
+                 family_composition="SINGLE",
+                 duration=13,
+                 previous_earning=67,
+                 decomposition='TOT'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.1.S3.A1_2DCH") = 
@@ -5983,8 +6030,12 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = TRUE,
-value = fromBenefitsAndWages("nrr_ub", 
-    with_filters(indicator = "1EC.13.67"))
+value = fromTaxAndBenefits("tab_nrr", 
+    with_filters(indicator="NRRUB",
+                 family_composition="1EC",
+                 duration=13,
+                 previous_earning=67,
+                 decomposition='TOT'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.1.S3.A2") = 
@@ -5995,8 +6046,12 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = TRUE,
-value = fromBenefitsAndWages("nrr_ub", 
-    with_filters(indicator = "S2C.13.67"))
+value = fromTaxAndBenefits("tab_nrr", 
+    with_filters(indicator="NRRUB",
+                 family_composition="S2C",
+                 duration=13,
+                 previous_earning=67,
+                 decomposition='TOT'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.1.S3.A2_2DCH") = 
@@ -6007,8 +6062,12 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = TRUE,
-value = fromBenefitsAndWages("nrr_ub", 
-    with_filters(indicator = "1EC2C.13.67"))
+value = fromTaxAndBenefits("tab_nrr", 
+    with_filters(indicator="NRRUB",
+                 family_composition="1EC2C",
+                 duration=13,
+                 previous_earning=67,
+                 decomposition='TOT'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.2.O1.") = 
@@ -6038,14 +6097,14 @@ value = fromEurostatDataset("ilc_iw01",
 
 inside(JAF_INDICATORS, indicator_named = "PA4.2.S2.") = 
 specification(
-name = "Low wage trap – tax rate on low wage earners ",
+name = "Low wage trap – tax rate on low wage earners",
 unit_of_level = "% (of increase in gross earnings)",
 unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "Eurostat",
 high_is_good = FALSE,
 value = fromEurostatDataset("earn_nt_lowwtrp", 
-    with_filters(NA))
+    with_filters(ecase="P1_NCH_AW33-67"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.2.S3.T") = 
@@ -6074,8 +6133,11 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = FALSE,
-value = fromBenefitsAndWages("tax_ben_traps", 
-    with_filters(indicator = "IT.2EC67.67.0.0"))
+value = fromTaxAndBenefits("tab_tr_it", 
+    with_filters(indicator="IT",
+                 family_composition="2EC67",
+                 earning_taking_up=67,
+                 decomposition='METR'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.2.S5.") = 
@@ -6086,8 +6148,12 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = FALSE,
-value = fromBenefitsAndWages("tax_ben_traps", 
-    with_filters(indicator = "LW.2EC67.0.67.33"))
+value = fromTaxAndBenefits("tab_tr_lw", 
+    with_filters(indicator="LW",
+                 family_composition="2EC67",
+                 earning_before_increase=67,
+                 increase=33,
+                 decomposition='METR'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA5.C1.F") = 
@@ -6456,9 +6522,9 @@ high_is_good = FALSE,
 value = fromFormula(100 * a/(b + c),
   where = variables(
   a = fromEurostatDataset("lfsa_igaww", 
-    with_filters(age = "Y15-29", sex = "T", unit = "THS_PER", wantwork = "YES")),
+    with_filters(age = "Y15-29", sex = "T", unit = "THS_PER", wstatus = "NSEEK_WANT")), #  formerly wantwork = "YES"
   b = fromEurostatDataset("lfsa_igaww", 
-    with_filters(age = "Y15-29", sex = "T", unit = "THS_PER", wantwork = "TOTAL")),
+    with_filters(age = "Y15-29", sex = "T", unit = "THS_PER", wstatus = "TOTAL")), #  formery wantwork = "TOTAL"
   c = fromEurostatDataset("lfsa_pganws", 
     with_filters(age = "Y15-29", citizen = "TOTAL", sex = "T", unit = "THS_PER", wstatus = "ACT"))))
 )
@@ -6474,9 +6540,9 @@ high_is_good = FALSE,
 value = fromFormula(100 * a/(b + c),
   where = variables(
   a = fromEurostatDataset("lfsa_igaww", 
-    with_filters(age = "Y15-64", sex = "T", unit = "THS_PER", wantwork = "YES")),
+    with_filters(age = "Y15-64", sex = "T", unit = "THS_PER", wstatus = "NSEEK_WANT")), #  formerly wantwork = "YES"
   b = fromEurostatDataset("lfsa_igaww", 
-    with_filters(age = "Y15-64", sex = "T", unit = "THS_PER", wantwork = "TOTAL")),
+    with_filters(age = "Y15-64", sex = "T", unit = "THS_PER", wstatus = "TOTAL")), #  formery wantwork = "TOTAL"
   c = fromEurostatDataset("lfsa_pganws", 
     with_filters(age = "Y15-64", citizen = "TOTAL", sex = "T", unit = "THS_PER", wstatus = "ACT"))))
 )
@@ -6492,9 +6558,9 @@ high_is_good = FALSE,
 value = fromFormula(100 * a/(b + c),
   where = variables(
   a = fromEurostatDataset("lfsa_igaww", 
-    with_filters(age = "Y30-54", sex = "T", unit = "THS_PER", wantwork = "YES")),
+    with_filters(age = "Y30-54", sex = "T", unit = "THS_PER", wstatus = "NSEEK_WANT")), #  formerly wantwork = "YES"
   b = fromEurostatDataset("lfsa_igaww", 
-    with_filters(age = "Y30-54", sex = "T", unit = "THS_PER", wantwork = "TOTAL")),
+    with_filters(age = "Y30-54", sex = "T", unit = "THS_PER", wstatus = "TOTAL")), #  formery wantwork = "TOTAL"
   c = fromEurostatDataset("lfsa_pganws", 
     with_filters(age = "Y30-54", citizen = "TOTAL", sex = "T", unit = "THS_PER", wstatus = "ACT"))))
 )
@@ -6510,9 +6576,9 @@ high_is_good = FALSE,
 value = fromFormula(100 * a/(b + c),
   where = variables(
   a = fromEurostatDataset("lfsa_igaww", 
-    with_filters(age = "Y55-64", sex = "T", unit = "THS_PER", wantwork = "YES")),
+    with_filters(age = "Y55-64", sex = "T", unit = "THS_PER", wstatus = "NSEEK_WANT")), #  formerly wantwork = "YES"
   b = fromEurostatDataset("lfsa_igaww", 
-    with_filters(age = "Y55-64", sex = "T", unit = "THS_PER", wantwork = "TOTAL")),
+    with_filters(age = "Y55-64", sex = "T", unit = "THS_PER", wstatus = "TOTAL")), #  formery wantwork = "TOTAL"
   c = fromEurostatDataset("lfsa_pganws", 
     with_filters(age = "Y55-64", citizen = "TOTAL", sex = "T", unit = "THS_PER", wstatus = "ACT"))))
 )
@@ -6990,8 +7056,11 @@ unit_of_change = "pp",
 indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 6 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = FALSE,
-value = fromBenefitsAndWages("tax_ben_traps", 
-    with_filters(indicator = "IT.2EC67.67.0.0"))
+value = fromTaxAndBenefits("tab_tr_it", 
+    with_filters(indicator="IT",
+                 family_composition="2EC67",
+                 earning_taking_up=67,
+                 decomposition='METR'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA7.1.S6.") = 
@@ -7134,8 +7203,11 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 6 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = FALSE,
-value = fromBenefitsAndWages("tax_ben_traps", 
-    with_filters(indicator = "IT.2EC67.67.0.0"))
+value = fromTaxAndBenefits("tab_tr_it", 
+    with_filters(indicator="IT",
+                 family_composition="2EC67",
+                 earning_taking_up=67,
+                 decomposition='METR'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA7.2.S4.") = 
@@ -7146,8 +7218,12 @@ unit_of_change = "pp",
 indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 6 COUNTRY",
 source = "OECD and European Commission, Benefits and wages",
 high_is_good = FALSE,
-value = fromBenefitsAndWages("tax_ben_traps", 
-    with_filters(indicator = "LW.2EC67.0.67.33"))
+value = fromTaxAndBenefits("tab_tr_lw", 
+    with_filters(indicator="LW",
+                 family_composition="2EC67",
+                 earning_before_increase=67,
+                 increase=33,
+                 decomposition='METR'))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA8.1.C1.F") = 
@@ -7305,17 +7381,17 @@ value = fromFormula(100 * ((a/b) - 1),
     with_filters(na_item = "RLPR_PER", unit = "I10"), time_period = -3)))
 )
 
-inside(JAF_INDICATORS, indicator_named = "PA8.1.S5.") = 
-specification(
-name = "Connectivity dimension of the Digital Economy and Society Index (DESI)",
-unit_of_level = "% (of popn 16-74)",
-unit_of_change = "NA",
-indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 7 COUNTRY",
-source = "DG CONNECT",
-high_is_good = TRUE,
-value = fromDESI("DESI_Connectivity", 
-    with_filters(NA))
-)
+# inside(JAF_INDICATORS, indicator_named = "PA8.1.S5.") = 
+# specification(
+# name = "Connectivity dimension of the Digital Economy and Society Index (DESI)",
+# unit_of_level = "% (of popn 16-74)",
+# unit_of_change = "NA",
+# indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 7 COUNTRY",
+# source = "DG CONNECT",
+# high_is_good = TRUE,
+# value = fromDESI("DESI_Connectivity", 
+#     with_filters(NA))
+# )
 
 inside(JAF_INDICATORS, indicator_named = "PA8.1.S6.") = 
 specification(
@@ -7337,7 +7413,7 @@ unit_of_change = "pp",
 indicator_groups = "INPUT CONTEXT COMPENDIUM 7 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_01", 
+value = fromEurostatDataset("trng_lfse_01", 
     with_filters(sex = "M", unit = "PC", age = "Y30-54"))
 )
 
@@ -7349,7 +7425,7 @@ unit_of_change = "pp",
 indicator_groups = "INPUT CONTEXT COMPENDIUM 7 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_01", 
+value = fromEurostatDataset("trng_lfse_01", 
     with_filters(sex = "F", unit = "PC", age = "Y30-54"))
 )
 
@@ -7361,7 +7437,7 @@ unit_of_change = "pp",
 indicator_groups = "INPUT CONTEXT COMPENDIUM 7 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_01", 
+value = fromEurostatDataset("trng_lfse_01", 
     with_filters(sex = "T", unit = "PC", age = "Y30-54"))
 )
 
@@ -7409,7 +7485,7 @@ value = fromEurostatDataset("trng_lfs_09",
 # indicator_groups = "INPUT CONTEXT COMPENDIUM 7 COUNTRY",
 # source = "Eurostat, EU Labour Force Survey",
 # high_is_good = TRUE,
-# value = fromEurostatDataset("trng_lfs_01", 
+# value = fromEurostatDataset("trng_lfse_01", 
 #     with_filters(sex = "M", unit = "PC", age = "Y25-64"))
 # )
 
@@ -7421,7 +7497,7 @@ unit_of_change = "pp",
 indicator_groups = "INPUT CONTEXT COMPENDIUM 7 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_01", 
+value = fromEurostatDataset("trng_lfse_01", 
     with_filters(sex = "M", unit = "PC", age = "Y25-64"))
 )
 
@@ -7433,7 +7509,7 @@ unit_of_change = "pp",
 indicator_groups = "INPUT CONTEXT COMPENDIUM 7 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_01", 
+value = fromEurostatDataset("trng_lfse_01", 
     with_filters(sex = "F", unit = "PC", age = "Y25-64"))
 )
 
@@ -7445,7 +7521,7 @@ unit_of_change = "pp",
 indicator_groups = "MAIN INPUT OVERALL COMPENDIUM 7 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = TRUE,
-value = fromEurostatDataset("trng_lfs_01", 
+value = fromEurostatDataset("trng_lfse_01", 
     with_filters(sex = "T", unit = "PC", age = "Y25-64"))
 )
 

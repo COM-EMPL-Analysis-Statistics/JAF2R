@@ -400,6 +400,22 @@ JAF_GRAND_TABLE <-
                 grep('^.$',colnames(.),value=TRUE),
                 grep('^flags_.$',colnames(.),value=TRUE)))
 
+TAXBEN_INDICATORS <-
+  c("PA4.1.S2.A1",
+    "PA4.1.S2.A1_2DCH",
+    "PA4.1.S2.A2",
+    "PA4.1.S2.A2_2DCH",
+    "PA4.1.S3.A1",
+    "PA4.1.S3.A1_2DCH",
+    "PA4.1.S3.A2",
+    "PA4.1.S3.A2_2DCH",
+    "PA4.2.S4.",
+    "PA4.2.S5.",
+    "PA7.1.S5.",
+    "PA7.2.S3.",
+    "PA7.2.S4.",
+    "PA11b.C4.")
+
 message('Calculating scores')
 JAF_SCORES <-
   JAF_GRAND_TABLE %>%
@@ -434,6 +450,7 @@ JAF_SCORES <-
     , by=.(JAF_KEY,geo)] %>%
   .[, change := latest_value - previous_value] %>%
   .[time==latest_year_individual] %>%
+  .[, change := change %>% fifelse(JAF_KEY %in% TAXBEN_INDICATORS,0,.)] %>% # ⚠️⚠️⚠️ TEMPORARY EXCEPTION ⚠️⚠️⚠️
   melt(id.vars=c('JAF_KEY','geo','time','high_is_good','flags_'),
        measure.vars=c('latest_value','change'),
        variable.name="variable", value.name="value",
@@ -503,7 +520,7 @@ createFolder(OUTPUT_FOLDER)
 
 if (!exists('DEVMODE')) { # slow
   message('\nGenerating `Quality Checks.xlsx`...')
-  QCT <- retry({
+  QCT <- # retry({
     qualityChecksTable(JAF_GRAND_TABLE) %>% 
       as.data.frame() # otherwise crash in * below: Error in `[.data.frame`(cc, cc$row_r %in% cc_rows, ) : Value of SET_STRING_ELT() must be a 'CHARSXP' not a 'raw'
     wb_workbook() %>% 
@@ -516,7 +533,7 @@ if (!exists('DEVMODE')) { # slow
       wb_freeze_pane(first_row=TRUE) %>% 
       wb_add_filter(rows=1, cols=1:ncol(QCT)) %>% 
       wb_save(paste0(OUTPUT_FOLDER,'/Quality Checks.xlsx'))
-  }, interval=0)
+  # }, interval=0)
 } 
 
 message('\nPreparing the data.Rds file for the Shiny/Shinylive app...')
