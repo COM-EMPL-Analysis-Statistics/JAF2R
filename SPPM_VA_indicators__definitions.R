@@ -1,3 +1,87 @@
+### Added by Paul on 13 April 2026 ###
+
+inside(JAF_INDICATORS, indicator_named = "PA11f2.O1.") = 
+specification(
+name = "At-risk-of poverty or social exclusion rate for migrants  - total aged 18 and over",
+unit_of_level = "% (of popn)",
+unit_of_change = "pp",
+indicator_groups = "OVERALL COMPENDIUM 9 COUNTRY",
+source = "Eurostat, EU Statistics on Income and Living Conditions",
+high_is_good = FALSE,
+calculate_score_change = TRUE,
+value = fromEurostatDataset("ILC_PEPS06N", 
+    with_filters(sex = "T", unit = "PC", age = "Y_GE18", c_birth = "NEU27_2020_FOR"))
+)
+
+inside(JAF_INDICATORS, indicator_named = "PA11f2.S1.") = 
+specification(
+name = "At-risk-of poverty rate (60% of median income) for migrants - total aged 18 and over",
+unit_of_level = "% (of popn)",
+unit_of_change = "pp",
+indicator_groups = "SUBINDICATOR COMPENDIUM 9 COUNTRY",
+source = "Eurostat, EU Statistics on Income and Living Conditions",
+high_is_good = FALSE,
+calculate_score_change = TRUE,
+value = fromEurostatDataset("ILC_LI32", 
+    with_filters(sex = "T", unit = "PC", age = "Y_GE18", c_birth = "NEU27_2020_FOR"))
+)
+
+inside(JAF_INDICATORS, indicator_named = "PA11f2.S2.") = 
+specification(
+name = "Severe material or social deprivation rate for migrants (7+ items) - total aged 18 and over",
+unit_of_level = "% (of popn)",
+unit_of_change = "pp",
+indicator_groups = "SUBINDICATOR COMPENDIUM 9 COUNTRY",
+source = "Eurostat, EU Statistics on Income and Living Conditions",
+high_is_good = FALSE,
+calculate_score_change = TRUE,
+value = fromEurostatDataset("ilc_mdsd16", 
+    with_filters(sex = "T", unit = "PC", age = "Y_GE18", c_birth = "NEU27_2020_FOR"))
+)
+
+inside(JAF_INDICATORS, indicator_named = "PA11f2.S3.") = 
+specification(
+name = "Share of migrants living in (quasi-)jobless households - total aged 18 - 64 years",
+unit_of_level = "% (of popn)",
+unit_of_change = "pp",
+indicator_groups = "SUBINDICATOR COMPENDIUM 9 COUNTRY",
+source = "Eurostat, EU Statistics on Income and Living Conditions",
+high_is_good = FALSE,
+calculate_score_change = TRUE,
+value = fromEurostatDataset("ILC_LVHL16N", 
+    with_filters(sex = "T", unit = "PC", age = "Y18-64", c_birth = "NEU27_2020_FOR"))
+)
+
+inside(JAF_INDICATORS, indicator_named = "PA11f2.S5.") = 
+specification(
+name = "Employment gap of migrants ",
+unit_of_level = "pp",
+unit_of_change = "pp change",
+indicator_groups = "SUBINDICATOR COMPENDIUM 9 COUNTRY",
+source = "Eurostat, EU Labour Force Survey",
+high_is_good = FALSE,
+calculate_score_change = TRUE,
+value = fromFormula(a - b,
+  where = variables(
+  a = fromEurostatDataset("lfsa_ergacob", 
+    with_filters(age = "Y15-64", c_birth = "NAT", sex = "T", unit = "PC")),
+  b = fromEurostatDataset("lfsa_ergacob", 
+    with_filters(age = "Y15-64", c_birth = "NEU27_2020_FOR", sex = "T", unit = "PC"))))
+)
+
+inside(JAF_INDICATORS, indicator_named = "PA11d1.S6.") = 
+specification(name = "Income inequality reducing effect of social transfers",
+unit_of_level = "Reduction in ratio",
+unit_of_change = "Change in ratio reduction",
+indicator_groups = "MAIN OUTPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
+source = "Eurostat, EU-SILC",
+high_is_good = TRUE,
+calculate_score_change = TRUE,
+value = fromEurostatDataset("ilc_di11h", 
+    with_filters(unit = "RAT")))
+
+
+
 ### Added by Paul on 31 March 2025 ###
 
 inside(JAF_INDICATORS, indicator_named = "PA14b.O1.") =
