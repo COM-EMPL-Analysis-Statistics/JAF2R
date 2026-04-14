@@ -1,3 +1,18 @@
+### Added by Paul on 14 April 2026 ###
+
+inside(JAF_INDICATORS, indicator_named = "PA11.S6.18-64.WI02-045") = 
+specification(
+name = "At-risk of poverty rate for population living in low work intensity households (18-64)",
+unit_of_level = "% (of total popn)",
+indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 1 COUNTRY",
+source = "Eurostat, EU Statistics on Income and Living Conditions",
+high_is_good = FALSE,
+calculate_score_change = TRUE,
+value = fromEurostatDataset("ilc_li06",
+   with_filters(sex="T", workint="WI02-045", indic_il="LI_R_MD60", age="Y18-64", hhtyp="TOTAL"))
+)
+
+
 ### Added by Paul on 13 April 2026 ###
 
 inside(JAF_INDICATORS, indicator_named = "PA11f2.O1.") = 

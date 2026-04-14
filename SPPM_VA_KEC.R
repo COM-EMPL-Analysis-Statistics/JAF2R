@@ -21,27 +21,22 @@ IndicsSelectedForKEC <- '
 |                                                                                                                                             | PA11a.S3.              |
 |                                                                                                                                             | PA11b.S3.              |
 |                                                                                                                                             | PA11.S6.               |
+|                                                                                                                                             | PA11.S6.LT18.WI0-02    |
 |                                                                                                                                             | PA11.S6.18-64          |
 |                                                                                                                                             | PA11.S8.               |
+|                                                                                                                                             | PA11a.S6.              |
+|                                                                                                                                             | PA11b.S9.              |
 |                                                                                                                                             | PA11.S9.               |
 |                                                                                                                                             | PA11.S9.0-17           |
 |                                                                                                                                             | PA11.S9.18-64          |
-| 1.2 Fair green transition / Energy poverty                                                                                                  | PA14b.O1.              |
-|                                                                                                                                             | PA14b.S1.              |
-|                                                                                                                                             | PA14b.S2.              |
-|                                                                                                                                             | PA14b.S3.              |
-|                                                                                                                                             | PA14b.S4.              |
-|                                                                                                                                             | PA14b.S5.              |
-|                                                                                                                                             | PA14b.S6.              |
-|                                                                                                                                             | PA14b.S7.              |
-| 1.3. Inequality                                                                                                                             | PA11.S10.              |
+| 1.2. Inequality                                                                                                                             | PA11.S10.              |
 |                                                                                                                                             | PA11.S14.              |
 |                                                                                                                                             | PA11.S15.              |
-| 1.4.  Material and social deprivation (all age brackets)"                                                                                   | PA11.S13.T             |
+| 1.3. Material and social deprivation (all age brackets)                                                                                     | PA11.S13.T             |
 |                                                                                                                                             | PA11a.S11.             |
 |                                                                                                                                             | PA11b.S12.T            |
 |                                                                                                                                             | PA11c.S9.T             |
-| 1.5 Housing situation (all age brackets)"                                                                                                   | PA11.S11.              |
+| 1.4. Housing situation (all age brackets)                                                                                                   | PA11.S11.              |
 |                                                                                                                                             | PA11a.S7.              |
 |                                                                                                                                             | PA11b.S10.             |
 |                                                                                                                                             | PA11c.S7.              |
@@ -49,23 +44,34 @@ IndicsSelectedForKEC <- '
 |                                                                                                                                             | PA11a.S8.              |
 |                                                                                                                                             | PA11b.S11.             |
 |                                                                                                                                             | PA11c.S8.              |
-| 1.6 Fair green transition / Energy poverty                                                                                                  | PA14b.O1.              |
+| 1.7 Social situation of migrants                                                                                                            | PA11f2.O1.             |
+|                                                                                                                                             | PA11f2.S1.             |
+|                                                                                                                                             | PA11f2.S2.             |
+|                                                                                                                                             | PA11f2.S3.             |
+|                                                                                                                                             | PA11f2.S5.             |
+| 1.9. Fair green transition / Energy poverty                                                                                                 | PA14b.O1.              |
 |                                                                                                                                             | PA14b.S1.              |
 |                                                                                                                                             | PA14b.S2.              |
 |                                                                                                                                             | PA14b.S3.              |
+|                                                                                                                                             | PA14b.S4.              |
+|                                                                                                                                             | PA14b.S5.              |
+|                                                                                                                                             | PA14b.S6.              |
+|                                                                                                                                             | PA14b.S7.              |
 | 2. Effectiveness of social protection                                                                                                       | PA11.S4.               |
 |                                                                                                                                             | PA11.S5.               |
 | 2.1. Effectiveness of social protection for children                                                                                        | PA11a.S4.              |
 |                                                                                                                                             | PA11a.S5.              |
 |                                                                                                                                             | PA11a.S6.              |
 |                                                                                                                                             | PA11.S6.LT18.WI0-02    |
-| 2.2. Effectiveness of social benefits for the working age population                                                                        | PA11b.S6.              |
+| 2.2 Active inclusion / 2.2.1 Effectiveness of social benefits for the working age population                                                | PA11b.S6.              |
 |                                                                                                                                             | PA11b.S7.              |
-| 2.3. Inclusive labour markets                                                                                                               | PA11b.S4.              |
-|                                                                                                                                             | PA11b.S5.T             |
-|                                                                                                                                             | PA11.S6.18-64.WI0-02   |
+|                                                                                                                                             | PA11d1.S6.             |
+|                                                                                                                                             | PA11.S6.18-64          |
 |                                                                                                                                             | PA11b.S9.              |
-| 3. Pensions                                                                                                                                 | PA11c.O1.              |
+| 2.2.3. Inclusive labour markets                                                                                                             | PA11b.S4.              |
+|                                                                                                                                             | PA11b.S5.T             |
+|                                                                                                                                             | PA11.S6.18-64.WI02-045 |
+| 3. Pensions / 3.1 Effectiveness of social protection in old age (poverty prevention and income replacement)                                 | PA11c.O1.              |
 |                                                                                                                                             | PA11c.O1.M             |
 |                                                                                                                                             | PA11c.O1.F             |
 |                                                                                                                                             | PA11c.S1.T             |
@@ -98,8 +104,8 @@ IndicsSelectedForKEC <- '
 |                                                                                                                                             | PA13.S18.              |
 |                                                                                                                                             | PA13.S19.              |
 |                                                                                                                                             | PA11.C11.Q1-Q5.TOOEXP  |
-|                                                                                                                                             | PA11.C11.Q1-Q5.TOOFAR  |
 |                                                                                                                                             | PA11.C11.Q1-Q5.NOTIME  |
+|                                                                                                                                             | PA11.C11.Q1-Q5.TOOFAR  |
 ' %>% 
   readMarkDownTable() %>% 
   .[,row_order := .I]
