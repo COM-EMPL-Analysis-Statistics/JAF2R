@@ -1,0 +1,232 @@
+inside(JAF_INDICATORS, indicator_named = "PA11b.C4.") = 
+specification(
+name = "Inactivity trap for the second member of a couple: marginal effective tax rate on labour income from a second member of a couple moving from social assistance to work",
+unit_of_level = "% (of change in gross income)",
+unit_of_change = "pp",
+indicator_groups = "INPUT CONTEXT COMPENDIUM 9 COUNTRY",
+source = "European Commission, JRC",
+high_is_good = FALSE,
+value = fromTaxAndBenefitsJRCfiles("PTR_SA", 
+    with_filters(indicator="PTR",
+                 family_type="2earnerC",
+                 wage_spouse=67,
+				 PoAW=67))
+)
+
+
+inside(JAF_INDICATORS, indicator_named = "PA4.1.S2.A1") = 
+specification(
+name = "Net replacement rate after 6 months of unemployment - single person, no children",
+unit_of_level = "% (of net wage previously earned)",
+unit_of_change = "pp",
+indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
+source = "European Commission, JRC",
+high_is_good = TRUE,
+value = fromTaxAndBenefitsJRCfiles("NRR", 
+    with_filters(indicator="NRR_UB",
+                 family_type="Single",
+                 time=6,
+                 PoAW=67,
+				 wage_spouse=0))
+)
+
+
+inside(JAF_INDICATORS, indicator_named = "PA4.1.S2.A1_2DCH") = 
+specification(
+name = "Net replacement rate after 6 months of unemployment - one earner couple, no children",
+unit_of_level = "% (of net wage previously earned)",
+unit_of_change = "pp",
+indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
+source = "European Commission, JRC",
+high_is_good = TRUE,
+value = fromTaxAndBenefitsJRCfiles("NRR", 
+    with_filters(indicator="NRR_UB",
+                 family_type="1earnerC",
+                 time=6,
+                 PoAW=67,
+				 wage_spouse=0))
+)
+
+
+inside(JAF_INDICATORS, indicator_named = "PA4.1.S2.A2") = 
+specification(
+name = "Net replacement rate after 6 months of unemployment - lone parent, with 2 children",
+unit_of_level = "% (of net wage previously earned)",
+unit_of_change = "pp",
+indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
+source = "European Commission, JRC",
+high_is_good = TRUE,
+value = fromTaxAndBenefitsJRCfiles("NRR", 
+    with_filters(indicator="NRR_UB",
+                 family_type="Single2C",
+                 time=6,
+                 PoAW=67,
+				 wage_spouse=0))
+)
+
+
+inside(JAF_INDICATORS, indicator_named = "PA4.1.S2.A2_2DCH") = 
+specification(
+name = "Net replacement rate after 6 months of unemployment - one earner couple, with 2 children",
+unit_of_level = "% (of net wage previously earned)",
+unit_of_change = "pp",
+indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
+source = "European Commission, JRC",
+high_is_good = TRUE,
+value = fromTaxAndBenefitsJRCfiles("NRR", 
+    with_filters(indicator="NRR_UB",
+                 family_type="1earnerC2C",
+                 time=6,
+                 PoAW=67,
+				 wage_spouse=0))
+)
+
+
+inside(JAF_INDICATORS, indicator_named = "PA4.1.S3.A1") = 
+specification(
+name = "Net replacement rate after 12 months of unemployment - single person, no children",
+unit_of_level = "% (of net wage previously earned)",
+unit_of_change = "pp",
+indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
+source = "European Commission, JRC",
+high_is_good = TRUE,
+value = fromTaxAndBenefitsJRCfiles("NRR", 
+    with_filters(indicator="NRR_UB",
+                 family_type="Single",
+                 time=12,
+                 PoAW=67,
+				 wage_spouse=0))
+)
+
+
+inside(JAF_INDICATORS, indicator_named = "PA4.1.S3.A1_2DCH") = 
+specification(
+name = "Net replacement rate after 12 months of unemployment - one earner couple, no children",
+unit_of_level = "% (of net wage previously earned)",
+unit_of_change = "pp",
+indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
+source = "European Commission, JRC",
+high_is_good = TRUE,
+value = fromTaxAndBenefitsJRCfiles("NRR", 
+    with_filters(indicator="NRR_UB",
+                 family_type="1earnerC",
+                 time=12,
+                 PoAW=67,
+				 wage_spouse=0))
+)
+
+
+inside(JAF_INDICATORS, indicator_named = "PA4.1.S3.A2") = 
+specification(
+name = "Net replacement rate after 12 months of unemployment - lone parent, with 2 children",
+unit_of_level = "% (of net wage previously earned)",
+unit_of_change = "pp",
+indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
+source = "European Commission, JRC",
+high_is_good = TRUE,
+value = fromTaxAndBenefitsJRCfiles("NRR", 
+    with_filters(indicator="NRR_UB",
+                 family_type="Single2C",
+                 time=12,
+                 PoAW=67,
+				 wage_spouse=0))
+)
+
+
+inside(JAF_INDICATORS, indicator_named = "PA4.1.S3.A2_2DCH") = 
+specification(
+name = "Net replacement rate after 12 months of unemployment - one earner couple, with 2 children",
+unit_of_level = "% (of net wage previously earned)",
+unit_of_change = "pp",
+indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
+source = "European Commission, JRC",
+high_is_good = TRUE,
+value = fromTaxAndBenefitsJRCfiles("NRR", 
+    with_filters(indicator="NRR_UB",
+                 family_type="1earnerC2C",
+                 time=12,
+                 PoAW=67,
+				 wage_spouse=0))
+)
+
+
+inside(JAF_INDICATORS, indicator_named = "PA4.2.S4.") = 
+specification(
+name = "Inactivity trap for the second member of a couple: marginal effective tax rate on labour income from a second member of a couple moving from social assistance to work",
+unit_of_level = "% (of change in gross income)",
+unit_of_change = "pp",
+indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
+source = "European Commission, JRC",
+high_is_good = FALSE,
+value = fromTaxAndBenefitsJRCfiles("PTR_SA", 
+    with_filters(indicator="PTR",
+                 family_type="2earnerC",
+                 wage_spouse=67,
+				 PoAW=67))
+)
+
+
+inside(JAF_INDICATORS, indicator_named = "PA4.2.S5.") = 
+specification(
+name = "Low wage trap for second earner income ",
+unit_of_level = "% (of increase in gross earnings)",
+unit_of_change = "pp",
+indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 4 COUNTRY",
+source = "European Commission, JRC",
+high_is_good = FALSE,
+value = fromTaxAndBenefitsJRCfiles("METR", 
+    with_filters(indicator="METR",
+                 family_type="2earnerC",
+                 wage_spouse=67,
+				 PoAW=67,
+				 aw_change="67%>>100%"))
+)
+
+
+inside(JAF_INDICATORS, indicator_named = "PA7.1.S5.") = 
+specification(
+name = "Inactivity trap for the second member of a couple: marginal effective tax rate on labour income from a second member of a couple moving from social assistance to work",
+unit_of_level = "% (of increase in gross wage)",
+unit_of_change = "pp",
+indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 6 COUNTRY",
+source = "European Commission, JRC",
+high_is_good = FALSE,
+value = fromTaxAndBenefitsJRCfiles("PTR_SA", 
+    with_filters(indicator="PTR",
+                 family_type="2earnerC",
+                 wage_spouse=67,
+				 PoAW=67))
+)
+
+
+inside(JAF_INDICATORS, indicator_named = "PA7.2.S3.") = 
+specification(
+name = "Inactivity trap for the second member of a couple",
+unit_of_level = "% (of change in gross income)",
+unit_of_change = "pp",
+indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 6 COUNTRY",
+source = "European Commission, JRC",
+high_is_good = FALSE,
+value = fromTaxAndBenefitsJRCfiles("PTR_SA", 
+    with_filters(indicator="PTR",
+                 family_type="2earnerC",
+                 wage_spouse=67,
+				 PoAW=67))
+)
+
+
+inside(JAF_INDICATORS, indicator_named = "PA7.2.S4.") = 
+specification(
+name = "Low wage trap for second earner income ",
+unit_of_level = "% (of increase in gross earnings)",
+unit_of_change = "pp",
+indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 6 COUNTRY",
+source = "European Commission, JRC",
+high_is_good = FALSE,
+value = fromTaxAndBenefitsJRCfiles("METR", 
+    with_filters(indicator="METR",
+                 family_type="2earnerC",
+                 wage_spouse=67,
+				 PoAW=67,
+				 aw_change="67%>>100%"))
+)

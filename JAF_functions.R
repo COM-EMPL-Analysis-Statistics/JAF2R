@@ -498,8 +498,8 @@ LMPurlFilters <- function(ds_code, filters_list) {
 
 fromTaxAndBenefits <- function(table_code, with_filters) {
   url_pfix <- 
-    paste0('https://webgate.ec.europa.eu/ecfin/redisstat/api/dissemination/sdmx/3.0/',
-           'data/dataflow/ECFIN/',table_code,'/1.0/')
+    paste0('https://intragate.acceptance.ec.europa.eu/ecfin/redisstat/api/dissemination/sdmx/3.0/',
+           'data/dataflow/ECFIN/',sub('tab_','tab_jrc_',table_code,fixed=TRUE),'/1.0/')
   url_stars_infix <-
     (length(with_filters) + 2) %>% 
     rep.int('*',.) %>% 
@@ -522,6 +522,10 @@ fromTaxAndBenefits <- function(table_code, with_filters) {
     .[, COUNTRY := COUNTRY %>% nswitch(.,'GR','EL','EUBr','EU27_2020',default=.)] %>% 
     setnames(c('COUNTRY','TIME_PERIOD','OBS_VALUE'),
              c('geo','time','value_'))
+}
+
+fromTaxAndBenefitsJRCfiles <- function(table_code, with_filters) {
+  # Not implemented for the moment
 }
 
 
