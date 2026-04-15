@@ -507,8 +507,8 @@ fromTaxAndBenefits <- function(table_code, with_filters) {
     paste0('?')
   url_filetype_infix <-
     'format=csvdata&compress=false'
-  url_countries_infix <- # EUBr = European Union 27 (from 2020)  i.e.  EU27_2020  # GR = EL
-    'c[COUNTRY]=EUBr,BE,BG,CZ,DK,DE,EE,IE,GR,ES,FR,HR,IT,CY,LV,LT,LU,HU,MT,NL,AT,PL,PT,RO,SI,SK,FI,SE'
+  url_countries_infix <- # EUBr = European Union 27 (from 2020)  i.e.  EU27_2020  
+    'c[COUNTRY]=EUBr,BE,BG,CZ,DK,DE,EE,IE,EL,ES,FR,HR,IT,CY,LV,LT,LU,HU,MT,NL,AT,PL,PT,RO,SI,SK,FI,SE'
   url_params_suffix <-
     names(with_filters) %>% 
     sapply(function(param_name)
@@ -517,11 +517,18 @@ fromTaxAndBenefits <- function(table_code, with_filters) {
     paste(collapse='&')
   paste0(url_pfix, url_stars_infix,
          url_filetype_infix,'&',url_countries_infix,'&',url_params_suffix) %>% 
-    memoised_fread() %>% 
+    # memoised_fread() %>% 
+    temporaryDownloadFix() %>% 
     .[,.(COUNTRY,TIME_PERIOD,OBS_VALUE)] %>% 
-    .[, COUNTRY := COUNTRY %>% nswitch(.,'GR','EL','EUBr','EU27_2020',default=.)] %>% 
+    .[, COUNTRY := COUNTRY %>% nswitch(.,'EUBr','EU27_2020',default=.)] %>% 
     setnames(c('COUNTRY','TIME_PERIOD','OBS_VALUE'),
              c('geo','time','value_'))
+}
+
+temporaryDownloadFix <- function(url) {
+  message('Trying to download from\n',url,'\nvia PowerShell.\n')
+  shell(paste0("powershell -Command \"$u='",url,"'; Invoke-WebRequest -Uri $u -OutFile '__tmp.csv'\""))
+  fread('__tmp.csv')
 }
 
 fromTaxAndBenefitsJRCfiles <- function(table_code, with_filters) {

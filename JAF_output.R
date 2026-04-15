@@ -414,7 +414,10 @@ TAXBEN_INDICATORS <-
     "PA7.1.S5.",
     "PA7.2.S3.",
     "PA7.2.S4.",
-    "PA11b.C4.")
+    "PA11b.C4.",
+    "PA6b.S1.",
+    "PA4.2.O1.",
+    "PA4.2.S2.")
 
 message('Calculating scores')
 JAF_SCORES <-
