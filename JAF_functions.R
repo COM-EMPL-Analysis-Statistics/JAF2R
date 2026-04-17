@@ -562,8 +562,8 @@ fromLFSspecialFile <- function(jaf_lfs_code, with_filters) {
            'lfse_inactpt_lackcare'="IESS_10_PA5_C3_mod_Y.csv",
            'lfse_overtime'="IESS_PA2_C3_AA.csv",
            .
-    ) %>% 
-    paste0('___CONSOLIDATED.csv')
+    ) # %>% 
+    # paste0('___CONSOLIDATED.csv') # not needed - latest Estat files already consolidated (all years are available)
   memoised_fread(name_of_raw_file_from_estat) %>%
     copy() %>% 
     setnames(tolower) %>% 

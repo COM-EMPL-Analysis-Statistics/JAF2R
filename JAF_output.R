@@ -340,11 +340,13 @@ POP_WEIGHTS <-
       .[, c('unit','freq','flags_') := NULL],
     fill=TRUE
   ) %>% 
+  .[isNotNA(value_)] %>% 
   .[, lapply(.,. %>% `if`(is.factor(.),as.character(.),.))] %>% 
   .[, time := TIME_PERIOD %>% as.integer()] %>% # year
   .[, TIME_PERIOD := NULL] %>% 
   .[, isced11 := isced11 %>% ifelse(is.na(.),'TOTAL',.)] %>% # filling in isced11 for lfsa_pganws
   .[, citizen := citizen %>% ifelse(is.na(.),'TOTAL',.)] %>% # filling in citizen for lfsa_pgaed
+  .[!duplicated(.[,colnames(.) %without% 'value_', with=FALSE])] %>% # after that filling in, there are overlaps/duplicates where both isced11=TOTAL and citizen=TOTAL
   .[, is_total := 
       sex=="T" & age=="Y20-64" & isced11=='TOTAL' & citizen=='TOTAL'] %>% 
   .[, total := ifelse(is_total, value_, NA_real_)] %>%

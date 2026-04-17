@@ -1192,7 +1192,7 @@ indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 2 COUNTRY",
 source = "",
 high_is_good = FALSE,
 value = fromEurostatDataset("hlth_cd_apyll",
-   with_filters(icd10="A-R_V-Y", sex="T", unit="YR"))
+   with_filters(icd10="TOTAL", sex="T", unit="YR", age="Y_LT70"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA13.S13.") = 
