@@ -226,6 +226,22 @@ checkFlags <- function(dt, flag)
          init = logical(nrow(dt)),
          f = function(i,x) i | grepl(flag,x))
 
+largestChanges <- function(dt)
+  copy(dt) %>% 
+  .[, max_time := max(time)
+    , by=.(JAF_KEY,geo)] %>% 
+  .[, .(latest_diff = value_[time==max_time] - value_[time==max_time-1])
+    , by=.(JAF_KEY, geo)] %>% 
+  .[isNotNA(latest_diff)] %>% 
+  .[, bottom_3_lowest := frank(latest_diff, ties.method='dense')<=3
+    , by=JAF_KEY] %>% 
+  .[, top_3_highest := frank(-latest_diff, ties.method='dense')<=3
+    , by=JAF_KEY] %>% 
+  setnames(c('bottom_3_lowest','top_3_highest'),
+           c('Latest change among the 3 lowest across countries',
+             'Latest change among the 3 highest across countries')) %>% 
+  .[, latest_diff := NULL]
+
 MIN_NUMBER_OF_COUNTRIES <- 18L
 
 CURRENT_YEAR <-
@@ -235,6 +251,9 @@ CURRENT_YEAR <-
 
 QUALITY_CHECKS_FUNCTIONS <-
   list(
+    \(dt) dt[, `Break in time series (flag 'b')` := checkFlags(dt,'b')],
+    \(dt) dt[, `Unreliable (flag 'u')` := checkFlags(dt,'u')],
+    \(dt) dt[, `Not significant (flag 'n')` := checkFlags(dt,'n')],
     \(dt) dt[, paste0('Latest year considered (for which the number of available Member States ≥ ',
                       MIN_NUMBER_OF_COUNTRIES,')') := max(time)
              , by=JAF_KEY],
@@ -273,9 +292,7 @@ QUALITY_CHECKS_FUNCTIONS <-
     \(dt) dt[, c('Volatility of time series (the higher, the more volatile)','Is an outlier') :=
                volatility(time, value_)
              , by=.(JAF_KEY,geo)],
-    \(dt) dt[, `Break in time series (flag 'b')` := checkFlags(dt,'b')],
-    \(dt) dt[, `Unreliable (flag 'u')` := checkFlags(dt,'u')],
-    \(dt) dt[, `Not significant (flag 'n')` := checkFlags(dt,'n')]
+    \(dt) merge(dt, largestChanges(dt), by=c('JAF_KEY','geo'), all.x=TRUE) 
   )
 
 qualityChecksTable <- function(JAF_GRAND_TABLE)
