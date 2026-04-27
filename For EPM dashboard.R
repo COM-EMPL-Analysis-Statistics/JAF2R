@@ -19,9 +19,10 @@ DataForEPM <-
                                                with_filters(age="Y20-64", indic_em="EMP_LFS", sex="F", unit="PC_POP"))))
        ,
        lfse_er_child=
-         fread('IESS_11_PA7_2_S1_Y.csv___CONSOLIDATED.csv') %>% 
+         fread('IESS_11_PA7_2_S1_Y.csv') %>% 
          setnames(c('COUNTRY','YEAR','value'),
-                  c('geo',    'year','value_n'))
+                  c('geo',    'year','value_n')) %>% 
+         .[, geo := geo %>% ifelse(.=='EUR21','EA21',.)]
   )
 
 transformToOldFormat <- function(dt, filename)

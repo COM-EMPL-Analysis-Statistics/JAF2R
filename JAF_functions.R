@@ -28,8 +28,8 @@ large_EU_Members_geo_codes <-
 EU_geo_code <-
   'EU27_2020'
 
-EA_geo_code <- NULL # temporary hack; incomplete data -> crashing scripts
-  # 'EA21'
+EA_geo_code <- # NULL # temporary hack; incomplete data -> crashing scripts
+  'EA21'
 
 JAF_KEY__REGEX_PATTERN <-
   "^PA\\d+(\\.\\d)?[a-z]?(\\d+)?\\.[OSC]\\d+\\..*"
@@ -569,7 +569,7 @@ fromLFSspecialFile <- function(jaf_lfs_code, with_filters) {
     setnames(tolower) %>% 
     setnames('flag','flags_') %>% 
     .[, c('quarter','flag_break') := NULL] %>% 
-    .[, country := ifelse(country=='EUR20','EA20',country)] %>% 
+    .[, country := ifelse(country=='EUR21','EA21',country)] %>% 
     setnames(c('country','year','value'),
              c('geo','time','value_')) %>% 
     .[geo %in% c(EU_Members_geo_codes,EU_geo_code,EA_geo_code)] %>% 
@@ -605,7 +605,7 @@ AMECO_Eurostat_country_codes <- '
 | CNTRY  | geo        | Country         |
 |--------|------------|-----------------|
 | EU27   | EU27_2020  | European Union  |
-| EA20   | EA20       | Euro area       |
+| EA21   | EA21       | Euro area       |
 | BEL    | BE         | Belgium         |
 | BGR    | BG         | Bulgaria        |
 | CZE    | CZ         | Czechia         |
@@ -656,7 +656,7 @@ getAMECO <- function(ameco_variable_code)
               'in the `switch` function inside `getAMECO` function!',call.=FALSE)) %>% 
   paste0('https://webgate.ec.europa.eu/fastop/wq/ameco/online?fullVariable=',.,
          ameco_variable_code,'&countries=',
-         'AUT,BEL,BGR,CYP,CZE,DEU,DNK,EA20,ESP,EST,EU27,FIN,FRA,GRC,HRV,HUN,IRL,ITA,LTU,LUX,LVA,MLT,',
+         'AUT,BEL,BGR,CYP,CZE,DEU,DNK,EA21,ESP,EST,EU27,FIN,FRA,GRC,HRV,HUN,IRL,ITA,LTU,LUX,LVA,MLT,',
          'NLD,POL,PRT,ROM,SVK,SVN,SWE&years=',
          seq.int(2000, Sys.Date() %>% substr(1,4) %>% as.integer()) %>% 
            paste(collapse=',')) %>% 
