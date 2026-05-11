@@ -63,7 +63,7 @@ CurrentRun <-
   setorder(JAF_KEY,time,geo) %>% 
   setnames(c('value_','flags_'),
            c('value','flags') %>% paste(TimeStamp)) %T>% 
-  saveRDS(paste0('Scoreboard run ',TimeStamp,'.Rds'))
+  saveRDS(paste0('JAF run ',TimeStamp,'.Rds'))
 
 
 
@@ -76,11 +76,11 @@ if (is.data.table(PastRuns)) {
     CurrentRun %>% 
     merge(PastRuns, all=TRUE,
           by=c('JAF_KEY','time','geo')) %>% 
-    merge(JAF_NAMES_DESCRIPTIONS[,.(JAF_KEY,name,type)],
+    merge(JAF_NAMES_DESCRIPTIONS[,.(JAF_KEY,name)],
           by='JAF_KEY', all=TRUE) %>% 
     compareColumns('^value') %>% 
     compareColumns('^flags') %>% 
-    setcolorder(c('JAF_KEY','name','type','time','geo')) %>% 
+    setcolorder(c('JAF_KEY','name','time','geo')) %>% 
     setorder(JAF_KEY,time,geo) %>% 
     setnames(\(x) sapply(x, . %>% strwrap(width=5) %>% paste(collapse='\n')))
   

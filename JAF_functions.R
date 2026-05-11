@@ -498,7 +498,7 @@ LMPurlFilters <- function(ds_code, filters_list) {
 
 fromTaxAndBenefits <- function(table_code, with_filters) {
   url_pfix <- 
-    paste0('https://intragate.acceptance.ec.europa.eu/ecfin/redisstat/api/dissemination/sdmx/3.0/',
+    paste0('https://webgate.ec.europa.eu/ecfin/redisstat/api/dissemination/sdmx/3.0/',
            'data/dataflow/ECFIN/',sub('tab_','tab_jrc_',table_code,fixed=TRUE),'/1.0/')
   url_stars_infix <-
     (length(with_filters) + 2) %>% 
@@ -517,8 +517,8 @@ fromTaxAndBenefits <- function(table_code, with_filters) {
     paste(collapse='&')
   paste0(url_pfix, url_stars_infix,
          url_filetype_infix,'&',url_countries_infix,'&',url_params_suffix) %>% 
-    # memoised_fread() %>% 
-    temporaryDownloadFix() %>% 
+    memoised_fread() %>%
+    # temporaryDownloadFix() %>% 
     .[,.(COUNTRY,TIME_PERIOD,OBS_VALUE)] %>% 
     .[, COUNTRY := COUNTRY %>% nswitch(.,'EUBr','EU27_2020',default=.)] %>% 
     setnames(c('COUNTRY','TIME_PERIOD','OBS_VALUE'),
