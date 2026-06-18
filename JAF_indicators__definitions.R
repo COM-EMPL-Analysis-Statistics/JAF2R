@@ -1832,7 +1832,7 @@ value = fromEurostatDataset("ilc_lvhl11n",
     with_filters(sex = "T", unit = "PC", age = "Y_LT65"))
 )
 
-### TEMPORARILY SWITCHED OF – DECISIONS NEEDED DUE TO CHANGES IN EUROSTAT DATASETS
+### TEMPORARILY SWITCHED OFF – DECISIONS NEEDED DUE TO CHANGES IN EUROSTAT DATASETS
 # inside(JAF_INDICATORS, indicator_named = "PA11.S4.") = 
 # specification(
 # name = "Impact of social transfers (other than pensions) in reducing poverty",
@@ -1924,7 +1924,7 @@ value = fromEurostatDataset("ilc_li06",
     with_filters(sex = "T", workint = "WI02-045", rskpovth = "B_60", statinfo="MED_EI", age = "Y18-64", hhcomp = "TOTAL"))
 )
 
-### TEMPORARILY SWITCHED OF – DECISIONS NEEDED DUE TO CHANGES IN EUROSTAT DATASETS
+### TEMPORARILY SWITCHED OFF – DECISIONS NEEDED DUE TO CHANGES IN EUROSTAT DATASETS
 # inside(JAF_INDICATORS, indicator_named = "PA11.S8.") = 
 # specification(
 # name = "Relative median poverty risk gap",
@@ -2287,7 +2287,7 @@ value = fromEurostatDataset("ilc_lvhl11",
     with_filters(sex = "T", unit = "PC_Y_LT60", age = "Y_LT18"))
 )
 
-### TEMPORARILY SWITCHED OF – DECISIONS NEEDED DUE TO CHANGES IN EUROSTAT DATASETS
+### TEMPORARILY SWITCHED OFF – DECISIONS NEEDED DUE TO CHANGES IN EUROSTAT DATASETS
 # inside(JAF_INDICATORS, indicator_named = "PA11a.S4.") = 
 # specification(
 # name = "Impact of social transfers (other than pensions) in reducing child poverty",
@@ -2841,7 +2841,7 @@ value = fromEurostatDataset("ilc_iw01",
     with_filters(sex = "T", wstatus = "EMP", age = "Y18-64"))
 )
 
-### TEMPORARILY SWITCHED OF – DECISIONS NEEDED DUE TO CHANGES IN EUROSTAT DATASETS
+### TEMPORARILY SWITCHED OFF – DECISIONS NEEDED DUE TO CHANGES IN EUROSTAT DATASETS
 # inside(JAF_INDICATORS, indicator_named = "PA11b.S6.") = 
 # specification(
 # name = "Impact of social transfers (other than pensions) in reducing working age poverty (18-64)",
@@ -2933,7 +2933,7 @@ value = fromEurostatDataset("ilc_li06",
     with_filters(sex = "T", workint = "WI0-02", rskpovth = "B_60", statinfo="MED_EI", age = "Y18-64", hhcomp = "TOTAL"))
 )
 
-### TEMPORARILY SWITCHED OF – DECISIONS NEEDED DUE TO CHANGES IN EUROSTAT DATASETS
+### TEMPORARILY SWITCHED OFF – DECISIONS NEEDED DUE TO CHANGES IN EUROSTAT DATASETS
 # inside(JAF_INDICATORS, indicator_named = "PA11b.S9.") = 
 # specification(
 # name = "Relative median poverty risk gap (18-64)",
@@ -3243,7 +3243,7 @@ value = fromEurostatDataset("ILC_PNP13",
     with_filters(age = "Y_GE65", unit = "PC", statinfo="AVG"))
 )
 
-### TEMPORARILY SWITCHED OF – DECISIONS NEEDED DUE TO CHANGES IN EUROSTAT DATASETS
+### TEMPORARILY SWITCHED OFF – DECISIONS NEEDED DUE TO CHANGES IN EUROSTAT DATASETS
 # inside(JAF_INDICATORS, indicator_named = "PA11c.S3.") = 
 # specification(
 # name = "Impact of social transfers (incl pensions) in reducing old age poverty (65+)",
@@ -3789,7 +3789,7 @@ value = fromEurostatDataset("ilc_lvhl11n",
     with_filters(age = "Y18-24", sex = "T", unit = "PC"))
 )
 
-### TEMPORARILY SWITCHED OF – DECISIONS NEEDED DUE TO CHANGES IN EUROSTAT DATASETS
+### TEMPORARILY SWITCHED OFF – DECISIONS NEEDED DUE TO CHANGES IN EUROSTAT DATASETS
 # inside(JAF_INDICATORS, indicator_named = "PA11f5.S4.") = 
 # specification(
 # name = "Impact of social transfers (other than pensions) in reducing poverty of young people (18-24)",
