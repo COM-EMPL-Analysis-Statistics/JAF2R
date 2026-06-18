@@ -31,11 +31,7 @@ value = fromFormula(100 * ((a - b)/a),
   a = fromEurostatDataset("ilc_li09d", 
     with_filters(age = "Y_GE18", isced11 = "ED0-2", rskpovth = "B_60", sex = "T")),
   b = fromEurostatDataset("ilc_li07", 
-<<<<<<< HEAD
     with_filters(age = "Y_GE18", isced11 = "ED0-2", rskpovth = "B_60", statinfo="MED_EI", sex = "T"))))
-=======
-    with_filters(age = "Y_GE18", isced11 = "ED0-2", indic_il = "LI_R_MD60", sex = "T"))))
->>>>>>> 6cf02bd640dac22febb65d2fe1042f0845226905
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11f4.S2.") = 
@@ -52,11 +48,7 @@ value = fromFormula(100 * ((a - b)/a),
   a = fromEurostatDataset("ilc_li09f", 
     with_filters(age = "Y_LT65", hhcomp="TOTAL", rskpovth = "B_60", sex = "T", workint = "WI0-02")),
   b = fromEurostatDataset("ilc_li06", 
-<<<<<<< HEAD
     with_filters(age = "Y_LT65", hhcomp="TOTAL", rskpovth = "B_60", statinfo="MED_EI", sex = "T", workint = "WI0-02"))))
-=======
-    with_filters(age = "Y_LT65", hhtyp="TOTAL", indic_il = "LI_R_MD60", sex = "T", workint = "WI0-02"))))
->>>>>>> 6cf02bd640dac22febb65d2fe1042f0845226905
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11f4.S1.") = 
