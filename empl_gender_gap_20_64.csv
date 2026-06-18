@@ -21,6 +21,7 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 81.2,73.4,AT,2022,"","",7.8,empl_gender_gap_20_64
 81.1,73.3,AT,2023,"","",7.8,empl_gender_gap_20_64
 80.8,73.9,AT,2024,"","",6.89999999999999,empl_gender_gap_20_64
+81,74.2,AT,2025,"","",6.8,empl_gender_gap_20_64
 ,,BE,2003,:,:,,empl_gender_gap_20_64
 ,,BE,2004,:,:,,empl_gender_gap_20_64
 ,,BE,2005,:,:,,empl_gender_gap_20_64
@@ -43,6 +44,7 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 75.7,68.1,BE,2022,"","",7.60000000000001,empl_gender_gap_20_64
 75.9,68.3,BE,2023,"","",7.60000000000001,empl_gender_gap_20_64
 76.3,68.3,BE,2024,"","",8,empl_gender_gap_20_64
+76.4,69.3,BE,2025,"","",7.10000000000001,empl_gender_gap_20_64
 ,,BG,2003,:,:,,empl_gender_gap_20_64
 ,,BG,2004,:,:,,empl_gender_gap_20_64
 ,,BG,2005,:,:,,empl_gender_gap_20_64
@@ -64,7 +66,8 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 77.5,69.1,BG,2021,"","",8.40000000000001,empl_gender_gap_20_64
 79.6,72.1,BG,2022,"","",7.5,empl_gender_gap_20_64
 79.9,72.6,BG,2023,"","",7.30000000000001,empl_gender_gap_20_64
-80.3,73.1,BG,2024,"","",7.2,empl_gender_gap_20_64
+80.3,73.1,BG,2024, b, b,7.2,empl_gender_gap_20_64
+80.6,73.2,BG,2025,"","",7.39999999999999,empl_gender_gap_20_64
 ,,CY,2003,:,:,,empl_gender_gap_20_64
 ,,CY,2004,:,:,,empl_gender_gap_20_64
 ,,CY,2005,:,:,,empl_gender_gap_20_64
@@ -87,6 +90,7 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 84.3,73.4,CY,2022,"","",10.9,empl_gender_gap_20_64
 84.2,75.2,CY,2023,"","",9,empl_gender_gap_20_64
 85,75,CY,2024,"","",10,empl_gender_gap_20_64
+86.4,76.3,CY,2025,"","",10.1,empl_gender_gap_20_64
 ,,CZ,2003,:,:,,empl_gender_gap_20_64
 ,,CZ,2004,:,:,,empl_gender_gap_20_64
 ,,CZ,2005,:,:,,empl_gender_gap_20_64
@@ -109,6 +113,7 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 88.6,73.7,CZ,2022,"","",14.9,empl_gender_gap_20_64
 88.4,74.5,CZ,2023,"","",13.9,empl_gender_gap_20_64
 88.4,75.8,CZ,2024,"","",12.6,empl_gender_gap_20_64
+88.2,77.5,CZ,2025,"","",10.7,empl_gender_gap_20_64
 ,,DE,2003,:,:,,empl_gender_gap_20_64
 ,,DE,2004,:,:,,empl_gender_gap_20_64
 ,,DE,2005,:,:,,empl_gender_gap_20_64
@@ -120,17 +125,18 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 80.6,70.3,DE,2011, b, b,10.3,empl_gender_gap_20_64
 81,70.7,DE,2012,"","",10.3,empl_gender_gap_20_64
 81,71.5,DE,2013,"","",9.5,empl_gender_gap_20_64
-81.2,72.1,DE,2014,"","",9.10000000000001,empl_gender_gap_20_64
-81.2,72.6,DE,2015,"","",8.60000000000001,empl_gender_gap_20_64
-81.6,73.5,DE,2016,"","",8.09999999999999,empl_gender_gap_20_64
-82,74.2,DE,2017,"","",7.8,empl_gender_gap_20_64
-82.8,74.8,DE,2018,"","",8,empl_gender_gap_20_64
-83.5,75.5,DE,2019,"","",8,empl_gender_gap_20_64
-81.9,74.4,DE,2020, b, b,7.5,empl_gender_gap_20_64
-83,75.6,DE,2021,"","",7.40000000000001,empl_gender_gap_20_64
-84.4,76.7,DE,2022,"","",7.7,empl_gender_gap_20_64
-84.9,77.2,DE,2023,"","",7.7,empl_gender_gap_20_64
-84.9,77.6,DE,2024,"","",7.30000000000001,empl_gender_gap_20_64
+81.2,72.2,DE,2014,"","",9,empl_gender_gap_20_64
+81.2,72.7,DE,2015,"","",8.5,empl_gender_gap_20_64
+81.6,73.6,DE,2016,"","",8,empl_gender_gap_20_64
+82.1,74.3,DE,2017,"","",7.8,empl_gender_gap_20_64
+82.8,75,DE,2018,"","",7.8,empl_gender_gap_20_64
+83.6,75.7,DE,2019,"","",7.89999999999999,empl_gender_gap_20_64
+82,74.6,DE,2020, b, b,7.40000000000001,empl_gender_gap_20_64
+83.2,75.9,DE,2021,"","",7.3,empl_gender_gap_20_64
+84.5,77,DE,2022,"","",7.5,empl_gender_gap_20_64
+84.8,77.4,DE,2023,"","",7.39999999999999,empl_gender_gap_20_64
+84.8,77.7,DE,2024,"","",7.09999999999999,empl_gender_gap_20_64
+84.5,77.7,DE,2025,"","",6.8,empl_gender_gap_20_64
 ,,DK,2003,:,:,,empl_gender_gap_20_64
 ,,DK,2004,:,:,,empl_gender_gap_20_64
 ,,DK,2005,:,:,,empl_gender_gap_20_64
@@ -153,28 +159,30 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 82.8,77.4,DK,2022,"","",5.39999999999999,empl_gender_gap_20_64
 82.6,77,DK,2023, b, b,5.59999999999999,empl_gender_gap_20_64
 83.4,76.9,DK,2024,"","",6.5,empl_gender_gap_20_64
-,,EA20,2003,:,:,,empl_gender_gap_20_64
-,,EA20,2004,:,:,,empl_gender_gap_20_64
-,,EA20,2005,:,:,,empl_gender_gap_20_64
-,,EA20,2006,:,:,,empl_gender_gap_20_64
-,,EA20,2007,:,:,,empl_gender_gap_20_64
-,,EA20,2008,:,:,,empl_gender_gap_20_64
-75,61.7,EA20,2009,"","",13.3,empl_gender_gap_20_64
-74.4,61.6,EA20,2010,"","",12.8,empl_gender_gap_20_64
-74.3,61.9,EA20,2011,"","",12.4,empl_gender_gap_20_64
-73.4,61.8,EA20,2012,"","",11.6,empl_gender_gap_20_64
-72.7,61.9,EA20,2013,"","",10.8,empl_gender_gap_20_64
-73.2,62.5,EA20,2014,"","",10.7,empl_gender_gap_20_64
-74.1,63.3,EA20,2015,"","",10.8,empl_gender_gap_20_64
-75.1,64.3,EA20,2016,"","",10.8,empl_gender_gap_20_64
-76.1,65.3,EA20,2017,"","",10.8,empl_gender_gap_20_64
-77.1,66.3,EA20,2018,"","",10.8,empl_gender_gap_20_64
-77.7,67.2,EA20,2019,"","",10.5,empl_gender_gap_20_64
-76.3,66,EA20,2020,"","",10.3,empl_gender_gap_20_64
-77.5,67.3,EA20,2021,"","",10.2,empl_gender_gap_20_64
-79.1,68.9,EA20,2022,"","",10.2,empl_gender_gap_20_64
-79.7,69.8,EA20,2023,"","",9.90000000000001,empl_gender_gap_20_64
-80.1,70.5,EA20,2024,"","",9.59999999999999,empl_gender_gap_20_64
+82.9,76.7,DK,2025,"","",6.2,empl_gender_gap_20_64
+,,EA21,2003,:,:,,empl_gender_gap_20_64
+,,EA21,2004,:,:,,empl_gender_gap_20_64
+,,EA21,2005,:,:,,empl_gender_gap_20_64
+,,EA21,2006,:,:,,empl_gender_gap_20_64
+,,EA21,2007,:,:,,empl_gender_gap_20_64
+,,EA21,2008,:,:,,empl_gender_gap_20_64
+75,61.7,EA21,2009,"","",13.3,empl_gender_gap_20_64
+74.2,61.5,EA21,2010,"","",12.7,empl_gender_gap_20_64
+74.1,61.8,EA21,2011,"","",12.3,empl_gender_gap_20_64
+73.2,61.8,EA21,2012,"","",11.4,empl_gender_gap_20_64
+72.6,61.8,EA21,2013,"","",10.8,empl_gender_gap_20_64
+73,62.5,EA21,2014,"","",10.5,empl_gender_gap_20_64
+74,63.3,EA21,2015,"","",10.7,empl_gender_gap_20_64
+75,64.3,EA21,2016,"","",10.7,empl_gender_gap_20_64
+76.1,65.3,EA21,2017,"","",10.8,empl_gender_gap_20_64
+77.1,66.3,EA21,2018,"","",10.8,empl_gender_gap_20_64
+77.7,67.2,EA21,2019,"","",10.5,empl_gender_gap_20_64
+76.3,66.1,EA21,2020,"","",10.2,empl_gender_gap_20_64
+77.5,67.4,EA21,2021,"","",10.1,empl_gender_gap_20_64
+79.1,69,EA21,2022,"","",10.1,empl_gender_gap_20_64
+79.6,69.9,EA21,2023,"","",9.69999999999999,empl_gender_gap_20_64
+80.1,70.5,EA21,2024,"","",9.59999999999999,empl_gender_gap_20_64
+80.3,71.1,EA21,2025,"","",9.2,empl_gender_gap_20_64
 ,,EE,2003,:,:,,empl_gender_gap_20_64
 ,,EE,2004,:,:,,empl_gender_gap_20_64
 ,,EE,2005,:,:,,empl_gender_gap_20_64
@@ -197,6 +205,7 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 83.3,80.4,EE,2022,"","",2.89999999999999,empl_gender_gap_20_64
 83.3,80.9,EE,2023,"","",2.39999999999999,empl_gender_gap_20_64
 82.6,80.9,EE,2024,"","",1.69999999999999,empl_gender_gap_20_64
+81.9,81.4,EE,2025,"","",0.5,empl_gender_gap_20_64
 ,,EL,2003,:,:,,empl_gender_gap_20_64
 ,,EL,2004,:,:,,empl_gender_gap_20_64
 ,,EL,2005,:,:,,empl_gender_gap_20_64
@@ -219,6 +228,7 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 76.9,55.9,EL,2022,"","",21,empl_gender_gap_20_64
 77.4,57.6,EL,2023,"","",19.8,empl_gender_gap_20_64
 78.7,59.9,EL,2024,"","",18.8,empl_gender_gap_20_64
+79.7,62.3,EL,2025,"","",17.4,empl_gender_gap_20_64
 ,,ES,2003,:,:,,empl_gender_gap_20_64
 ,,ES,2004,:,:,,empl_gender_gap_20_64
 ,,ES,2005,:,:,,empl_gender_gap_20_64
@@ -241,6 +251,7 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 74.9,63.7,ES,2022, d, d,11.2,empl_gender_gap_20_64
 75.7,65.4,ES,2023, d, d,10.3,empl_gender_gap_20_64
 76.3,66.5,ES,2024, d, d,9.8,empl_gender_gap_20_64
+77.1,67.6,ES,2025, d, d,9.5,empl_gender_gap_20_64
 ,,EU27_2020,2003,:,:,,empl_gender_gap_20_64
 ,,EU27_2020,2004,:,:,,empl_gender_gap_20_64
 ,,EU27_2020,2005,:,:,,empl_gender_gap_20_64
@@ -255,14 +266,15 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 73.1,62,EU27_2020,2014,"","",11.1,empl_gender_gap_20_64
 74.1,63,EU27_2020,2015,"","",11.1,empl_gender_gap_20_64
 75.2,64.1,EU27_2020,2016,"","",11.1,empl_gender_gap_20_64
-76.5,65.2,EU27_2020,2017,"","",11.3,empl_gender_gap_20_64
+76.5,65.3,EU27_2020,2017,"","",11.2,empl_gender_gap_20_64
 77.6,66.3,EU27_2020,2018,"","",11.3,empl_gender_gap_20_64
 78.4,67.1,EU27_2020,2019,"","",11.3,empl_gender_gap_20_64
 77.2,66.2,EU27_2020,2020,"","",11,empl_gender_gap_20_64
 78.5,67.6,EU27_2020,2021,"","",10.9,empl_gender_gap_20_64
-79.9,69.2,EU27_2020,2022,"","",10.7,empl_gender_gap_20_64
+79.9,69.3,EU27_2020,2022,"","",10.6,empl_gender_gap_20_64
 80.4,70.2,EU27_2020,2023,"","",10.2,empl_gender_gap_20_64
 80.8,70.8,EU27_2020,2024,"","",10,empl_gender_gap_20_64
+80.9,71.3,EU27_2020,2025,"","",9.60000000000001,empl_gender_gap_20_64
 ,,FI,2003,:,:,,empl_gender_gap_20_64
 ,,FI,2004,:,:,,empl_gender_gap_20_64
 ,,FI,2005,:,:,,empl_gender_gap_20_64
@@ -285,6 +297,7 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 79,77.8,FI,2022,"","",1.2,empl_gender_gap_20_64
 78.3,78.1,FI,2023,"","",0.200000000000003,empl_gender_gap_20_64
 77.3,76.6,FI,2024,"","",0.700000000000003,empl_gender_gap_20_64
+77,75.7,FI,2025,"","",1.3,empl_gender_gap_20_64
 75.7,64.6,FR,2003,"","",11.1,empl_gender_gap_20_64
 75.4,64.6,FR,2004,"","",10.8,empl_gender_gap_20_64
 75,64.8,FR,2005,"","",10.2,empl_gender_gap_20_64
@@ -307,15 +320,16 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 77,71.2,FR,2022, d, d,5.8,empl_gender_gap_20_64
 77.2,71.7,FR,2023, d, d,5.5,empl_gender_gap_20_64
 78.1,72.2,FR,2024, d, d,5.89999999999999,empl_gender_gap_20_64
+78.4,72.8,FR,2025, d, d,5.60000000000001,empl_gender_gap_20_64
 ,,HR,2003,:,:,,empl_gender_gap_20_64
 ,,HR,2004,:,:,,empl_gender_gap_20_64
 ,,HR,2005,:,:,,empl_gender_gap_20_64
 ,,HR,2006,:,:,,empl_gender_gap_20_64
 ,,HR,2007,:,:,,empl_gender_gap_20_64
 ,,HR,2008,:,:,,empl_gender_gap_20_64
-70.5,58,HR,2009,"","",12.5,empl_gender_gap_20_64
-67.9,56.4,HR,2010,"","",11.5,empl_gender_gap_20_64
-66.1,53.6,HR,2011,"","",12.5,empl_gender_gap_20_64
+70.6,57.9,HR,2009,"","",12.7,empl_gender_gap_20_64
+67.9,56.1,HR,2010,"","",11.8,empl_gender_gap_20_64
+66.5,53.7,HR,2011,"","",12.8,empl_gender_gap_20_64
 63.6,52.6,HR,2012, b, b,11,empl_gender_gap_20_64
 61.6,52.8,HR,2013,"","",8.8,empl_gender_gap_20_64
 64.2,54.2,HR,2014,"","",10,empl_gender_gap_20_64
@@ -329,6 +343,7 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 74.9,65.5,HR,2022,"","",9.40000000000001,empl_gender_gap_20_64
 74.6,66.9,HR,2023,"","",7.69999999999999,empl_gender_gap_20_64
 76.5,70.6,HR,2024,"","",5.90000000000001,empl_gender_gap_20_64
+76.8,71.8,HR,2025,"","",5,empl_gender_gap_20_64
 ,,HU,2003,:,:,,empl_gender_gap_20_64
 ,,HU,2004,:,:,,empl_gender_gap_20_64
 ,,HU,2005,:,:,,empl_gender_gap_20_64
@@ -351,6 +366,7 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 85.2,75.4,HU,2022,"","",9.8,empl_gender_gap_20_64
 85.2,76.1,HU,2023,"","",9.10000000000001,empl_gender_gap_20_64
 85,77.1,HU,2024,"","",7.90000000000001,empl_gender_gap_20_64
+85.1,77,HU,2025,"","",8.09999999999999,empl_gender_gap_20_64
 ,,IE,2003,:,:,,empl_gender_gap_20_64
 ,,IE,2004,:,:,,empl_gender_gap_20_64
 ,,IE,2005,:,:,,empl_gender_gap_20_64
@@ -373,6 +389,7 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 84,72.6,IE,2022,"","",11.4,empl_gender_gap_20_64
 84.2,74.3,IE,2023,"","",9.90000000000001,empl_gender_gap_20_64
 84.5,75.2,IE,2024,"","",9.3,empl_gender_gap_20_64
+84.7,75.7,IE,2025,"","",9,empl_gender_gap_20_64
 ,,IT,2003,:,:,,empl_gender_gap_20_64
 ,,IT,2004,:,:,,empl_gender_gap_20_64
 ,,IT,2005,:,:,,empl_gender_gap_20_64
@@ -395,6 +412,7 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 74.7,55,IT,2022,"","",19.7,empl_gender_gap_20_64
 76,56.5,IT,2023,"","",19.5,empl_gender_gap_20_64
 76.8,57.4,IT,2024,"","",19.4,empl_gender_gap_20_64
+77.1,58,IT,2025,"","",19.1,empl_gender_gap_20_64
 ,,LT,2003,:,:,,empl_gender_gap_20_64
 ,,LT,2004,:,:,,empl_gender_gap_20_64
 ,,LT,2005,:,:,,empl_gender_gap_20_64
@@ -417,6 +435,7 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 79.4,78.6,LT,2022,"","",0.800000000000011,empl_gender_gap_20_64
 79.2,77.7,LT,2023,"","",1.5,empl_gender_gap_20_64
 79.9,78.5,LT,2024,"","",1.40000000000001,empl_gender_gap_20_64
+79.7,80.3,LT,2025,"","",-0.599999999999994,empl_gender_gap_20_64
 ,,LU,2003,:,:,,empl_gender_gap_20_64
 ,,LU,2004,:,:,,empl_gender_gap_20_64
 ,,LU,2005,:,:,,empl_gender_gap_20_64
@@ -439,6 +458,7 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 78,71.5,LU,2022,"","",6.5,empl_gender_gap_20_64
 78.2,71.4,LU,2023,"","",6.8,empl_gender_gap_20_64
 76.9,71.4,LU,2024,"","",5.5,empl_gender_gap_20_64
+77.3,70.5,LU,2025,"","",6.8,empl_gender_gap_20_64
 ,,LV,2003,:,:,,empl_gender_gap_20_64
 ,,LV,2004,:,:,,empl_gender_gap_20_64
 ,,LV,2005,:,:,,empl_gender_gap_20_64
@@ -461,6 +481,7 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 78.6,75.5,LV,2022,"","",3.09999999999999,empl_gender_gap_20_64
 79.1,76,LV,2023,"","",3.09999999999999,empl_gender_gap_20_64
 79.1,75.8,LV,2024,"","",3.3,empl_gender_gap_20_64
+79.2,77.3,LV,2025,"","",1.90000000000001,empl_gender_gap_20_64
 ,,MT,2003,:,:,,empl_gender_gap_20_64
 ,,MT,2004,:,:,,empl_gender_gap_20_64
 ,,MT,2005,:,:,,empl_gender_gap_20_64
@@ -482,7 +503,8 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 86,68.4,MT,2021,"","",17.6,empl_gender_gap_20_64
 86.2,72.9,MT,2022,"","",13.3,empl_gender_gap_20_64
 87.7,73.6,MT,2023,"","",14.1,empl_gender_gap_20_64
-89,75.6,MT,2024,"","",13.4,empl_gender_gap_20_64
+88.8,75.2,MT,2024,"","",13.6,empl_gender_gap_20_64
+89.1,76.7,MT,2025,"","",12.4,empl_gender_gap_20_64
 ,,NL,2003,:,:,,empl_gender_gap_20_64
 ,,NL,2004,:,:,,empl_gender_gap_20_64
 ,,NL,2005,:,:,,empl_gender_gap_20_64
@@ -505,6 +527,7 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 86.9,79,NL,2022,"","",7.90000000000001,empl_gender_gap_20_64
 87.4,79.6,NL,2023,"","",7.80000000000001,empl_gender_gap_20_64
 87.3,79.7,NL,2024,"","",7.59999999999999,empl_gender_gap_20_64
+87.2,79.6,NL,2025,"","",7.60000000000001,empl_gender_gap_20_64
 ,,PL,2003,:,:,,empl_gender_gap_20_64
 ,,PL,2004,:,:,,empl_gender_gap_20_64
 ,,PL,2005,:,:,,empl_gender_gap_20_64
@@ -527,6 +550,7 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 83.2,70.3,PL,2022,"","",12.9,empl_gender_gap_20_64
 83.8,72,PL,2023,"","",11.8,empl_gender_gap_20_64
 84.1,72.5,PL,2024,"","",11.6,empl_gender_gap_20_64
+84.5,73.2,PL,2025,"","",11.3,empl_gender_gap_20_64
 ,,PT,2003,:,:,,empl_gender_gap_20_64
 ,,PT,2004,:,:,,empl_gender_gap_20_64
 ,,PT,2005,:,:,,empl_gender_gap_20_64
@@ -549,6 +573,7 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 80.1,74.3,PT,2022,"","",5.8,empl_gender_gap_20_64
 80.9,75.4,PT,2023,"","",5.5,empl_gender_gap_20_64
 81.4,75.7,PT,2024,"","",5.7,empl_gender_gap_20_64
+82.4,77,PT,2025,"","",5.40000000000001,empl_gender_gap_20_64
 ,,RO,2003,:,:,,empl_gender_gap_20_64
 ,,RO,2004,:,:,,empl_gender_gap_20_64
 ,,RO,2005,:,:,,empl_gender_gap_20_64
@@ -571,6 +596,7 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 77.7,59.1,RO,2022,"","",18.6,empl_gender_gap_20_64
 78.2,59.1,RO,2023,"","",19.1,empl_gender_gap_20_64
 78.4,60.3,RO,2024,"","",18.1,empl_gender_gap_20_64
+78.2,59.5,RO,2025,"","",18.7,empl_gender_gap_20_64
 ,,SE,2003,:,:,,empl_gender_gap_20_64
 ,,SE,2004,:,:,,empl_gender_gap_20_64
 80.6,74.8,SE,2005,"","",5.8,empl_gender_gap_20_64
@@ -593,6 +619,7 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 84.8,79.1,SE,2022,"","",5.7,empl_gender_gap_20_64
 84.9,80.2,SE,2023,"","",4.7,empl_gender_gap_20_64
 83.9,79.9,SE,2024,"","",4,empl_gender_gap_20_64
+83.7,79.8,SE,2025,"","",3.90000000000001,empl_gender_gap_20_64
 ,,SI,2003,:,:,,empl_gender_gap_20_64
 ,,SI,2004,:,:,,empl_gender_gap_20_64
 ,,SI,2005,:,:,,empl_gender_gap_20_64
@@ -615,6 +642,7 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 81.2,74.3,SI,2022,"","",6.90000000000001,empl_gender_gap_20_64
 80.4,74.3,SI,2023,"","",6.10000000000001,empl_gender_gap_20_64
 81.1,75.1,SI,2024,"","",6,empl_gender_gap_20_64
+80.6,75.7,SI,2025,"","",4.89999999999999,empl_gender_gap_20_64
 ,,SK,2003,:,:,,empl_gender_gap_20_64
 ,,SK,2004,:,:,,empl_gender_gap_20_64
 ,,SK,2005,:,:,,empl_gender_gap_20_64
@@ -637,3 +665,4 @@ a,b,geo,year,flags_a,flags_b,value_n,file
 80.7,72.6,SK,2022,"","",8.10000000000001,empl_gender_gap_20_64
 81.3,73.6,SK,2023,"","",7.7,empl_gender_gap_20_64
 82.5,73.6,SK,2024,"","",8.90000000000001,empl_gender_gap_20_64
+82.4,73.7,SK,2025,"","",8.7,empl_gender_gap_20_64
