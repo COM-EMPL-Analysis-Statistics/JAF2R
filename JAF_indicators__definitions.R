@@ -1,4 +1,84 @@
+# ============ By Paul,  Tue 12 May 2026 13:25 =========
 
+inside(JAF_INDICATORS, indicator_named = "PA11f2.S4.") = 
+specification(
+name = "Impact of social transfers (excluding pensions) in reducing poverty of migrants (18+)",
+unit_of_level = "% reduction in risk of poverty",
+unit_of_change = "NA",
+indicator_groups = "MAIN INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
+source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal — namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
+high_is_good = TRUE,
+calculate_score_change_with_break_in_series = FALSE,
+value = fromFormula(100 * ((a - b)/a),
+  where = variables(
+  a = fromEurostatDataset("ilc_li09c", 
+    with_filters(age = "Y_GE18", c_birth = "NEU27_2020_FOR", rskpovth = "B_60", sex = "T")),
+  b = fromEurostatDataset("ilc_li32", 
+    with_filters(age = "Y_GE18", c_birth = "NEU27_2020_FOR", rskpovth = "B_60", sex = "T"))))
+)
+
+inside(JAF_INDICATORS, indicator_named = "PA11f3.S4.") = 
+specification(
+name = "Impact of social transfers (other than pensions) in reducing poverty of the low-skilled (18+)",
+unit_of_level = "% reduction in risk of poverty",
+unit_of_change = "NA",
+indicator_groups = "MAIN INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
+source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal — namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
+high_is_good = TRUE,
+calculate_score_change_with_break_in_series = FALSE,
+value = fromFormula(100 * ((a - b)/a),
+  where = variables(
+  a = fromEurostatDataset("ilc_li09d", 
+    with_filters(age = "Y_GE18", isced11 = "ED0-2", rskpovth = "B_60", sex = "T")),
+  b = fromEurostatDataset("ilc_li07", 
+    with_filters(age = "Y_GE18", isced11 = "ED0-2", rskpovth = "B_60", statinfo="MED_EI", sex = "T"))))
+)
+
+inside(JAF_INDICATORS, indicator_named = "PA11f4.S2.") = 
+specification(
+name = "Impact of social transfers (excluding pensions) in reducing poverty of people living in (quasi-)jobless households (0-64 years)",
+unit_of_level = "% reduction in risk of poverty",
+unit_of_change = "NA",
+indicator_groups = "MAIN INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
+source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal — namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
+high_is_good = TRUE,
+calculate_score_change_with_break_in_series = FALSE,
+value = fromFormula(100 * ((a - b)/a),
+  where = variables(
+  a = fromEurostatDataset("ilc_li09f", 
+    with_filters(age = "Y_LT65", hhcomp="TOTAL", rskpovth = "B_60", sex = "T", workint = "WI0-02")),
+  b = fromEurostatDataset("ilc_li06", 
+    with_filters(age = "Y_LT65", hhcomp="TOTAL", rskpovth = "B_60", statinfo="MED_EI", sex = "T", workint = "WI0-02"))))
+)
+
+inside(JAF_INDICATORS, indicator_named = "PA11f4.S1.") = 
+specification(
+name = "Severe material or social deprivation rate for people living in (quasi-)jobless households (0-64) ",
+unit_of_level = "% (of popn)",
+unit_of_change = "pp",
+indicator_groups = "SUBINDICATOR COMPENDIUM 9 COUNTRY",
+source = "Eurostat, EU Statistics on Income and Living Conditions",
+high_is_good = FALSE,
+calculate_score_change = TRUE,
+value = fromEurostatDataset("ilc_mdsd21", 
+    with_filters(sex = "T", unit = "PC", age = "Y_LT65", workint = "WI0-02"))
+)
+
+inside(JAF_INDICATORS, indicator_named = "PA11b.C2.") = 
+specification(
+name = "Benefit recipient rate of the unemployed: % of people (18-64) declared unemployed who receive any benefit (other than old age benefits)",
+unit_of_level = "% of unemployed",
+unit_of_change = "pp",
+indicator_groups = "CONTEXT COMPENDIUM 8 COUNTRY",
+source = "Eurostat, EU Statistics on Income and Living Conditions",
+high_is_good = TRUE,
+calculate_score_change = TRUE,
+value = fromEurostatDataset("ILC_LI70b", 
+    with_filters(age = "Y18-64", sex = "T", unit = "PC", wstatus = "UNE"))
+)
+
+
+# ======================================================
 
 inside(JAF_INDICATORS, indicator_named = "PA15b.O1.") =
 specification(
@@ -252,7 +332,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_mdes01",
-   with_filters(unit="PC", incgrp="TOTAL", hhtyp="TOTAL"))
+   with_filters(unit="PC", rskpovth="TOTAL", hhcomp="TOTAL"))
 ) 
  
 inside(JAF_INDICATORS, indicator_named = "PA14b.S1.") =
@@ -264,7 +344,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_mdes01",
-   with_filters(unit="PC", incgrp="B_MD60", hhtyp="TOTAL"))
+   with_filters(unit="PC", rskpovth="B_60", hhcomp="TOTAL"))
 ) 
  
 inside(JAF_INDICATORS, indicator_named = "PA14b.S2.") =
@@ -276,7 +356,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_mdes01",
-   with_filters(unit="PC", incgrp="A_MD60", hhtyp="TOTAL"))
+   with_filters(unit="PC", rskpovth="A_60", hhcomp="TOTAL"))
 ) 
  
 inside(JAF_INDICATORS, indicator_named = "PA14b.S3.") =
@@ -290,9 +370,9 @@ calculate_score_change = TRUE,
 value = fromFormula(a-b,
 where = variables(
   a = fromEurostatDataset("ilc_mdes01",
-      with_filters(unit="PC", incgrp="B_MD60", hhtyp="TOTAL")),
+      with_filters(unit="PC", rskpovth="B_60", hhcomp="TOTAL")),
   b = fromEurostatDataset("ilc_mdes01",
-      with_filters(unit="PC", incgrp="A_MD60", hhtyp="TOTAL"))))
+      with_filters(unit="PC", rskpovth="A_60", hhcomp="TOTAL"))))
 )
  
 inside(JAF_INDICATORS, indicator_named = "PA14b.S4.") =
@@ -304,7 +384,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_mdes07",
-   with_filters(unit="PC", incgrp="TOTAL", hhtyp="TOTAL"))
+   with_filters(unit="PC", rskpovth="TOTAL", hhcomp="TOTAL"))
 ) 
  
 inside(JAF_INDICATORS, indicator_named = "PA14b.S5.") =
@@ -316,7 +396,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_mdes07",
-   with_filters(unit="PC", incgrp="B_MD60", hhtyp="TOTAL"))
+   with_filters(unit="PC", rskpovth="B_60", hhcomp="TOTAL"))
 ) 
 
 inside(JAF_INDICATORS, indicator_named = "PA14b.S6.") =
@@ -328,7 +408,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_mdes07",
-   with_filters(unit="PC", incgrp="A_MD60", hhtyp="TOTAL"))
+   with_filters(unit="PC", rskpovth="A_60", hhcomp="TOTAL"))
 ) 
 
 inside(JAF_INDICATORS, indicator_named = "PA14b.S7.") =
@@ -342,9 +422,9 @@ calculate_score_change = TRUE,
 value = fromFormula(a-b,
 where = variables(
 a = fromEurostatDataset("ilc_mdes07",
-    with_filters(unit="PC", incgrp="B_MD60", hhtyp="TOTAL")),
+    with_filters(unit="PC", rskpovth="B_60", hhcomp="TOTAL")),
 b = fromEurostatDataset("ilc_mdes07",
-    with_filters(unit="PC", incgrp="A_MD60", hhtyp="TOTAL"))))
+    with_filters(unit="PC", rskpovth="A_60", hhcomp="TOTAL"))))
 )
 
 ################ end ###################
@@ -1039,7 +1119,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = TRUE,
 calculate_score_change_with_break_in_series = FALSE,
 value = fromEurostatDataset("ilc_li01", 
-    with_filters(indic_il = "LI_C_MD60", hhtyp = "A1", currency = "PPS"))
+    with_filters(rskpovth = "B_60", statinfo="MED_EI", hhcomp = "A1", unit = "PPS"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.C10.") = 
@@ -1065,7 +1145,7 @@ high_is_good = FALSE,
 value = fromFormula(100 - a,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE16", quantile = "QU1", reason = "NO_UNMET", sex = "T", unit = "PC"))))
+    with_filters(age = "Y_GE16", quantile = "QU1", reason = "NUMT_ND", sex = "T", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.C11.Q1-Q5.NOTIME") = 
@@ -1079,9 +1159,9 @@ high_is_good = FALSE,
 value = fromFormula(a - b,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE16", quantile = "QU1", reason = "NOTIME", sex = "T", unit = "PC")),
+    with_filters(age = "Y_GE16", quantile = "QU1", reason = "NTIME", sex = "T", unit = "PC")),
   b = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE16", quantile = "QU5", reason = "NOTIME", sex = "T", unit = "PC"))))
+    with_filters(age = "Y_GE16", quantile = "QU5", reason = "NTIME", sex = "T", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.C11.Q1-Q5.TOOEXP") = 
@@ -1095,9 +1175,9 @@ high_is_good = FALSE,
 value = fromFormula(a - b,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE16", quantile = "QU1", reason = "TOOEXP", sex = "T", unit = "PC")),
+    with_filters(age = "Y_GE16", quantile = "QU1", reason = "TXP", sex = "T", unit = "PC")),
   b = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE16", quantile = "QU5", reason = "TOOEXP", sex = "T", unit = "PC"))))
+    with_filters(age = "Y_GE16", quantile = "QU5", reason = "TXP", sex = "T", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.C11.Q1-Q5.TOOFAR") = 
@@ -1111,9 +1191,9 @@ high_is_good = FALSE,
 value = fromFormula(a - b,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE16", quantile = "QU1", reason = "TOOFAR", sex = "T", unit = "PC")),
+    with_filters(age = "Y_GE16", quantile = "QU1", reason = "TFAR", sex = "T", unit = "PC")),
   b = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE16", quantile = "QU5", reason = "TOOFAR", sex = "T", unit = "PC"))))
+    with_filters(age = "Y_GE16", quantile = "QU5", reason = "TFAR", sex = "T", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.C11.Q5") = 
@@ -1127,7 +1207,7 @@ high_is_good = FALSE,
 value = fromFormula(100 - a,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE16", quantile = "QU5", reason = "NO_UNMET", sex = "T", unit = "PC"))))
+    with_filters(age = "Y_GE16", quantile = "QU5", reason = "NUMT_ND", sex = "T", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.C11.T") = 
@@ -1141,7 +1221,7 @@ high_is_good = FALSE,
 value = fromFormula(100 - a,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE16", quantile = "TOTAL", reason = "NO_UNMET", sex = "T", unit = "PC"))))
+    with_filters(age = "Y_GE16", quantile = "TOTAL", reason = "NUMT_ND", sex = "T", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.C12.") = 
@@ -1443,7 +1523,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change_with_break_in_series = FALSE,
 value = fromEurostatDataset("ilc_li02", 
-    with_filters(sex = "T", unit = "PC", indic_il = "LI_R_MD60", age = "TOTAL"))
+    with_filters(sex = "T", unit = "PC", rskpovth = "B_60", statinfo="MED_EI", age = "TOTAL"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.S1.F") = 
@@ -1455,7 +1535,7 @@ indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 value = fromEurostatDataset("ilc_li02", 
-    with_filters(sex = "F", unit = "PC", indic_il = "LI_R_MD60", age = "TOTAL"))
+    with_filters(sex = "F", unit = "PC", rskpovth = "B_60", statinfo="MED_EI", age = "TOTAL"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.S1.M") = 
@@ -1467,7 +1547,7 @@ indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 value = fromEurostatDataset("ilc_li02", 
-    with_filters(sex = "M", unit = "PC", indic_il = "LI_R_MD60", age = "TOTAL"))
+    with_filters(sex = "M", unit = "PC", rskpovth = "B_60", statinfo="MED_EI", age = "TOTAL"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.S1._health") = 
@@ -1479,7 +1559,7 @@ indicator_groups = "MAIN OUTPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 value = fromEurostatDataset("ilc_li02", 
-    with_filters(sex = "T", unit = "PC", indic_il = "LI_R_MD60", age = "TOTAL"))
+    with_filters(sex = "T", unit = "PC", rskpovth = "B_60", statinfo="MED_EI", age = "TOTAL"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.S10.") = 
@@ -1516,7 +1596,7 @@ indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 value = fromEurostatDataset("ilc_lvho07a", 
-    with_filters(sex = "T", incgrp = "TOTAL", unit = "PC", age = "TOTAL"))
+    with_filters(sex = "T", rskpovth = "TOTAL", unit = "PC", age = "TOTAL"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.S12._health") = 
@@ -1543,7 +1623,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change_with_break_in_series = FALSE,
 value = fromEurostatDataset("ilc_lvho07a", 
-    with_filters(sex = "T", incgrp = "TOTAL", unit = "PC", age = "TOTAL"))
+    with_filters(sex = "T", rskpovth = "TOTAL", unit = "PC", age = "TOTAL"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.S14._health") = 
@@ -1557,11 +1637,11 @@ high_is_good = FALSE,
 value = fromFormula(a/(b + c),
   where = variables(
   a = fromEurostatDataset("ilc_di01", 
-    with_filters(currency = "EUR", indic_il = "SHARE", quantile = "QU5")),
+    with_filters(unit = "EUR", statinfo = "SHARE", quantile = "QU5")),
   b = fromEurostatDataset("ilc_di01", 
-    with_filters(currency = "EUR", indic_il = "SHARE", quantile = "Q1")),
+    with_filters(unit = "EUR", statinfo = "SHARE", quantile = "Q1")),
   c = fromEurostatDataset("ilc_di01", 
-    with_filters(currency = "EUR", indic_il = "SHARE", quantile = "Q2"))))
+    with_filters(unit = "EUR", statinfo = "SHARE", quantile = "Q2"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.S15.") = 
@@ -1589,11 +1669,11 @@ high_is_good = FALSE,
 value = fromFormula((a + b)/c,
   where = variables(
   a = fromEurostatDataset("ilc_di01", 
-    with_filters(currency = "EUR", indic_il = "SHARE", quantile = "Q1")),
+    with_filters(unit = "EUR", statinfo = "SHARE", quantile = "Q1")),
   b = fromEurostatDataset("ilc_di01", 
-    with_filters(currency = "EUR", indic_il = "SHARE", quantile = "Q2")),
+    with_filters(unit = "EUR", statinfo = "SHARE", quantile = "Q2")),
   c = fromEurostatDataset("ilc_di01", 
-    with_filters(currency = "EUR", indic_il = "SHARE", quantile = "QU1"))))
+    with_filters(unit = "EUR", statinfo = "SHARE", quantile = "QU1"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.S2.") = 
@@ -1752,71 +1832,72 @@ value = fromEurostatDataset("ilc_lvhl11n",
     with_filters(sex = "T", unit = "PC", age = "Y_LT65"))
 )
 
-inside(JAF_INDICATORS, indicator_named = "PA11.S4.") = 
-specification(
-name = "Impact of social transfers (other than pensions) in reducing poverty",
-unit_of_level = "% reduction in risk of poverty",
-unit_of_change = "NA",
-indicator_groups = "MAIN INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal — namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
-high_is_good = TRUE,
-calculate_score_change_with_break_in_series = FALSE,
-value = fromFormula(100 * ((a - b)/a),
-  where = variables(
-  a = fromEurostatDataset("ilc_li10", 
-    with_filters(age = "TOTAL", indic_il = "LI_R_MD60BT", sex = "T")),
-  b = fromEurostatDataset("ilc_li02", 
-    with_filters(age = "TOTAL", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA11.S4._health") = 
-specification(
-name = "Impact of social transfers (other than pensions) in reducing poverty",
-unit_of_level = "% reduction in risk of poverty",
-unit_of_change = "NA",
-indicator_groups = "MAIN INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal â€” namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
-high_is_good = TRUE,
-value = fromFormula(100 * ((a - b)/a),
-  where = variables(
-  a = fromEurostatDataset("ilc_li10", 
-    with_filters(age = "TOTAL", indic_il = "LI_R_MD60BT", sex = "T")),
-  b = fromEurostatDataset("ilc_li02", 
-    with_filters(age = "TOTAL", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA11.S5.") = 
-specification(
-name = "Impact of social transfers (incl pensions) in reducing poverty",
-unit_of_level = "% reduction in risk of poverty",
-unit_of_change = "NA",
-indicator_groups = "MAIN INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal — namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
-high_is_good = TRUE,
-calculate_score_change_with_break_in_series = FALSE,
-value = fromFormula(100 * ((a - b)/a),
-  where = variables(
-  a = fromEurostatDataset("ilc_li09", 
-    with_filters(age = "TOTAL", indic_il = "LI_R_MD60BTP", sex = "T")),
-  b = fromEurostatDataset("ilc_li02", 
-    with_filters(age = "TOTAL", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA11.S5._health") = 
-specification(
-name = "Impact of social transfers (incl pensions) in reducing poverty",
-unit_of_level = "% reduction in risk of poverty",
-unit_of_change = "NA",
-indicator_groups = "MAIN INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal â€” namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
-high_is_good = TRUE,
-value = fromFormula(100 * ((a - b)/a),
-  where = variables(
-  a = fromEurostatDataset("ilc_li09", 
-    with_filters(age = "TOTAL", indic_il = "LI_R_MD60BTP", sex = "T")),
-  b = fromEurostatDataset("ilc_li02", 
-    with_filters(age = "TOTAL", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
-)
+### TEMPORARILY SWITCHED OF – DECISIONS NEEDED DUE TO CHANGES IN EUROSTAT DATASETS
+# inside(JAF_INDICATORS, indicator_named = "PA11.S4.") = 
+# specification(
+# name = "Impact of social transfers (other than pensions) in reducing poverty",
+# unit_of_level = "% reduction in risk of poverty",
+# unit_of_change = "NA",
+# indicator_groups = "MAIN INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal — namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
+# high_is_good = TRUE,
+# calculate_score_change_with_break_in_series = FALSE,
+# value = fromFormula(100 * ((a - b)/a),
+#   where = variables(
+#   a = fromEurostatDataset("ilc_li10", 
+#     with_filters(age = "TOTAL", indic_il = "LI_R_MD60BT", sex = "T")),
+#   b = fromEurostatDataset("ilc_li02", 
+#     with_filters(age = "TOTAL", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA11.S4._health") = 
+# specification(
+# name = "Impact of social transfers (other than pensions) in reducing poverty",
+# unit_of_level = "% reduction in risk of poverty",
+# unit_of_change = "NA",
+# indicator_groups = "MAIN INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal â€” namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
+# high_is_good = TRUE,
+# value = fromFormula(100 * ((a - b)/a),
+#   where = variables(
+#   a = fromEurostatDataset("ilc_li10", 
+#     with_filters(age = "TOTAL", indic_il = "LI_R_MD60BT", sex = "T")),
+#   b = fromEurostatDataset("ilc_li02", 
+#     with_filters(age = "TOTAL", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA11.S5.") = 
+# specification(
+# name = "Impact of social transfers (incl pensions) in reducing poverty",
+# unit_of_level = "% reduction in risk of poverty",
+# unit_of_change = "NA",
+# indicator_groups = "MAIN INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal — namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
+# high_is_good = TRUE,
+# calculate_score_change_with_break_in_series = FALSE,
+# value = fromFormula(100 * ((a - b)/a),
+#   where = variables(
+#   a = fromEurostatDataset("ilc_li09", 
+#     with_filters(age = "TOTAL", indic_il = "LI_R_MD60BTP", sex = "T")),
+#   b = fromEurostatDataset("ilc_li02", 
+#     with_filters(age = "TOTAL", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA11.S5._health") = 
+# specification(
+# name = "Impact of social transfers (incl pensions) in reducing poverty",
+# unit_of_level = "% reduction in risk of poverty",
+# unit_of_change = "NA",
+# indicator_groups = "MAIN INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal â€” namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
+# high_is_good = TRUE,
+# value = fromFormula(100 * ((a - b)/a),
+#   where = variables(
+#   a = fromEurostatDataset("ilc_li09", 
+#     with_filters(age = "TOTAL", indic_il = "LI_R_MD60BTP", sex = "T")),
+#   b = fromEurostatDataset("ilc_li02", 
+#     with_filters(age = "TOTAL", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
+# )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.S6.") = 
 specification(
@@ -1828,7 +1909,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change_with_break_in_series = FALSE,
 value = fromEurostatDataset("ilc_li06", 
-    with_filters(sex = "T", workint = "WI0-02", indic_il = "LI_R_MD60", age = "Y_LT65", hhtyp = "TOTAL"))
+    with_filters(sex = "T", workint = "WI0-02", rskpovth = "B_60", statinfo="MED_EI", age = "Y_LT65", hhcomp = "TOTAL"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.S6.18-64.WI02-045") = 
@@ -1840,94 +1921,95 @@ indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 value = fromEurostatDataset("ilc_li06", 
-    with_filters(sex = "T", workint = "WI02-045", indic_il = "LI_R_MD60", age = "Y18-64", hhtyp = "TOTAL"))
+    with_filters(sex = "T", workint = "WI02-045", rskpovth = "B_60", statinfo="MED_EI", age = "Y18-64", hhcomp = "TOTAL"))
 )
 
-inside(JAF_INDICATORS, indicator_named = "PA11.S8.") = 
-specification(
-name = "Relative median poverty risk gap",
-unit_of_level = "% (of AROP threshold)",
-unit_of_change = "NA",
-indicator_groups = "MAIN INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions",
-high_is_good = FALSE,
-calculate_score_change_with_break_in_series = FALSE,
-value = fromEurostatDataset("ilc_li11", 
-    with_filters(sex = "T", indic_il = "LI_GAP_MD60", age = "TOTAL"))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA11.S8._health") = 
-specification(
-name = "Relative median poverty risk gap",
-unit_of_level = "% (of AROP threshold)",
-unit_of_change = "NA",
-indicator_groups = "MAIN INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions",
-high_is_good = FALSE,
-value = fromEurostatDataset("ilc_li11", 
-    with_filters(sex = "T", indic_il = "LI_GAP_MD60", age = "TOTAL"))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA11.S9.") = 
-specification(
-name = "Persistent at-risk-of-poverty rate",
-unit_of_level = "% (of total popn)",
-unit_of_change = "NA",
-indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions",
-high_is_good = FALSE,
-calculate_score_change_with_break_in_series = FALSE,
-value = fromEurostatDataset("ilc_li21", 
-    with_filters(sex = "T", indic_il = "LIP_MD60", age = "TOTAL"))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA11.S9.0-17") = 
-specification(
-name = "Persistent at-risk-of-poverty rate (0-17)",
-unit_of_level = "% (of total popn)",
-unit_of_change = "NA",
-indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions",
-high_is_good = FALSE,
-value = fromEurostatDataset("ilc_li21", 
-    with_filters(sex = "T", indic_il = "LIP_MD60", age = "Y_LT18"))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA11.S9.18-64") = 
-specification(
-name = "Persistent at-risk-of-poverty rate (18-64)",
-unit_of_level = "% (of total popn)",
-unit_of_change = "NA",
-indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions",
-high_is_good = FALSE,
-value = fromEurostatDataset("ilc_li21", 
-    with_filters(sex = "T", indic_il = "LIP_MD60", age = "Y18-64"))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA11.S9.GE65") = 
-specification(
-name = "Persistent at-risk-of-poverty rate (aged 65+)",
-unit_of_level = "% (of total popn)",
-unit_of_change = "NA",
-indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions",
-high_is_good = FALSE,
-value = fromEurostatDataset("ilc_li21", 
-    with_filters(sex = "T", indic_il = "LIP_MD60", age = "Y_GE65"))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA11.S9._health") = 
-specification(
-name = "Persistent at-risk-of-poverty rate",
-unit_of_level = "% (of total popn)",
-unit_of_change = "NA",
-indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions",
-high_is_good = FALSE,
-value = fromEurostatDataset("ilc_li21", 
-    with_filters(sex = "T", indic_il = "LIP_MD60", age = "TOTAL"))
-)
+### TEMPORARILY SWITCHED OF – DECISIONS NEEDED DUE TO CHANGES IN EUROSTAT DATASETS
+# inside(JAF_INDICATORS, indicator_named = "PA11.S8.") = 
+# specification(
+# name = "Relative median poverty risk gap",
+# unit_of_level = "% (of AROP threshold)",
+# unit_of_change = "NA",
+# indicator_groups = "MAIN INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions",
+# high_is_good = FALSE,
+# calculate_score_change_with_break_in_series = FALSE,
+# value = fromEurostatDataset("ilc_li11", 
+#     with_filters(sex = "T", indic_il = "LI_GAP_MD60", age = "TOTAL"))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA11.S8._health") = 
+# specification(
+# name = "Relative median poverty risk gap",
+# unit_of_level = "% (of AROP threshold)",
+# unit_of_change = "NA",
+# indicator_groups = "MAIN INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions",
+# high_is_good = FALSE,
+# value = fromEurostatDataset("ilc_li11", 
+#     with_filters(sex = "T", indic_il = "LI_GAP_MD60", age = "TOTAL"))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA11.S9.") = 
+# specification(
+# name = "Persistent at-risk-of-poverty rate",
+# unit_of_level = "% (of total popn)",
+# unit_of_change = "NA",
+# indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions",
+# high_is_good = FALSE,
+# calculate_score_change_with_break_in_series = FALSE,
+# value = fromEurostatDataset("ilc_li21", 
+#     with_filters(sex = "T", indic_il = "LIP_MD60", age = "TOTAL"))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA11.S9.0-17") = 
+# specification(
+# name = "Persistent at-risk-of-poverty rate (0-17)",
+# unit_of_level = "% (of total popn)",
+# unit_of_change = "NA",
+# indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions",
+# high_is_good = FALSE,
+# value = fromEurostatDataset("ilc_li21", 
+#     with_filters(sex = "T", indic_il = "LIP_MD60", age = "Y_LT18"))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA11.S9.18-64") = 
+# specification(
+# name = "Persistent at-risk-of-poverty rate (18-64)",
+# unit_of_level = "% (of total popn)",
+# unit_of_change = "NA",
+# indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions",
+# high_is_good = FALSE,
+# value = fromEurostatDataset("ilc_li21", 
+#     with_filters(sex = "T", indic_il = "LIP_MD60", age = "Y18-64"))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA11.S9.GE65") = 
+# specification(
+# name = "Persistent at-risk-of-poverty rate (aged 65+)",
+# unit_of_level = "% (of total popn)",
+# unit_of_change = "NA",
+# indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions",
+# high_is_good = FALSE,
+# value = fromEurostatDataset("ilc_li21", 
+#     with_filters(sex = "T", indic_il = "LIP_MD60", age = "Y_GE65"))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA11.S9._health") = 
+# specification(
+# name = "Persistent at-risk-of-poverty rate",
+# unit_of_level = "% (of total popn)",
+# unit_of_change = "NA",
+# indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 8 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions",
+# high_is_good = FALSE,
+# value = fromEurostatDataset("ilc_li21", 
+#     with_filters(sex = "T", indic_il = "LIP_MD60", age = "TOTAL"))
+# )
 
 inside(JAF_INDICATORS, indicator_named = "PA11a.C1.ATWORK") = 
 specification(
@@ -1939,7 +2021,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change_with_break_in_series = FALSE,
 value = fromEurostatDataset("ilc_li06", 
-    with_filters(sex = "T", workint = "WI02-1", indic_il = "LI_R_MD60", age = "Y_LT18", hhtyp = "TOTAL"))
+    with_filters(sex = "T", workint = "WI02-1", rskpovth = "B_60", statinfo="MED_EI", age = "Y_LT18", hhcomp = "TOTAL"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11a.C1.NOTWORK") = 
@@ -1952,7 +2034,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change_with_break_in_series = FALSE,
 value = fromEurostatDataset("ilc_li06", 
-    with_filters(sex = "T", workint = "WI0-02", indic_il = "LI_R_MD60", age = "Y_LT18", hhtyp = "TOTAL"))
+    with_filters(sex = "T", workint = "WI0-02", rskpovth = "B_60", statinfo="MED_EI", age = "Y_LT18", hhcomp = "TOTAL"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11a.C2.1") = 
@@ -2110,7 +2192,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change_with_break_in_series = FALSE,
 value = fromEurostatDataset("ilc_li02", 
-    with_filters(sex = "T", unit = "PC", indic_il = "LI_R_MD60", age = "Y_LT18"))
+    with_filters(sex = "T", unit = "PC", rskpovth = "B_60", statinfo="MED_EI", age = "Y_LT18"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11a.S1._health") = 
@@ -2122,7 +2204,7 @@ indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 value = fromEurostatDataset("ilc_li02", 
-    with_filters(sex = "T", unit = "PC", indic_il = "LI_R_MD60", age = "Y_LT18"))
+    with_filters(sex = "T", unit = "PC", rskpovth = "B_60", statinfo="MED_EI", age = "Y_LT18"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11a.S10._health") = 
@@ -2136,13 +2218,13 @@ high_is_good = FALSE,
 value = fromFormula((a * b + c * d)/(b + d),
   where = variables(
   a = fromEurostatDataset("ilc_li06", 
-    with_filters(age = "Y_LT18", hhtyp = "HH_DCH", indic_il = "LI_R_MD60", sex = "T", workint = "WI055-085")),
+    with_filters(age = "Y_LT18", hhcomp = "DCH", rskpovth = "B_60", statinfo="MED_EI", sex = "T", workint = "WI055-085")),
   b = fromEurostatDataset("ilc_lvps03", 
-    with_filters(age = "Y_LT18", hhtyp = "HH_DCH", sex = "T", workint = "WI055-085")),
+    with_filters(age = "Y_LT18", hhcomp = "DCH", sex = "T", workint = "WI055-085")),
   c = fromEurostatDataset("ilc_li06", 
-    with_filters(age = "Y_LT18", hhtyp = "HH_DCH", indic_il = "LI_R_MD60", sex = "T", workint = "WI085-1")),
+    with_filters(age = "Y_LT18", hhcomp = "DCH", rskpovth = "B_60", statinfo="MED_EI", sex = "T", workint = "WI085-1")),
   d = fromEurostatDataset("ilc_lvps03", 
-    with_filters(age = "Y_LT18",      hhtyp = "HH_DCH", sex = "T", workint = "WI085-1"))))
+    with_filters(age = "Y_LT18", hhcomp = "DCH", sex = "T", workint = "WI085-1"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11a.S2.") = 
@@ -2205,96 +2287,97 @@ value = fromEurostatDataset("ilc_lvhl11",
     with_filters(sex = "T", unit = "PC_Y_LT60", age = "Y_LT18"))
 )
 
-inside(JAF_INDICATORS, indicator_named = "PA11a.S4.") = 
-specification(
-name = "Impact of social transfers (other than pensions) in reducing child poverty",
-unit_of_level = "% reduction in risk of poverty for children (0-17)",
-unit_of_change = "NA",
-indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal — namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
-high_is_good = TRUE,
-calculate_score_change_with_break_in_series = FALSE,
-value = fromFormula(100 * ((a - b)/a),
-  where = variables(
-  a = fromEurostatDataset("ilc_li10", 
-    with_filters(age = "Y_LT18", indic_il = "LI_R_MD60BT", sex = "T")),
-  b = fromEurostatDataset("ilc_li02", 
-    with_filters(age = "Y_LT18", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA11a.S4._health") = 
-specification(
-name = "Impact of social transfers (other than pensions) in reducing child poverty",
-unit_of_level = "% reduction in risk of poverty for children (0-17)",
-unit_of_change = "NA",
-indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal â€” namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
-high_is_good = TRUE,
-value = fromFormula(100 * ((a - b)/a),
-  where = variables(
-  a = fromEurostatDataset("ilc_li10", 
-    with_filters(age = "Y_LT18", indic_il = "LI_R_MD60BT", sex = "T")),
-  b = fromEurostatDataset("ilc_li02", 
-    with_filters(age = "Y_LT18", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA11a.S5.") = 
-specification(
-name = "Impact of social transfers (incl pensions) in reducing child poverty",
-unit_of_level = "% reduction in risk of poverty for children (0-17)",
-unit_of_change = "NA",
-indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal — namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
-high_is_good = TRUE,
-calculate_score_change_with_break_in_series = FALSE,
-value = fromFormula(100 * ((a - b)/a),
-  where = variables(
-  a = fromEurostatDataset("ilc_li09", 
-    with_filters(age = "Y_LT18", indic_il = "LI_R_MD60BTP", sex = "T")),
-  b = fromEurostatDataset("ilc_li02", 
-    with_filters(age = "Y_LT18", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA11a.S5._health") = 
-specification(
-name = "Impact of social transfers (incl pensions) in reducing child poverty",
-unit_of_level = "% reduction in risk of poverty for children (0-17)",
-unit_of_change = "NA",
-indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal â€” namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
-high_is_good = TRUE,
-value = fromFormula(100 * ((a - b)/a),
-  where = variables(
-  a = fromEurostatDataset("ilc_li09", 
-    with_filters(age = "Y_LT18", indic_il = "LI_R_MD60BTP", sex = "T")),
-  b = fromEurostatDataset("ilc_li02", 
-    with_filters(age = "Y_LT18", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA11a.S6.") = 
-specification(
-name = "Relative median poverty risk gap (0-17)",
-unit_of_level = "% (of AROP threshold)",
-unit_of_change = "NA",
-indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers (excluding pensions) must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal — namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
-high_is_good = FALSE,
-calculate_score_change_with_break_in_series = FALSE,
-value = fromEurostatDataset("ilc_li11", 
-    with_filters(sex = "T", indic_il = "LI_GAP_MD60", age = "Y_LT18"))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA11a.S6._health") = 
-specification(
-name = "Relative median poverty risk gap (0-17)",
-unit_of_level = "% (of AROP threshold)",
-unit_of_change = "NA",
-indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers (excluding pensions) must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal â€” namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
-high_is_good = FALSE,
-value = fromEurostatDataset("ilc_li11", 
-    with_filters(sex = "T", indic_il = "LI_GAP_MD60", age = "Y_LT18"))
-)
+### TEMPORARILY SWITCHED OF – DECISIONS NEEDED DUE TO CHANGES IN EUROSTAT DATASETS
+# inside(JAF_INDICATORS, indicator_named = "PA11a.S4.") = 
+# specification(
+# name = "Impact of social transfers (other than pensions) in reducing child poverty",
+# unit_of_level = "% reduction in risk of poverty for children (0-17)",
+# unit_of_change = "NA",
+# indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal — namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
+# high_is_good = TRUE,
+# calculate_score_change_with_break_in_series = FALSE,
+# value = fromFormula(100 * ((a - b)/a),
+#   where = variables(
+#   a = fromEurostatDataset("ilc_li10", 
+#     with_filters(age = "Y_LT18", indic_il = "LI_R_MD60BT", sex = "T")),
+#   b = fromEurostatDataset("ilc_li02", 
+#     with_filters(age = "Y_LT18", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA11a.S4._health") = 
+# specification(
+# name = "Impact of social transfers (other than pensions) in reducing child poverty",
+# unit_of_level = "% reduction in risk of poverty for children (0-17)",
+# unit_of_change = "NA",
+# indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal â€” namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
+# high_is_good = TRUE,
+# value = fromFormula(100 * ((a - b)/a),
+#   where = variables(
+#   a = fromEurostatDataset("ilc_li10", 
+#     with_filters(age = "Y_LT18", indic_il = "LI_R_MD60BT", sex = "T")),
+#   b = fromEurostatDataset("ilc_li02", 
+#     with_filters(age = "Y_LT18", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA11a.S5.") = 
+# specification(
+# name = "Impact of social transfers (incl pensions) in reducing child poverty",
+# unit_of_level = "% reduction in risk of poverty for children (0-17)",
+# unit_of_change = "NA",
+# indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal — namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
+# high_is_good = TRUE,
+# calculate_score_change_with_break_in_series = FALSE,
+# value = fromFormula(100 * ((a - b)/a),
+#   where = variables(
+#   a = fromEurostatDataset("ilc_li09", 
+#     with_filters(age = "Y_LT18", indic_il = "LI_R_MD60BTP", sex = "T")),
+#   b = fromEurostatDataset("ilc_li02", 
+#     with_filters(age = "Y_LT18", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA11a.S5._health") = 
+# specification(
+# name = "Impact of social transfers (incl pensions) in reducing child poverty",
+# unit_of_level = "% reduction in risk of poverty for children (0-17)",
+# unit_of_change = "NA",
+# indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal â€” namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
+# high_is_good = TRUE,
+# value = fromFormula(100 * ((a - b)/a),
+#   where = variables(
+#   a = fromEurostatDataset("ilc_li09", 
+#     with_filters(age = "Y_LT18", indic_il = "LI_R_MD60BTP", sex = "T")),
+#   b = fromEurostatDataset("ilc_li02", 
+#     with_filters(age = "Y_LT18", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA11a.S6.") = 
+# specification(
+# name = "Relative median poverty risk gap (0-17)",
+# unit_of_level = "% (of AROP threshold)",
+# unit_of_change = "NA",
+# indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers (excluding pensions) must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal — namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
+# high_is_good = FALSE,
+# calculate_score_change_with_break_in_series = FALSE,
+# value = fromEurostatDataset("ilc_li11", 
+#     with_filters(sex = "T", indic_il = "LI_GAP_MD60", age = "Y_LT18"))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA11a.S6._health") = 
+# specification(
+# name = "Relative median poverty risk gap (0-17)",
+# unit_of_level = "% (of AROP threshold)",
+# unit_of_change = "NA",
+# indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers (excluding pensions) must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal â€” namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
+# high_is_good = FALSE,
+# value = fromEurostatDataset("ilc_li11", 
+#     with_filters(sex = "T", indic_il = "LI_GAP_MD60", age = "Y_LT18"))
+# )
 
 inside(JAF_INDICATORS, indicator_named = "PA11a.S7.") = 
 specification(
@@ -2306,7 +2389,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change_with_break_in_series = FALSE,
 value = fromEurostatDataset("ilc_lvho07a", 
-    with_filters(sex = "T", incgrp = "TOTAL", unit = "PC", age = "Y_LT18"))
+    with_filters(sex = "T", rskpovth = "TOTAL", unit = "PC", age = "Y_LT18"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11a.S7._health") = 
@@ -2318,7 +2401,7 @@ indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 value = fromEurostatDataset("ilc_lvho07a", 
-    with_filters(sex = "T", incgrp = "TOTAL", unit = "PC", age = "Y_LT18"))
+    with_filters(sex = "T", rskpovth = "TOTAL", unit = "PC", age = "Y_LT18"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11a.S8.") = 
@@ -2360,13 +2443,13 @@ high_is_good = FALSE,
 value = fromFormula((a * b + c * d)/(b + d),
   where = variables(
   a = fromEurostatDataset("ilc_li06", 
-    with_filters(age = "Y_LT18", hhtyp = "HH_DCH", indic_il = "LI_R_MD60", sex = "T", workint = "WI02-045")),
+    with_filters(age = "Y_LT18", hhcomp = "DCH", rskpovth = "B_60", statinfo="MED_EI", sex = "T", workint = "WI02-045")),
   b = fromEurostatDataset("ilc_lvps03", 
-    with_filters(age = "Y_LT18", hhtyp = "HH_DCH", sex = "T", workint = "WI02-045")),
+    with_filters(age = "Y_LT18", hhcomp = "DCH", sex = "T", workint = "WI02-045")),
   c = fromEurostatDataset("ilc_li06", 
-    with_filters(age = "Y_LT18", hhtyp = "HH_DCH", indic_il = "LI_R_MD60", sex = "T", workint = "WI045-055")),
+    with_filters(age = "Y_LT18", hhcomp = "DCH", rskpovth = "B_60", statinfo="MED_EI", sex = "T", workint = "WI045-055")),
   d = fromEurostatDataset("ilc_lvps03", 
-    with_filters(age = "Y_LT18",      hhtyp = "HH_DCH", sex = "T", workint = "WI045-055"))))
+    with_filters(age = "Y_LT18", hhcomp = "DCH", sex = "T", workint = "WI045-055"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11b.C10.") = 
@@ -2431,7 +2514,7 @@ high_is_good = FALSE,
 value = fromFormula(100 - a,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y16-64", quantile = "QU1", reason = "NO_UNMET", sex = "T", unit = "PC"))))
+    with_filters(age = "Y16-64", quantile = "QU1", reason = "NUMT_ND", sex = "T", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11b.C6.Q5") = 
@@ -2445,7 +2528,7 @@ high_is_good = FALSE,
 value = fromFormula(100 - a,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y16-64", quantile = "QU5", reason = "NO_UNMET", sex = "T", unit = "PC"))))
+    with_filters(age = "Y16-64", quantile = "QU5", reason = "NUMT_ND", sex = "T", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11b.C6.T") = 
@@ -2459,7 +2542,7 @@ high_is_good = FALSE,
 value = fromFormula(100 - a,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y16-64", quantile = "TOTAL", reason = "NO_UNMET", sex = "T", unit = "PC"))))
+    with_filters(age = "Y16-64", quantile = "TOTAL", reason = "NUMT_ND", sex = "T", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11b.O1.") = 
@@ -2497,7 +2580,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change_with_break_in_series = FALSE,
 value = fromEurostatDataset("ilc_li02", 
-    with_filters(sex = "T", unit = "PC", indic_il = "LI_R_MD60", age = "Y18-64"))
+    with_filters(sex = "T", unit = "PC", rskpovth = "B_60", statinfo="MED_EI", age = "Y18-64"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11b.S1.T_health") = 
@@ -2509,7 +2592,7 @@ indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 value = fromEurostatDataset("ilc_li02", 
-    with_filters(sex = "T", unit = "PC", indic_il = "LI_R_MD60", age = "Y18-64"))
+    with_filters(sex = "T", unit = "PC", rskpovth = "B_60", statinfo="MED_EI", age = "Y18-64"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11b.S10.") = 
@@ -2522,7 +2605,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change_with_break_in_series = FALSE,
 value = fromEurostatDataset("ilc_lvho07a", 
-    with_filters(sex = "T", incgrp = "TOTAL", unit = "PC", age = "Y18-64"))
+    with_filters(sex = "T", rskpovth = "TOTAL", unit = "PC", age = "Y18-64"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11b.S10._health") = 
@@ -2534,7 +2617,7 @@ indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 value = fromEurostatDataset("ilc_lvho07a", 
-    with_filters(sex = "T", incgrp = "TOTAL", unit = "PC", age = "Y18-64"))
+    with_filters(sex = "T", rskpovth = "TOTAL", unit = "PC", age = "Y18-64"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11b.S11.") = 
@@ -2758,71 +2841,72 @@ value = fromEurostatDataset("ilc_iw01",
     with_filters(sex = "T", wstatus = "EMP", age = "Y18-64"))
 )
 
-inside(JAF_INDICATORS, indicator_named = "PA11b.S6.") = 
-specification(
-name = "Impact of social transfers (other than pensions) in reducing working age poverty (18-64)",
-unit_of_level = "% reduction in risk of poverty for working age popn (18-64)",
-unit_of_change = "NA",
-indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal — namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
-high_is_good = TRUE,
-calculate_score_change_with_break_in_series = FALSE,
-value = fromFormula(100 * ((a - b)/a),
-  where = variables(
-  a = fromEurostatDataset("ilc_li10", 
-    with_filters(age = "Y18-64", indic_il = "LI_R_MD60BT", sex = "T")),
-  b = fromEurostatDataset("ilc_li02", 
-    with_filters(age = "Y18-64", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA11b.S6._health") = 
-specification(
-name = "Impact of social transfers (other than pensions) in reducing working age poverty (18-64)",
-unit_of_level = "% reduction in risk of poverty for working age popn (18-64)",
-unit_of_change = "NA",
-indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal â€” namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
-high_is_good = TRUE,
-value = fromFormula(100 * ((a - b)/a),
-  where = variables(
-  a = fromEurostatDataset("ilc_li10", 
-    with_filters(age = "Y18-64", indic_il = "LI_R_MD60BT", sex = "T")),
-  b = fromEurostatDataset("ilc_li02", 
-    with_filters(age = "Y18-64", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA11b.S7.") = 
-specification(
-name = "Impact of social transfers (incl pensions) in reducing working age poverty (18-64)",
-unit_of_level = "% reduction in risk of poverty for working age popn (18-64)",
-unit_of_change = "NA",
-indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal — namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
-high_is_good = TRUE,
-calculate_score_change_with_break_in_series = FALSE,
-value = fromFormula(100 * ((a - b)/a),
-  where = variables(
-  a = fromEurostatDataset("ilc_li09", 
-    with_filters(age = "Y18-64", indic_il = "LI_R_MD60BTP", sex = "T")),
-  b = fromEurostatDataset("ilc_li02", 
-    with_filters(age = "Y18-64", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA11b.S7._health") = 
-specification(
-name = "Impact of social transfers (incl pensions) in reducing working age poverty (18-64)",
-unit_of_level = "% reduction in risk of poverty for working age popn (18-64)",
-unit_of_change = "NA",
-indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal â€” namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
-high_is_good = TRUE,
-value = fromFormula(100 * ((a - b)/a),
-  where = variables(
-  a = fromEurostatDataset("ilc_li09", 
-    with_filters(age = "Y18-64", indic_il = "LI_R_MD60BTP", sex = "T")),
-  b = fromEurostatDataset("ilc_li02", 
-    with_filters(age = "Y18-64", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
-)
+### TEMPORARILY SWITCHED OF – DECISIONS NEEDED DUE TO CHANGES IN EUROSTAT DATASETS
+# inside(JAF_INDICATORS, indicator_named = "PA11b.S6.") = 
+# specification(
+# name = "Impact of social transfers (other than pensions) in reducing working age poverty (18-64)",
+# unit_of_level = "% reduction in risk of poverty for working age popn (18-64)",
+# unit_of_change = "NA",
+# indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal — namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
+# high_is_good = TRUE,
+# calculate_score_change_with_break_in_series = FALSE,
+# value = fromFormula(100 * ((a - b)/a),
+#   where = variables(
+#   a = fromEurostatDataset("ilc_li10", 
+#     with_filters(age = "Y18-64", indic_il = "LI_R_MD60BT", sex = "T")),
+#   b = fromEurostatDataset("ilc_li02", 
+#     with_filters(age = "Y18-64", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA11b.S6._health") = 
+# specification(
+# name = "Impact of social transfers (other than pensions) in reducing working age poverty (18-64)",
+# unit_of_level = "% reduction in risk of poverty for working age popn (18-64)",
+# unit_of_change = "NA",
+# indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal â€” namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
+# high_is_good = TRUE,
+# value = fromFormula(100 * ((a - b)/a),
+#   where = variables(
+#   a = fromEurostatDataset("ilc_li10", 
+#     with_filters(age = "Y18-64", indic_il = "LI_R_MD60BT", sex = "T")),
+#   b = fromEurostatDataset("ilc_li02", 
+#     with_filters(age = "Y18-64", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA11b.S7.") = 
+# specification(
+# name = "Impact of social transfers (incl pensions) in reducing working age poverty (18-64)",
+# unit_of_level = "% reduction in risk of poverty for working age popn (18-64)",
+# unit_of_change = "NA",
+# indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal — namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
+# high_is_good = TRUE,
+# calculate_score_change_with_break_in_series = FALSE,
+# value = fromFormula(100 * ((a - b)/a),
+#   where = variables(
+#   a = fromEurostatDataset("ilc_li09", 
+#     with_filters(age = "Y18-64", indic_il = "LI_R_MD60BTP", sex = "T")),
+#   b = fromEurostatDataset("ilc_li02", 
+#     with_filters(age = "Y18-64", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA11b.S7._health") = 
+# specification(
+# name = "Impact of social transfers (incl pensions) in reducing working age poverty (18-64)",
+# unit_of_level = "% reduction in risk of poverty for working age popn (18-64)",
+# unit_of_change = "NA",
+# indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal â€” namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
+# high_is_good = TRUE,
+# value = fromFormula(100 * ((a - b)/a),
+#   where = variables(
+#   a = fromEurostatDataset("ilc_li09", 
+#     with_filters(age = "Y18-64", indic_il = "LI_R_MD60BTP", sex = "T")),
+#   b = fromEurostatDataset("ilc_li02", 
+#     with_filters(age = "Y18-64", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
+# )
 
 inside(JAF_INDICATORS, indicator_named = "PA11b.S8.") = 
 specification(
@@ -2834,7 +2918,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change_with_break_in_series = FALSE,
 value = fromEurostatDataset("ilc_li06", 
-    with_filters(sex = "T", workint = "WI0-02", indic_il = "LI_R_MD60", age = "Y18-64", hhtyp = "TOTAL"))
+    with_filters(sex = "T", workint = "WI0-02", rskpovth = "B_60", statinfo="MED_EI", age = "Y18-64", hhcomp = "TOTAL"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11b.S8._health") = 
@@ -2846,33 +2930,34 @@ indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 value = fromEurostatDataset("ilc_li06", 
-    with_filters(sex = "T", workint = "WI0-02", indic_il = "LI_R_MD60", age = "Y18-64", hhtyp = "TOTAL"))
+    with_filters(sex = "T", workint = "WI0-02", rskpovth = "B_60", statinfo="MED_EI", age = "Y18-64", hhcomp = "TOTAL"))
 )
 
-inside(JAF_INDICATORS, indicator_named = "PA11b.S9.") = 
-specification(
-name = "Relative median poverty risk gap (18-64)",
-unit_of_level = "% (of AROP threshold)",
-unit_of_change = "NA",
-indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions",
-high_is_good = FALSE,
-calculate_score_change_with_break_in_series = FALSE,
-value = fromEurostatDataset("ilc_li11", 
-    with_filters(sex = "T", indic_il = "LI_GAP_MD60", age = "Y18-64"))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA11b.S9._health") = 
-specification(
-name = "Relative median poverty risk gap (18-64)",
-unit_of_level = "% (of AROP threshold)",
-unit_of_change = "NA",
-indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions",
-high_is_good = FALSE,
-value = fromEurostatDataset("ilc_li11", 
-    with_filters(sex = "T", indic_il = "LI_GAP_MD60", age = "Y18-64"))
-)
+### TEMPORARILY SWITCHED OF – DECISIONS NEEDED DUE TO CHANGES IN EUROSTAT DATASETS
+# inside(JAF_INDICATORS, indicator_named = "PA11b.S9.") = 
+# specification(
+# name = "Relative median poverty risk gap (18-64)",
+# unit_of_level = "% (of AROP threshold)",
+# unit_of_change = "NA",
+# indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions",
+# high_is_good = FALSE,
+# calculate_score_change_with_break_in_series = FALSE,
+# value = fromEurostatDataset("ilc_li11", 
+#     with_filters(sex = "T", indic_il = "LI_GAP_MD60", age = "Y18-64"))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA11b.S9._health") = 
+# specification(
+# name = "Relative median poverty risk gap (18-64)",
+# unit_of_level = "% (of AROP threshold)",
+# unit_of_change = "NA",
+# indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions",
+# high_is_good = FALSE,
+# value = fromEurostatDataset("ilc_li11", 
+#     with_filters(sex = "T", indic_il = "LI_GAP_MD60", age = "Y18-64"))
+# )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.C6.F") = 
 specification(
@@ -2885,7 +2970,7 @@ high_is_good = FALSE,
 value = fromFormula(100 - a,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE65", quantile = "TOTAL", reason = "NO_UNMET", sex = "F", unit = "PC"))))
+    with_filters(age = "Y_GE65", quantile = "TOTAL", reason = "NUMT_ND", sex = "F", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.C6.M") = 
@@ -2899,7 +2984,7 @@ high_is_good = FALSE,
 value = fromFormula(100 - a,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE65", quantile = "TOTAL", reason = "NO_UNMET", sex = "M", unit = "PC"))))
+    with_filters(age = "Y_GE65", quantile = "TOTAL", reason = "NUMT_ND", sex = "M", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.C7.") = 
@@ -3009,7 +3094,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change_with_break_in_series = FALSE,
 value = fromEurostatDataset("ilc_li02", 
-    with_filters(sex = "F", unit = "PC", indic_il = "LI_R_MD60", age = "Y_GE65"))
+    with_filters(sex = "F", unit = "PC", rskpovth = "B_60", statinfo="MED_EI", age = "Y_GE65"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.S1.F_health") = 
@@ -3021,7 +3106,7 @@ indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 value = fromEurostatDataset("ilc_li02", 
-    with_filters(sex = "F", unit = "PC", indic_il = "LI_R_MD60", age = "Y_GE65"))
+    with_filters(sex = "F", unit = "PC", rskpovth = "B_60", statinfo="MED_EI", age = "Y_GE65"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.S1.M") = 
@@ -3034,7 +3119,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change_with_break_in_series = FALSE,
 value = fromEurostatDataset("ilc_li02", 
-    with_filters(sex = "M", unit = "PC", indic_il = "LI_R_MD60", age = "Y_GE65"))
+    with_filters(sex = "M", unit = "PC", rskpovth = "B_60", statinfo="MED_EI", age = "Y_GE65"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.S1.M_health") = 
@@ -3046,7 +3131,7 @@ indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 value = fromEurostatDataset("ilc_li02", 
-    with_filters(sex = "M", unit = "PC", indic_il = "LI_R_MD60", age = "Y_GE65"))
+    with_filters(sex = "M", unit = "PC", rskpovth = "B_60", statinfo="MED_EI", age = "Y_GE65"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.S1.T") = 
@@ -3059,7 +3144,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change_with_break_in_series = FALSE,
 value = fromEurostatDataset("ilc_li02", 
-    with_filters(sex = "T", unit = "PC", indic_il = "LI_R_MD60", age = "Y_GE65"))
+    with_filters(sex = "T", unit = "PC", rskpovth = "B_60", statinfo="MED_EI", age = "Y_GE65"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.S1.T_health") = 
@@ -3071,7 +3156,7 @@ indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 value = fromEurostatDataset("ilc_li02", 
-    with_filters(sex = "T", unit = "PC", indic_il = "LI_R_MD60", age = "Y_GE65"))
+    with_filters(sex = "T", unit = "PC", rskpovth = "B_60", statinfo="MED_EI", age = "Y_GE65"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.S2.F") = 
@@ -3158,63 +3243,64 @@ value = fromEurostatDataset("ILC_PNP13",
     with_filters(age = "Y_GE65", unit = "PC", statinfo="AVG"))
 )
 
-inside(JAF_INDICATORS, indicator_named = "PA11c.S3.") = 
-specification(
-name = "Impact of social transfers (incl pensions) in reducing old age poverty (65+)",
-unit_of_level = "% reduction in risk of poverty for elderly popn (65+)",
-unit_of_change = "NA",
-indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal — namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
-high_is_good = TRUE,
-calculate_score_change_with_break_in_series = FALSE,
-value = fromFormula(100 * ((a - b)/a),
-  where = variables(
-  a = fromEurostatDataset("ilc_li09", 
-    with_filters(age = "Y_GE65", indic_il = "LI_R_MD60BTP", sex = "T")),
-  b = fromEurostatDataset("ilc_li02", 
-    with_filters(age = "Y_GE65", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA11c.S3._health") = 
-specification(
-name = "Impact of social transfers (incl pensions) in reducing old age poverty (65+)",
-unit_of_level = "% reduction in risk of poverty for elderly popn (65+)",
-unit_of_change = "NA",
-indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal â€” namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
-high_is_good = TRUE,
-value = fromFormula(100 * ((a - b)/a),
-  where = variables(
-  a = fromEurostatDataset("ilc_li09", 
-    with_filters(age = "Y_GE65", indic_il = "LI_R_MD60BTP", sex = "T")),
-  b = fromEurostatDataset("ilc_li02", 
-    with_filters(age = "Y_GE65", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA11c.S4.") = 
-specification(
-name = "Relative median poverty risk gap (65+)",
-unit_of_level = "% (of AROP threshold)",
-unit_of_change = "NA",
-indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers (excluding pensions) must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal — namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
-high_is_good = FALSE,
-calculate_score_change_with_break_in_series = FALSE,
-value = fromEurostatDataset("ilc_li11", 
-    with_filters(sex = "T", indic_il = "LI_GAP_MD60", age = "Y_GE65"))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA11c.S4._health") = 
-specification(
-name = "Relative median poverty risk gap (65+)",
-unit_of_level = "% (of AROP threshold)",
-unit_of_change = "NA",
-indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers (excluding pensions) must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal â€” namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
-high_is_good = FALSE,
-value = fromEurostatDataset("ilc_li11", 
-    with_filters(sex = "T", indic_il = "LI_GAP_MD60", age = "Y_GE65"))
-)
+### TEMPORARILY SWITCHED OF – DECISIONS NEEDED DUE TO CHANGES IN EUROSTAT DATASETS
+# inside(JAF_INDICATORS, indicator_named = "PA11c.S3.") = 
+# specification(
+# name = "Impact of social transfers (incl pensions) in reducing old age poverty (65+)",
+# unit_of_level = "% reduction in risk of poverty for elderly popn (65+)",
+# unit_of_change = "NA",
+# indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal — namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
+# high_is_good = TRUE,
+# calculate_score_change_with_break_in_series = FALSE,
+# value = fromFormula(100 * ((a - b)/a),
+#   where = variables(
+#   a = fromEurostatDataset("ilc_li09", 
+#     with_filters(age = "Y_GE65", indic_il = "LI_R_MD60BTP", sex = "T")),
+#   b = fromEurostatDataset("ilc_li02", 
+#     with_filters(age = "Y_GE65", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA11c.S3._health") = 
+# specification(
+# name = "Impact of social transfers (incl pensions) in reducing old age poverty (65+)",
+# unit_of_level = "% reduction in risk of poverty for elderly popn (65+)",
+# unit_of_change = "NA",
+# indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal â€” namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
+# high_is_good = TRUE,
+# value = fromFormula(100 * ((a - b)/a),
+#   where = variables(
+#   a = fromEurostatDataset("ilc_li09", 
+#     with_filters(age = "Y_GE65", indic_il = "LI_R_MD60BTP", sex = "T")),
+#   b = fromEurostatDataset("ilc_li02", 
+#     with_filters(age = "Y_GE65", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA11c.S4.") = 
+# specification(
+# name = "Relative median poverty risk gap (65+)",
+# unit_of_level = "% (of AROP threshold)",
+# unit_of_change = "NA",
+# indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers (excluding pensions) must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal — namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
+# high_is_good = FALSE,
+# calculate_score_change_with_break_in_series = FALSE,
+# value = fromEurostatDataset("ilc_li11", 
+#     with_filters(sex = "T", indic_il = "LI_GAP_MD60", age = "Y_GE65"))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA11c.S4._health") = 
+# specification(
+# name = "Relative median poverty risk gap (65+)",
+# unit_of_level = "% (of AROP threshold)",
+# unit_of_change = "NA",
+# indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator for the poverty risk before social transfers (excluding pensions) must be interpreted with caution for a number of reasons. First, no account is taken of other measures that can have the effect of raising the disposable incomes of households and individuals, namely transfers in kind, tax credits and tax allowances. Second, the pre-transfer poverty risk is compared to the post-transfer risk with all other things being equal â€” namely, assuming unchanged household and labour market structures, thus disregarding any possible behavioural changes that the absence of social transfers might entail.",
+# high_is_good = FALSE,
+# value = fromEurostatDataset("ilc_li11", 
+#     with_filters(sex = "T", indic_il = "LI_GAP_MD60", age = "Y_GE65"))
+# )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.S5.") = 
 specification(
@@ -3276,7 +3362,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change_with_break_in_series = FALSE,
 value = fromEurostatDataset("ilc_lvho07a", 
-    with_filters(sex = "T", incgrp = "TOTAL", unit = "PC", age = "Y_GE65"))
+    with_filters(sex = "T", rskpovth = "TOTAL", unit = "PC", age = "Y_GE65"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.S7._health") = 
@@ -3288,7 +3374,7 @@ indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 value = fromEurostatDataset("ilc_lvho07a", 
-    with_filters(sex = "T", incgrp = "TOTAL", unit = "PC", age = "Y_GE65"))
+    with_filters(sex = "T", rskpovth = "TOTAL", unit = "PC", age = "Y_GE65"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.S8.") = 
@@ -3612,7 +3698,7 @@ indicator_groups = "SUBINDICATOR COMPENDIUM 9 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 value = fromEurostatDataset("ILC_LI07", 
-    with_filters(age = "Y_GE18", sex = "T", isced11 = "ED0-2", unit = "PC", indic_il = "LI_R_MD60"))
+    with_filters(age = "Y_GE18", sex = "T", isced11 = "ED0-2", unit = "PC", rskpovth = "B_60", statinfo="MED_EI"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11f3.S3.") = 
@@ -3652,7 +3738,7 @@ indicator_groups = "SUBINDICATOR COMPENDIUM 9 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 value = fromEurostatDataset("ILC_LI06", 
-    with_filters(age = "Y_LT65", indic_il = "LI_R_MD60", sex = "T", workint = "WI0-02", hhtyp = "TOTAL"))
+    with_filters(age = "Y_LT65", rskpovth = "B_60", statinfo="MED_EI", sex = "T", workint = "WI0-02", hhcomp = "TOTAL"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11f5.O1.") = 
@@ -3676,7 +3762,7 @@ indicator_groups = "SUBINDICATOR COMPENDIUM 9 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 value = fromEurostatDataset("ilc_li02", 
-    with_filters(age = "Y18-24", sex = "T", unit = "PC", indic_il = "LI_R_MD60"))
+    with_filters(age = "Y18-24", sex = "T", unit = "PC", rskpovth = "B_60", statinfo="MED_EI"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11f5.S2.") = 
@@ -3703,21 +3789,22 @@ value = fromEurostatDataset("ilc_lvhl11n",
     with_filters(age = "Y18-24", sex = "T", unit = "PC"))
 )
 
-inside(JAF_INDICATORS, indicator_named = "PA11f5.S4.") = 
-specification(
-name = "Impact of social transfers (other than pensions) in reducing poverty of young people (18-24)",
-unit_of_level = "NA",
-unit_of_change = "NA",
-indicator_groups = "SUBINDICATOR COMPENDIUM 9 COUNTRY",
-source = "Eurostat, EU Statistics on Income and Living Conditions",
-high_is_good = TRUE,
-value = fromFormula(100 * ((a - b)/a),
-  where = variables(
-  a = fromEurostatDataset("ilc_li10", 
-    with_filters(age = "Y18-24", indic_il = "LI_R_MD60BT", sex = "T")),
-  b = fromEurostatDataset("ilc_li02", 
-    with_filters(age = "Y18-64", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
-)
+### TEMPORARILY SWITCHED OF – DECISIONS NEEDED DUE TO CHANGES IN EUROSTAT DATASETS
+# inside(JAF_INDICATORS, indicator_named = "PA11f5.S4.") = 
+# specification(
+# name = "Impact of social transfers (other than pensions) in reducing poverty of young people (18-24)",
+# unit_of_level = "NA",
+# unit_of_change = "NA",
+# indicator_groups = "SUBINDICATOR COMPENDIUM 9 COUNTRY",
+# source = "Eurostat, EU Statistics on Income and Living Conditions",
+# high_is_good = TRUE,
+# value = fromFormula(100 * ((a - b)/a),
+#   where = variables(
+#   a = fromEurostatDataset("ilc_li10", 
+#     with_filters(age = "Y18-24", indic_il = "LI_R_MD60BT", sex = "T")),
+#   b = fromEurostatDataset("ilc_li02", 
+#     with_filters(age = "Y18-64", indic_il = "LI_R_MD60", sex = "T", unit = "PC"))))
+# )
 
 inside(JAF_INDICATORS, indicator_named = "PA11f5.S5.") = 
 specification(
@@ -5510,7 +5597,7 @@ indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 3 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = TRUE,
 value = fromEurostatDataset("ilc_lvhl32", 
-    with_filters(sex = "T", trans1y = "TO_PERM", wstatus = "SAL_TEMP"))
+    with_filters(sex = "T", wstatusp = "SAL_PERM", wstatus = "SAL_TEMP"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA2a.S6.15-29") = 
@@ -5682,7 +5769,7 @@ indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 3 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = TRUE,
 value = fromEurostatDataset("ilc_lvhl32", 
-    with_filters(sex = "T", trans1y = "TO_PERM", wstatus = "SAL_TEMP"))
+    with_filters(sex = "T", wstatusp = "SAL_PERM", wstatus = "SAL_TEMP"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA2b.S5.") = 
@@ -5927,7 +6014,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change_with_break_in_series = FALSE,
 value = fromEurostatDataset("ilc_li04", 
-    with_filters(sex = "T", wstatus = "UNE", indic_il = "LI_R_MD60", age = "Y_GE18", unit = "PC"))
+    with_filters(sex = "T", wstatus = "UNE", rskpovth = "B_60", statinfo="MED_EI", age = "Y_GE18", unit = "PC"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.1.S1.") = 
@@ -7590,7 +7677,7 @@ indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 7 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = TRUE,
 value = fromEurostatDataset("ilc_lvhl35", 
-    with_filters(sex = "T", trans1y = "TO_GEQUA", wstatus = "POP"))
+    with_filters(sex = "T", trans1y = "TO_GEQUA", wstatusp = "POP"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA9.1.C1.04EU27_2020") = 
