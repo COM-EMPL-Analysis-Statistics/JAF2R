@@ -9,7 +9,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_li06",
-   with_filters(sex="T", workint="WI02-045", indic_il="LI_R_MD60", age="Y18-64", hhtyp="TOTAL"))
+   with_filters(sex = "T", workint = "WI02-045", rskpovth = "B_60", statinfo="MED_EI", age = "Y18-64", hhcomp = "TOTAL"))
 )
 
 
@@ -108,47 +108,47 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_mdes01",
-   with_filters(unit="PC", incgrp="TOTAL", hhtyp="TOTAL"))
+   with_filters(unit="PC", rskpovth="TOTAL", hhcomp="TOTAL"))
 ) 
  
 inside(JAF_INDICATORS, indicator_named = "PA14b.S1.") =
 specification(
 name = "Inability to keep home adequately warm among population at risk of poverty",
 unit_of_level = "% (of AROP popn)",
-indicator_groups = "MAIN OUTPUT OVERALL COMPENDIUM 1 COUNTRY",
+indicator_groups = "MAIN OUTPUT SUBINDICATOR COMPENDIUM 1 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_mdes01",
-   with_filters(unit="PC", incgrp="B_MD60", hhtyp="TOTAL"))
+   with_filters(unit="PC", rskpovth="B_60", hhcomp="TOTAL"))
 ) 
  
 inside(JAF_INDICATORS, indicator_named = "PA14b.S2.") =
 specification(
 name = "Inability to keep home adequately warm among population not at risk of poverty",
 unit_of_level = "% (of non-AROP popn)",
-indicator_groups = "MAIN OUTPUT OVERALL COMPENDIUM 1 COUNTRY",
+indicator_groups = "MAIN OUTPUT SUBINDICATOR COMPENDIUM 1 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_mdes01",
-   with_filters(unit="PC", incgrp="A_MD60", hhtyp="TOTAL"))
+   with_filters(unit="PC", rskpovth="A_60", hhcomp="TOTAL"))
 ) 
  
 inside(JAF_INDICATORS, indicator_named = "PA14b.S3.") =
 specification(
 name = "Gap in inability to keep home adequately warm between populations at risk of poverty and not at risk of poverty",
 unit_of_level = "Percentage points",
-indicator_groups = "MAIN OUTPUT OVERALL COMPENDIUM 1 COUNTRY",
+indicator_groups = "MAIN OUTPUT SUBINDICATOR COMPENDIUM 1 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromFormula(a-b,
 where = variables(
   a = fromEurostatDataset("ilc_mdes01",
-      with_filters(unit="PC", incgrp="B_MD60", hhtyp="TOTAL")),
+      with_filters(unit="PC", rskpovth="B_60", hhcomp="TOTAL")),
   b = fromEurostatDataset("ilc_mdes01",
-      with_filters(unit="PC", incgrp="A_MD60", hhtyp="TOTAL"))))
+      with_filters(unit="PC", rskpovth="A_60", hhcomp="TOTAL"))))
 )
 ### Not included by Maria, 1 April 2025 
 # inside(JAF_INDICATORS, indicator_named = "PA14b.S4.") =
@@ -226,7 +226,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_li02",
-   with_filters(sex="T", unit="PC", indic_il="LI_R_MD60", age="TOTAL"))
+   with_filters(sex = "T", unit = "PC", rskpovth = "B_60", statinfo="MED_EI", age = "TOTAL"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.S2.") = 
@@ -253,7 +253,7 @@ value = fromEurostatDataset("ilc_lvhl11n",
    with_filters(sex="T", unit="PC", age="Y_LT65"))
 )
 
-inside(JAF_INDICATORS, indicator_named = "PA11.S4.") = 
+inside(JAF_INDICATORS, indicator_named = "PA11.S4.") =
 specification(
 name = "Impact of social transfers (other than pensions) in reducing poverty",
 unit_of_level = "% reduction in risk of poverty",
@@ -264,13 +264,13 @@ calculate_score_change = TRUE,
 value = fromFormula(100*((a-b)/a),
 where = variables(
  a = fromEurostatDataset('ilc_li10',
-  with_filters(age="TOTAL", indic_il="LI_R_MD60BT", sex="T")),
+  with_filters(age="TOTAL", rskpovth = "B_60", statinfo="MED_EI", sex="T")),
  b = fromEurostatDataset('ilc_li02',
-  with_filters(age="TOTAL", indic_il="LI_R_MD60", sex="T", unit="PC"))
+  with_filters(age="TOTAL", rskpovth = "B_60", statinfo="MED_EI", sex="T", unit="PC"))
 ))
 )
 
-inside(JAF_INDICATORS, indicator_named = "PA11.S5.") = 
+inside(JAF_INDICATORS, indicator_named = "PA11.S5.") =
 specification(
 name = "Impact of social transfers (incl pensions) in reducing poverty",
 unit_of_level = "% reduction in risk of poverty",
@@ -281,9 +281,9 @@ calculate_score_change = TRUE,
 value = fromFormula(100*((a-b)/a),
 where = variables(
  a = fromEurostatDataset('ilc_li09',
-  with_filters(age="TOTAL", indic_il="LI_R_MD60BTP", sex="T")),
+  with_filters(age="TOTAL", rskpovth = "B_60", statinfo="MED_EI", sex="T")),
  b = fromEurostatDataset('ilc_li02',
-  with_filters(age="TOTAL", indic_il="LI_R_MD60", sex="T", unit="PC"))
+  with_filters(age="TOTAL", rskpovth = "B_60", statinfo="MED_EI", sex="T", unit="PC"))
 ))
 )
 
@@ -296,7 +296,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_li06",
-   with_filters(sex="T", workint="WI0-02", indic_il="LI_R_MD60", age="Y18-64", hhtyp="TOTAL"))
+   with_filters(sex="T", workint="WI0-02", rskpovth = "B_60", statinfo="MED_EI", age="Y18-64", hhcomp="TOTAL"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.S6.LT18.WI0-02") = 
@@ -308,7 +308,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_li06",
-   with_filters(sex="T", workint="WI0-02", indic_il="LI_R_MD60", age="Y_LT18", hhtyp="TOTAL"))
+   with_filters(sex="T", workint="WI0-02", rskpovth = "B_60", statinfo="MED_EI", age="Y_LT18", hhcomp="TOTAL"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.S8.") = 
@@ -320,7 +320,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_li11",
-   with_filters(sex="T", indic_il="LI_GAP_MD60", age="TOTAL"))
+   with_filters(sex="T", rskpovth = "B_60", statinfo="MED_EI", age="TOTAL"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.S9.") = 
@@ -332,7 +332,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_li21",
-   with_filters(sex="T", indic_il="LIP_MD60", age="TOTAL"))
+   with_filters(sex="T", rskpovth = "B_60", statinfo="MED_EI", age="TOTAL"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.S9.0-17") = 
@@ -344,7 +344,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_li21",
-   with_filters(sex="T", indic_il="LIP_MD60", age="Y_LT18"))
+   with_filters(sex="T", rskpovth = "B_60", statinfo="MED_EI", age="Y_LT18"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.S9.18-64") = 
@@ -356,7 +356,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_li21",
-   with_filters(sex="T", indic_il="LIP_MD60", age="Y18-64"))
+   with_filters(sex="T", rskpovth = "B_60", statinfo="MED_EI", age="Y18-64"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.S9.GE65") = 
@@ -368,7 +368,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_li21",
-   with_filters(sex="T", indic_il="LIP_MD60", age="Y_GE65"))
+   with_filters(sex="T", rskpovth = "B_60", statinfo="MED_EI", age="Y_GE65"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.S10.") = 
@@ -392,7 +392,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_lvho07a",
-   with_filters(sex="T", incgrp="TOTAL", unit="PC", age="TOTAL"))
+   with_filters(sex="T", rskpovth="TOTAL", unit="PC", age="TOTAL"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.S12.") = 
@@ -433,9 +433,9 @@ high_is_good = FALSE,
 value = fromFormula(a/b,
 where = variables(
  a = fromEurostatDataset('ilc_di01',
-  with_filters(currency="EUR", indic_il="SHARE", quantile="QU5")),
+  with_filters(unit = "EUR", statinfo = "SHARE", quantile="QU5")),
  b = fromEurostatDataset('ilc_di01',
-  with_filters(currency="EUR", indic_il="SHARE", quantile="QU3"))
+  with_filters(unit = "EUR", statinfo = "SHARE", quantile="QU3"))
 ))
 )
 
@@ -450,9 +450,9 @@ high_is_good = FALSE,
 value = fromFormula(a/b,
 where = variables(
  a = fromEurostatDataset('ilc_di01',
-  with_filters(currency="EUR", indic_il="SHARE", quantile="QU3")),
+  with_filters(unit = "EUR", statinfo = "SHARE", quantile="QU3")),
  b = fromEurostatDataset('ilc_di01',
-  with_filters(currency="EUR", indic_il="SHARE", quantile="QU1"))
+  with_filters(unit = "EUR", statinfo = "SHARE", quantile="QU1"))
 ))
 )
 
@@ -466,10 +466,10 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 value = fromFormula(a-b,
 where = variables(
- a = fromEurostatDataset('hlth_silc_08',
-  with_filters(age="Y_GE16", quantile="QU1", reason="NOTIME", sex="T", unit="PC")),
- b = fromEurostatDataset('hlth_silc_08',
-  with_filters(age="Y_GE16", quantile="QU5", reason="NOTIME", sex="T", unit="PC"))
+  a = fromEurostatDataset("hlth_silc_08", 
+    with_filters(age = "Y_GE16", quantile = "QU1", reason = "NTIME", sex = "T", unit = "PC")),
+  b = fromEurostatDataset("hlth_silc_08", 
+    with_filters(age = "Y_GE16", quantile = "QU5", reason = "NTIME", sex = "T", unit = "PC"))
 ))
 )
 
@@ -483,10 +483,10 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 value = fromFormula(a-b,
 where = variables(
- a = fromEurostatDataset('hlth_silc_08',
-  with_filters(age="Y_GE16", quantile="QU1", reason="TOOEXP", sex="T", unit="PC")),
- b = fromEurostatDataset('hlth_silc_08',
-  with_filters(age="Y_GE16", quantile="QU5", reason="TOOEXP", sex="T", unit="PC"))
+  a = fromEurostatDataset("hlth_silc_08", 
+    with_filters(age = "Y_GE16", quantile = "QU1", reason = "TXP", sex = "T", unit = "PC")),
+  b = fromEurostatDataset("hlth_silc_08", 
+    with_filters(age = "Y_GE16", quantile = "QU5", reason = "TXP", sex = "T", unit = "PC"))
 ))
 )
 
@@ -500,10 +500,10 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 value = fromFormula(a-b,
 where = variables(
- a = fromEurostatDataset('hlth_silc_08',
-  with_filters(age="Y_GE16", quantile="QU1", reason="TOOFAR", sex="T", unit="PC")),
- b = fromEurostatDataset('hlth_silc_08',
-  with_filters(age="Y_GE16", quantile="QU5", reason="TOOFAR", sex="T", unit="PC"))
+  a = fromEurostatDataset("hlth_silc_08", 
+    with_filters(age = "Y_GE16", quantile = "QU1", reason = "TFAR", sex = "T", unit = "PC")),
+  b = fromEurostatDataset("hlth_silc_08", 
+    with_filters(age = "Y_GE16", quantile = "QU5", reason = "TFAR", sex = "T", unit = "PC"))
 ))
 )
 
@@ -528,7 +528,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_li02",
-   with_filters(sex="T", unit="PC", indic_il="LI_R_MD60", age="Y_LT18"))
+   with_filters(sex="T", unit="PC", rskpovth = "B_60", statinfo="MED_EI", age="Y_LT18"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11a.S2.") = 
@@ -566,9 +566,9 @@ calculate_score_change = TRUE,
 value = fromFormula(100*((a-b)/a),
 where = variables(
  a = fromEurostatDataset('ilc_li10',
-  with_filters(age="Y_LT18", indic_il="LI_R_MD60BT", sex="T")),
+  with_filters(age="Y_LT18", rskpovth = "B_60", statinfo="MED_EI", sex="T")),
  b = fromEurostatDataset('ilc_li02',
-  with_filters(age="Y_LT18", indic_il="LI_R_MD60", sex="T", unit="PC"))
+  with_filters(age="Y_LT18", rskpovth = "B_60", statinfo="MED_EI", sex="T", unit="PC"))
 ))
 )
 
@@ -583,9 +583,9 @@ calculate_score_change = TRUE,
 value = fromFormula(100*((a-b)/a),
 where = variables(
  a = fromEurostatDataset('ilc_li09',
-  with_filters(age="Y_LT18", indic_il="LI_R_MD60BTP", sex="T")),
+  with_filters(age="Y_LT18", rskpovth = "B_60", statinfo="MED_EI", sex="T")),
  b = fromEurostatDataset('ilc_li02',
-  with_filters(age="Y_LT18", indic_il="LI_R_MD60", sex="T", unit="PC"))
+  with_filters(age="Y_LT18", rskpovth = "B_60", statinfo="MED_EI", sex="T", unit="PC"))
 ))
 )
 
@@ -598,7 +598,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_li11",
-   with_filters(sex="T", indic_il="LI_GAP_MD60", age="Y_LT18"))
+   with_filters(sex="T", rskpovth = "B_60", statinfo="MED_EI", age="Y_LT18"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11a.S7.") = 
@@ -610,7 +610,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_lvho07a",
-   with_filters(sex="T", incgrp="TOTAL", unit="PC", age="Y_LT18"))
+   with_filters(sex="T", rskpovth="TOTAL", unit="PC", age="Y_LT18"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11a.S8.") = 
@@ -703,7 +703,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_li02",
-   with_filters(sex="T", unit="PC", indic_il="LI_R_MD60", age="Y18-64"))
+   with_filters(sex="T", unit="PC", rskpovth = "B_60", statinfo="MED_EI", age="Y18-64"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11b.S2.") = 
@@ -765,9 +765,9 @@ calculate_score_change = TRUE,
 value = fromFormula(100*((a-b)/a),
 where = variables(
  a = fromEurostatDataset('ilc_li10',
-  with_filters(age="Y18-64", indic_il="LI_R_MD60BT", sex="T")),
+  with_filters(age="Y18-64", rskpovth = "B_60", statinfo="MED_EI", sex="T")),
  b = fromEurostatDataset('ilc_li02',
-  with_filters(age="Y18-64", indic_il="LI_R_MD60", sex="T", unit="PC"))
+  with_filters(age="Y18-64", rskpovth = "B_60", statinfo="MED_EI", sex="T", unit="PC"))
 ))
 )
 
@@ -782,9 +782,9 @@ calculate_score_change = TRUE,
 value = fromFormula(100*((a-b)/a),
 where = variables(
  a = fromEurostatDataset('ilc_li09',
-  with_filters(age="Y18-64", indic_il="LI_R_MD60BTP", sex="T")),
+  with_filters(age="Y18-64", rskpovth = "B_60", statinfo="MED_EI", sex="T")),
  b = fromEurostatDataset('ilc_li02',
-  with_filters(age="Y18-64", indic_il="LI_R_MD60", sex="T", unit="PC"))
+  with_filters(age="Y18-64", rskpovth = "B_60", statinfo="MED_EI", sex="T", unit="PC"))
 ))
 )
 
@@ -809,7 +809,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_li11",
-   with_filters(sex="T", indic_il="LI_GAP_MD60", age="Y18-64"))
+   with_filters(sex="T", rskpovth = "B_60", statinfo="MED_EI", age="Y18-64"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11b.S10.") = 
@@ -821,7 +821,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_lvho07a",
-   with_filters(sex="T", incgrp="TOTAL", unit="PC", age="Y18-64"))
+   with_filters(sex="T", rskpovth="TOTAL", unit="PC", age="Y18-64"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11b.S11.") = 
@@ -896,7 +896,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_li02",
-   with_filters(sex="F", unit="PC", indic_il="LI_R_MD60", age="Y_GE65"))
+   with_filters(sex="F", unit="PC", rskpovth = "B_60", statinfo="MED_EI", age="Y_GE65"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.S1.M") = 
@@ -908,7 +908,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_li02",
-   with_filters(sex="M", unit="PC", indic_il="LI_R_MD60", age="Y_GE65"))
+   with_filters(sex="M", unit="PC", rskpovth = "B_60", statinfo="MED_EI", age="Y_GE65"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.S1.T") = 
@@ -920,7 +920,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_li02",
-   with_filters(sex="T", unit="PC", indic_il="LI_R_MD60", age="Y_GE65"))
+   with_filters(sex="T", unit="PC", rskpovth = "B_60", statinfo="MED_EI", age="Y_GE65"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.S2.F") = 
@@ -970,9 +970,9 @@ calculate_score_change = TRUE,
 value = fromFormula(100*((a-b)/a),
 where = variables(
  a = fromEurostatDataset('ilc_li09',
-  with_filters(age="Y_GE65", indic_il="LI_R_MD60BTP", sex="T")),
+  with_filters(age="Y_GE65", rskpovth = "B_60", statinfo="MED_EI", sex="T")),
  b = fromEurostatDataset('ilc_li02',
-  with_filters(age="Y_GE65", indic_il="LI_R_MD60", sex="T", unit="PC"))
+  with_filters(age="Y_GE65", rskpovth = "B_60", statinfo="MED_EI", sex="T", unit="PC"))
 ))
 )
 
@@ -985,7 +985,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions. The indicator
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_li11",
-   with_filters(sex="T", indic_il="LI_GAP_MD60", age="Y_GE65"))
+   with_filters(sex="T", rskpovth = "B_60", statinfo="MED_EI", age="Y_GE65"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.S5.") = 
@@ -1009,7 +1009,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = TRUE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_pnp2",
-   with_filters(sex="T", indic_il="R_GE65_LT65"))
+   with_filters(sex="T", statinfo="R_MED_I"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.S7.") = 
@@ -1021,7 +1021,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change = TRUE,
 value = fromEurostatDataset("ilc_lvho07a",
-   with_filters(sex="T", incgrp="TOTAL", unit="PC", age="Y_GE65"))
+   with_filters(sex="T", rskpovth="TOTAL", unit="PC", age="Y_GE65"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.S8.") = 
@@ -1228,7 +1228,7 @@ indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 2 COUNTRY",
 source = "",
 high_is_good = FALSE,
 value = fromEurostatDataset("hlth_silc_08",
-   with_filters(age="Y_GE16", quantile="TOTAL", reason="TOOEFW", sex="T", unit="PC"))
+   with_filters(age="Y_GE16", quantile="TOTAL", reason="TXP_TFAR_WLIST", sex="T", unit="PC"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA13.S16.") = 
@@ -1240,7 +1240,7 @@ indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 2 COUNTRY",
 source = "",
 high_is_good = FALSE,
 value = fromEurostatDataset("hlth_silc_08",
-   with_filters(age="Y_GE16", quantile="TOTAL", reason="TOOEXP", sex="T", unit="PC"))
+   with_filters(age="Y_GE16", quantile="TOTAL", reason="TXP", sex="T", unit="PC"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA13.S17.") = 
@@ -1264,7 +1264,7 @@ indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 2 COUNTRY",
 source = "",
 high_is_good = FALSE,
 value = fromEurostatDataset("hlth_silc_08",
-   with_filters(age="Y_GE16", quantile="TOTAL", reason="TOOFAR", sex="T", unit="PC"))
+   with_filters(age="Y_GE16", quantile="TOTAL", reason="TFAR", sex="T", unit="PC"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA13.S19.") = 
@@ -1278,9 +1278,9 @@ high_is_good = FALSE,
 value = fromFormula(a-b,
 where = variables(
  a = fromEurostatDataset('hlth_silc_08',
-  with_filters(age="Y_GE16", quantile="QU1", reason="TOOEFW", sex="T", unit="PC")),
+  with_filters(age="Y_GE16", quantile="QU1", reason="TXP_TFAR_WLIST", sex="T", unit="PC")),
  b = fromEurostatDataset('hlth_silc_08',
-  with_filters(age="Y_GE16", quantile="QU5", reason="TOOEFW", sex="T", unit="PC"))
+  with_filters(age="Y_GE16", quantile="QU5", reason="TXP_TFAR_WLIST", sex="T", unit="PC"))
 ))
 )
 
@@ -1297,7 +1297,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = FALSE,
 calculate_score_change_with_break_in_series = FALSE,
 value = fromEurostatDataset("ilc_li06", 
-    with_filters(sex = "T", workint = "WI0-02", indic_il = "LI_R_MD60", age = "Y_LT65", hhtyp = "TOTAL"))
+    with_filters(sex = "T", workint = "WI0-02", rskpovth = "B_60", statinfo="MED_EI", age = "Y_LT65", hhcomp = "TOTAL"))
 )
 
 # inside(JAF_INDICATORS, indicator_named = "PA11.S6.18-64") = 
