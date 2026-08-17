@@ -1131,7 +1131,7 @@ indicator_groups = "CONTEXT COMPENDIUM 8 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = TRUE,
 value = fromEurostatDataset("ILC_LI70", 
-    with_filters(sex = "T", unit = "PC", workint = "WI0-02", yn_rskpov = "YES_ARP"))
+    with_filters(age="Y18-64", unit = "PC", workint = "WI0-02", yn_rskpov = "YES_ARP"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.C11.Q1") = 
@@ -1145,7 +1145,7 @@ high_is_good = FALSE,
 value = fromFormula(100 - a,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE16", quantile = "QU1", reason = "NUMT_ND", sex = "T", unit = "PC"))))
+    with_filters(age = "Y_GE16", quant_inc = "QU1", reason = "NUMT_ND", sex = "T", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.C11.Q1-Q5.NOTIME") = 
@@ -1159,9 +1159,9 @@ high_is_good = FALSE,
 value = fromFormula(a - b,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE16", quantile = "QU1", reason = "NTIME", sex = "T", unit = "PC")),
+    with_filters(age = "Y_GE16", quant_inc = "QU1", reason = "NTIME", sex = "T", unit = "PC")),
   b = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE16", quantile = "QU5", reason = "NTIME", sex = "T", unit = "PC"))))
+    with_filters(age = "Y_GE16", quant_inc = "QU5", reason = "NTIME", sex = "T", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.C11.Q1-Q5.TOOEXP") = 
@@ -1175,9 +1175,9 @@ high_is_good = FALSE,
 value = fromFormula(a - b,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE16", quantile = "QU1", reason = "TXP", sex = "T", unit = "PC")),
+    with_filters(age = "Y_GE16", quant_inc = "QU1", reason = "TXP", sex = "T", unit = "PC")),
   b = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE16", quantile = "QU5", reason = "TXP", sex = "T", unit = "PC"))))
+    with_filters(age = "Y_GE16", quant_inc = "QU5", reason = "TXP", sex = "T", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.C11.Q1-Q5.TOOFAR") = 
@@ -1191,9 +1191,9 @@ high_is_good = FALSE,
 value = fromFormula(a - b,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE16", quantile = "QU1", reason = "TFAR", sex = "T", unit = "PC")),
+    with_filters(age = "Y_GE16", quant_inc = "QU1", reason = "TFAR", sex = "T", unit = "PC")),
   b = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE16", quantile = "QU5", reason = "TFAR", sex = "T", unit = "PC"))))
+    with_filters(age = "Y_GE16", quant_inc = "QU5", reason = "TFAR", sex = "T", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.C11.Q5") = 
@@ -1207,7 +1207,7 @@ high_is_good = FALSE,
 value = fromFormula(100 - a,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE16", quantile = "QU5", reason = "NUMT_ND", sex = "T", unit = "PC"))))
+    with_filters(age = "Y_GE16", quant_inc = "QU5", reason = "NUMT_ND", sex = "T", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.C11.T") = 
@@ -1221,7 +1221,7 @@ high_is_good = FALSE,
 value = fromFormula(100 - a,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE16", quantile = "TOTAL", reason = "NUMT_ND", sex = "T", unit = "PC"))))
+    with_filters(age = "Y_GE16", quant_inc = "TOTAL", reason = "NUMT_ND", sex = "T", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.C12.") = 
@@ -1425,7 +1425,7 @@ indicator_groups = "OUTPUT CONTEXT COMPENDIUM 8 COUNTRY",
 source = "Eurostat, Demographic Statistics",
 high_is_good = TRUE,
 value = fromEurostatDataset("hlth_hlye", 
-    with_filters(sex = "F", indic_he = "HLY_0", unit = "YR"))
+    with_filters(sex = "F", hlth_hle = "HLY_Y0", unit = "YR"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.C8.M") = 
@@ -1437,7 +1437,7 @@ indicator_groups = "OUTPUT CONTEXT COMPENDIUM 8 COUNTRY",
 source = "Eurostat, Demographic Statistics",
 high_is_good = TRUE,
 value = fromEurostatDataset("hlth_hlye", 
-    with_filters(sex = "M", indic_he = "HLY_0", unit = "YR"))
+    with_filters(sex = "M", hlth_hle = "HLY_Y0", unit = "YR"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.C9.F") = 
@@ -1449,7 +1449,7 @@ indicator_groups = "OUTPUT CONTEXT COMPENDIUM 8 COUNTRY",
 source = "Eurostat, Demographic Statistics",
 high_is_good = TRUE,
 value = fromEurostatDataset("hlth_hlye", 
-    with_filters(sex = "F", indic_he = "LE_0", unit = "YR"))
+    with_filters(sex = "F", hlth_hle = "LE_Y0", unit = "YR"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.C9.M") = 
@@ -1461,7 +1461,7 @@ indicator_groups = "OUTPUT CONTEXT COMPENDIUM 8 COUNTRY",
 source = "Eurostat, Demographic Statistics",
 high_is_good = TRUE,
 value = fromEurostatDataset("hlth_hlye", 
-    with_filters(sex = "M", indic_he = "LE_0", unit = "YR"))
+    with_filters(sex = "M", hlth_hle = "LE_Y0", unit = "YR"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.O1.") = 
@@ -1637,11 +1637,11 @@ high_is_good = FALSE,
 value = fromFormula(a/(b + c),
   where = variables(
   a = fromEurostatDataset("ilc_di01", 
-    with_filters(unit = "EUR", statinfo = "SHARE", quantile = "QU5")),
+    with_filters(unit = "EUR", statinfo = "SHARE", quant_inc = "QU5")),
   b = fromEurostatDataset("ilc_di01", 
-    with_filters(unit = "EUR", statinfo = "SHARE", quantile = "Q1")),
+    with_filters(unit = "EUR", statinfo = "SHARE", quant_inc = "Q1")),
   c = fromEurostatDataset("ilc_di01", 
-    with_filters(unit = "EUR", statinfo = "SHARE", quantile = "Q2"))))
+    with_filters(unit = "EUR", statinfo = "SHARE", quant_inc = "Q2"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.S15.") = 
@@ -1669,11 +1669,11 @@ high_is_good = FALSE,
 value = fromFormula((a + b)/c,
   where = variables(
   a = fromEurostatDataset("ilc_di01", 
-    with_filters(unit = "EUR", statinfo = "SHARE", quantile = "Q1")),
+    with_filters(unit = "EUR", statinfo = "SHARE", quant_inc = "Q1")),
   b = fromEurostatDataset("ilc_di01", 
-    with_filters(unit = "EUR", statinfo = "SHARE", quantile = "Q2")),
+    with_filters(unit = "EUR", statinfo = "SHARE", quant_inc = "Q2")),
   c = fromEurostatDataset("ilc_di01", 
-    with_filters(unit = "EUR", statinfo = "SHARE", quantile = "QU1"))))
+    with_filters(unit = "EUR", statinfo = "SHARE", quant_inc = "QU1"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11.S2.") = 
@@ -2461,7 +2461,7 @@ indicator_groups = "CONTEXT COMPENDIUM 9 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = TRUE,
 value = fromEurostatDataset("ILC_LI70", 
-    with_filters(sex = "T", unit = "PC", workint = "WI0-02", yn_rskpov = "YES_ARP"))
+    with_filters(age="Y18-64", unit = "PC", workint = "WI0-02", yn_rskpov = "YES_ARP"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11b.C4.") = 
@@ -2514,7 +2514,7 @@ high_is_good = FALSE,
 value = fromFormula(100 - a,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y16-64", quantile = "QU1", reason = "NUMT_ND", sex = "T", unit = "PC"))))
+    with_filters(age = "Y16-64", quant_inc = "QU1", reason = "NUMT_ND", sex = "T", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11b.C6.Q5") = 
@@ -2528,7 +2528,7 @@ high_is_good = FALSE,
 value = fromFormula(100 - a,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y16-64", quantile = "QU5", reason = "NUMT_ND", sex = "T", unit = "PC"))))
+    with_filters(age = "Y16-64", quant_inc = "QU5", reason = "NUMT_ND", sex = "T", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11b.C6.T") = 
@@ -2542,7 +2542,7 @@ high_is_good = FALSE,
 value = fromFormula(100 - a,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y16-64", quantile = "TOTAL", reason = "NUMT_ND", sex = "T", unit = "PC"))))
+    with_filters(age = "Y16-64", quant_inc = "TOTAL", reason = "NUMT_ND", sex = "T", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11b.O1.") = 
@@ -2970,7 +2970,7 @@ high_is_good = FALSE,
 value = fromFormula(100 - a,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE65", quantile = "TOTAL", reason = "NUMT_ND", sex = "F", unit = "PC"))))
+    with_filters(age = "Y_GE65", quant_inc = "TOTAL", reason = "NUMT_ND", sex = "F", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.C6.M") = 
@@ -2984,7 +2984,7 @@ high_is_good = FALSE,
 value = fromFormula(100 - a,
   where = variables(
   a = fromEurostatDataset("hlth_silc_08", 
-    with_filters(age = "Y_GE65", quantile = "TOTAL", reason = "NUMT_ND", sex = "M", unit = "PC"))))
+    with_filters(age = "Y_GE65", quant_inc = "TOTAL", reason = "NUMT_ND", sex = "M", unit = "PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.C7.") = 
@@ -3008,7 +3008,7 @@ indicator_groups = "CONTEXT COMPENDIUM 9 COUNTRY",
 source = "NA",
 high_is_good = TRUE,
 value = fromEurostatDataset("hlth_hlye", 
-    with_filters(sex = "F", unit = "YR", indic_he = "HLY_65"))
+    with_filters(sex = "F", unit = "YR", hlth_hle = "HLY_Y65"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.C8.M") = 
@@ -3020,7 +3020,7 @@ indicator_groups = "CONTEXT COMPENDIUM 9 COUNTRY",
 source = "NA",
 high_is_good = TRUE,
 value = fromEurostatDataset("hlth_hlye", 
-    with_filters(sex = "M", unit = "YR", indic_he = "HLY_65"))
+    with_filters(sex = "M", unit = "YR", hlth_hle = "HLY_Y65"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.C8.T") = 
@@ -3032,7 +3032,7 @@ indicator_groups = "CONTEXT COMPENDIUM 9 COUNTRY",
 source = "NA",
 high_is_good = TRUE,
 value = fromEurostatDataset("hlth_hlye", 
-    with_filters(sex = "T", unit = "YR", indic_he = "HLY_65"))
+    with_filters(sex = "T", unit = "YR", hlth_hle = "HLY_Y65"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.O1.") = 
@@ -3337,7 +3337,7 @@ source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = TRUE,
 calculate_score_change_with_break_in_series = FALSE,
 value = fromEurostatDataset("ilc_pnp2", 
-    with_filters(sex = "T", indic_il = "R_GE65_LT65"))
+    with_filters(sex = "T", statinfo = "R_MED_I", age="Y_GE65"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.S6._health") = 
@@ -3349,7 +3349,7 @@ indicator_groups = "INPUT SUBINDICATOR COMPENDIUM 9 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = TRUE,
 value = fromEurostatDataset("ilc_pnp2", 
-    with_filters(sex = "T", indic_il = "R_GE65_LT65"))
+    with_filters(sex = "T", statinfo = "R_MED_I", age="Y_GE65"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11c.S7.") = 
@@ -4476,7 +4476,7 @@ indicator_groups = "MAIN OUTPUT OVERALL COMPENDIUM 2 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = FALSE,
 value = fromEurostatDataset("lfsi_neet_a", 
-    with_filters(sex = "T", unit = "PC_POP", wstatus = "NEMP", age = "Y15-29", training = "NO_FE_NO_NFE"))
+    with_filters(sex = "T", unit = "PC_POP", age = "Y15-29"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA1b.S1.n.F") = 
@@ -4488,7 +4488,7 @@ indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 2 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = FALSE,
 value = fromEurostatDataset("lfsi_neet_a", 
-    with_filters(sex = "F", unit = "PC_POP", wstatus = "NEMP", age = "Y15-29", training = "NO_FE_NO_NFE"))
+    with_filters(sex = "F", unit = "PC_POP", age = "Y15-29"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA1b.S1.n.M") = 
@@ -4500,7 +4500,7 @@ indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 2 COUNTRY",
 source = "Eurostat, EU Labour Force Survey",
 high_is_good = FALSE,
 value = fromEurostatDataset("lfsi_neet_a", 
-    with_filters(sex = "M", unit = "PC_POP", wstatus = "NEMP", age = "Y15-29", training = "NO_FE_NO_NFE"))
+    with_filters(sex = "M", unit = "PC_POP", age = "Y15-29"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA1b.S2.") = 
@@ -4727,7 +4727,7 @@ indicator_groups = "OUTPUT CONTEXT COMPENDIUM 2 COUNTRY",
 source = "Eurostat, Demographic Statistics and EU Statistics on Income and Living Conditions",
 high_is_good = TRUE,
 value = fromEurostatDataset("hlth_hlye", 
-    with_filters(sex = "F", indic_he = "HLY_50", unit = "YR"))
+    with_filters(sex = "F", hlth_hle = "HLY_Y50", unit = "YR"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA1c.C4.M") = 
@@ -4739,7 +4739,7 @@ indicator_groups = "OUTPUT CONTEXT COMPENDIUM 2 COUNTRY",
 source = "Eurostat, Demographic Statistics and EU Statistics on Income and Living Conditions",
 high_is_good = TRUE,
 value = fromEurostatDataset("hlth_hlye", 
-    with_filters(sex = "M", indic_he = "HLY_50", unit = "YR"))
+    with_filters(sex = "M", hlth_hle = "HLY_Y50", unit = "YR"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA1c.C5.F") = 
@@ -6213,11 +6213,11 @@ high_is_good = TRUE,
 value = fromFormula(a + b + c,
   where = variables(
   a = fromEurostatDataset("ilc_lvhl34", 
-    with_filters(quantile = "TOTAL", sex = "T", trans1y = "NO_CHG")),
+    with_filters(quant_inc = "TOTAL", sex = "T", trans_inc = "NCHG")),
   b = fromEurostatDataset("ilc_lvhl34", 
-    with_filters(quantile = "TOTAL", sex = "T", trans1y = "TO_1UP")),
+    with_filters(quant_inc = "TOTAL", sex = "T", trans_inc = "D1_UP")),
   c = fromEurostatDataset("ilc_lvhl34", 
-    with_filters(quantile = "TOTAL", sex = "T", trans1y = "TO_GT1UP"))))
+    with_filters(quant_inc = "TOTAL", sex = "T", trans_inc = "GTD1_DN"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA4.2.S4.") = 
@@ -7265,11 +7265,11 @@ high_is_good = TRUE,
 value = fromFormula(a + b + c,
   where = variables(
   a = fromEurostatDataset("ilc_lvhl34", 
-    with_filters(quantile = "TOTAL", sex = "F", trans1y = "NO_CHG")),
+    with_filters(quant_inc = "TOTAL", sex = "F", trans_inc = "NCHG")),
   b = fromEurostatDataset("ilc_lvhl34", 
-    with_filters(quantile = "TOTAL", sex = "F", trans1y = "TO_1UP")),
+    with_filters(quant_inc = "TOTAL", sex = "F", trans_inc = "D1_UP")),
   c = fromEurostatDataset("ilc_lvhl34", 
-    with_filters(quantile = "TOTAL", sex = "F", trans1y = "TO_GT1UP"))))
+    with_filters(quant_inc = "TOTAL", sex = "F", trans_inc = "GTD1_DN"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA7.2.S2.M") = 
@@ -7283,11 +7283,11 @@ high_is_good = TRUE,
 value = fromFormula(a + b + c,
   where = variables(
   a = fromEurostatDataset("ilc_lvhl34", 
-    with_filters(quantile = "TOTAL", sex = "M", trans1y = "NO_CHG")),
+    with_filters(quant_inc = "TOTAL", sex = "M", trans_inc = "NCHG")),
   b = fromEurostatDataset("ilc_lvhl34", 
-    with_filters(quantile = "TOTAL", sex = "M", trans1y = "TO_1UP")),
+    with_filters(quant_inc = "TOTAL", sex = "M", trans_inc = "D1_UP")),
   c = fromEurostatDataset("ilc_lvhl34", 
-    with_filters(quantile = "TOTAL", sex = "M", trans1y = "TO_GT1UP"))))
+    with_filters(quant_inc = "TOTAL", sex = "M", trans_inc = "GTD1_DN"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA7.2.S3.") = 
@@ -7677,7 +7677,7 @@ indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 7 COUNTRY",
 source = "Eurostat, EU Statistics on Income and Living Conditions",
 high_is_good = TRUE,
 value = fromEurostatDataset("ilc_lvhl35", 
-    with_filters(sex = "T", trans1y = "TO_GEQUA", wstatusp = "POP"))
+    with_filters(sex = "T", change = "SAME_HGR", wstatusp = "POP"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA9.1.C1.04EU27_2020") = 
