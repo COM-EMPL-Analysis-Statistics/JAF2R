@@ -5336,28 +5336,29 @@ value = fromEurostatDataset("hlth_dlm200",
 #     with_filters(sex = "M", unit = "PC_PNT", lev_limit = "SM_SEV"))
 # )
 
-inside(JAF_INDICATORS, indicator_named = "PA2a.C2.REG") = 
-specification(
-name = "Employment protection legislation (EPL) on regular contracts",
-unit_of_level = "score",
-unit_of_change = "scr",
-indicator_groups = "INPUT CONTEXT COMPENDIUM 3 COUNTRY",
-source = "OECD, EPL",
-high_is_good = FALSE,
-value = fromOECDdataset("https://sdmx.oecd.org/public/rest/data/OECD.ELS.JAI,DSD_EPL@DF_EPL,/A..EPL_R..VERSION4?startPeriod=2000&dimensionAtObservation=AllDimensions&format=csvfilewithlabels", 
-    with_filters(indicator = NA))
-)
-
-inside(JAF_INDICATORS, indicator_named = "PA2a.C3.TEMP") = 
-specification(
-name = "Employment protection legislation (EPL) on temporary contracts ",
-unit_of_level = "score",
-unit_of_change = "scr",
-indicator_groups = "INPUT CONTEXT COMPENDIUM 3 COUNTRY",
-source = "OECD, EPL",
-high_is_good = TRUE,
-value = fromOECDdataset("https://sdmx.oecd.org/public/rest/data/OECD.ELS.JAI,DSD_EPL@DF_EPL,/A..EPL_T..VERSION4?startPeriod=2000&dimensionAtObservation=AllDimensions&format=csvfilewithlabels", 
-    with_filters(indicator = NA))
+### OUTDATED
+# inside(JAF_INDICATORS, indicator_named = "PA2a.C2.REG") = 
+# specification(
+# name = "Employment protection legislation (EPL) on regular contracts",
+# unit_of_level = "score",
+# unit_of_change = "scr",
+# indicator_groups = "INPUT CONTEXT COMPENDIUM 3 COUNTRY",
+# source = "OECD, EPL",
+# high_is_good = FALSE,
+# value = fromOECDdataset("https://sdmx.oecd.org/public/rest/data/OECD.ELS.JAI,DSD_EPL@DF_EPL,/A..EPL_R..VERSION4?startPeriod=2000&dimensionAtObservation=AllDimensions&format=csvfilewithlabels", 
+#     with_filters(indicator = NA))
+# )
+# 
+# inside(JAF_INDICATORS, indicator_named = "PA2a.C3.TEMP") = 
+# specification(
+# name = "Employment protection legislation (EPL) on temporary contracts ",
+# unit_of_level = "score",
+# unit_of_change = "scr",
+# indicator_groups = "INPUT CONTEXT COMPENDIUM 3 COUNTRY",
+# source = "OECD, EPL",
+# high_is_good = TRUE,
+# value = fromOECDdataset("https://sdmx.oecd.org/public/rest/data/OECD.ELS.JAI,DSD_EPL@DF_EPL,/A..EPL_T..VERSION4?startPeriod=2000&dimensionAtObservation=AllDimensions&format=csvfilewithlabels", 
+#     with_filters(indicator = NA))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA2a.C4.F") = 
@@ -5600,7 +5601,7 @@ value = fromEurostatDataset("ilc_lvhl32",
     with_filters(sex = "T", wstatusp = "SAL_PERM", wstatus = "SAL_TEMP"))
 )
 
-inside(JAF_INDICATORS, indicator_named = "PA2a.S6.15-29") = 
+inside(JAF_INDICATORS, indicator_named = "PA2a.S6.F.15-29") = 
 specification(
 name = "Share of temporary employees due to education or training (women)",
 unit_of_level = "% (of female temp employees 15-29) ",
@@ -5612,7 +5613,7 @@ value = fromEurostatDataset("lfsa_etgar",
     with_filters(sex = "F", reason = "EDUC_TNG", unit = "PC_SAL_TEMP", age = "Y15-29"))
 )
 
-inside(JAF_INDICATORS, indicator_named = "PA2a.S6.F") = 
+inside(JAF_INDICATORS, indicator_named = "PA2a.S6.F.15-64") = 
 specification(
 name = "Share of temporary employees due to education or training (women)",
 unit_of_level = "% (of female temp employees 15-64) ",
@@ -5624,7 +5625,7 @@ value = fromEurostatDataset("lfsa_etgar",
     with_filters(sex = "F", reason = "EDUC_TNG", unit = "PC_SAL_TEMP", age = "Y15-64"))
 )
 
-inside(JAF_INDICATORS, indicator_named = "PA2a.S6.M") = 
+inside(JAF_INDICATORS, indicator_named = "PA2a.S6.M.15-64") = 
 specification(
 name = "Share of temporary employees due to education or training (men)",
 unit_of_level = "% (of male temp employees 15-64) ",
