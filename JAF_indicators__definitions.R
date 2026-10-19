@@ -12,9 +12,9 @@ calculate_score_change_with_break_in_series = FALSE,
 value = fromFormula(100 * ((a - b)/a),
   where = variables(
   a = fromEurostatDataset("ilc_li09c", 
-    with_filters(age = "Y_GE18", c_birth = "NEU27_2020_FOR", rskpovth = "B_60", sex = "T")),
+    with_filters(age = "Y_GE18", c_birth = "NEU27_2020_FOR", rskpovth = "B_60", sex = "T", statinfo="MED_EI", unit="PC")),
   b = fromEurostatDataset("ilc_li32", 
-    with_filters(age = "Y_GE18", c_birth = "NEU27_2020_FOR", rskpovth = "B_60", sex = "T"))))
+    with_filters(age = "Y_GE18", c_birth = "NEU27_2020_FOR", rskpovth = "B_60", sex = "T", statinfo="MED_EI", unit="PC"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11f3.S4.") = 
@@ -29,9 +29,9 @@ calculate_score_change_with_break_in_series = FALSE,
 value = fromFormula(100 * ((a - b)/a),
   where = variables(
   a = fromEurostatDataset("ilc_li09d", 
-    with_filters(age = "Y_GE18", isced11 = "ED0-2", rskpovth = "B_60", sex = "T")),
+    with_filters(age = "Y_GE18", isced11 = "ED0-2", rskpovth = "B_60", statinfo="MED_EI", unit="PC", sex = "T")),
   b = fromEurostatDataset("ilc_li07", 
-    with_filters(age = "Y_GE18", isced11 = "ED0-2", rskpovth = "B_60", statinfo="MED_EI", sex = "T"))))
+    with_filters(age = "Y_GE18", isced11 = "ED0-2", rskpovth = "B_60", statinfo="MED_EI", unit="PC", sex = "T"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11f4.S2.") = 
@@ -5359,7 +5359,7 @@ value = fromEurostatDataset("hlth_dlm200",
 # high_is_good = TRUE,
 # value = fromOECDdataset("https://sdmx.oecd.org/public/rest/data/OECD.ELS.JAI,DSD_EPL@DF_EPL,/A..EPL_T..VERSION4?startPeriod=2000&dimensionAtObservation=AllDimensions&format=csvfilewithlabels", 
 #     with_filters(indicator = NA))
-)
+# )
 
 inside(JAF_INDICATORS, indicator_named = "PA2a.C4.F") = 
 specification(
