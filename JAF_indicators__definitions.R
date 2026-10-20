@@ -29,9 +29,9 @@ calculate_score_change_with_break_in_series = FALSE,
 value = fromFormula(100 * ((a - b)/a),
   where = variables(
   a = fromEurostatDataset("ilc_li09d", 
-    with_filters(age = "Y_GE18", isced11 = "ED0-2", rskpovth = "B_60", sex = "T")),
+    with_filters(age = "Y_GE18", isced11 = "ED0-2", rskpovth = "B_60", statinfo="MED_EI", unit="PC", sex = "T")),
   b = fromEurostatDataset("ilc_li07", 
-    with_filters(age = "Y_GE18", isced11 = "ED0-2", rskpovth = "B_60", statinfo="MED_EI", sex = "T"))))
+    with_filters(age = "Y_GE18", isced11 = "ED0-2", rskpovth = "B_60", statinfo="MED_EI", unit="PC", sex = "T"))))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA11f4.S2.") = 
