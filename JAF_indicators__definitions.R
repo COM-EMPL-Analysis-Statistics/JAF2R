@@ -8081,8 +8081,8 @@ unit_of_change = "pp",
 indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 7 COUNTRY",
 source = "OECD, Pisa",
 high_is_good = FALSE,
-value = fromEurostatDataset("educ_outc_pisa", 
-    with_filters(sex = "T", field = "EF461", unit = "PC"))
+  value = fromEurostatDataset("educ_outc_pisa", 
+    with_filters(sex = "T", field = "EF461", unit = "PC", levels = "LOW"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA9.2.S1.READ") = 
@@ -8094,7 +8094,7 @@ indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 7 COUNTRY",
 source = "OECD, Pisa",
 high_is_good = FALSE,
 value = fromEurostatDataset("educ_outc_pisa", 
-    with_filters(sex = "T", field = "READ", unit = "PC"))
+    with_filters(sex = "T", field = "READ", unit = "PC", levels = "LOW"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA9.2.S1.SCIE") = 
@@ -8106,7 +8106,7 @@ indicator_groups = "OUTPUT SUBINDICATOR COMPENDIUM 7 COUNTRY",
 source = "OECD, Pisa",
 high_is_good = FALSE,
 value = fromEurostatDataset("educ_outc_pisa", 
-    with_filters(sex = "T", field = "SCI", unit = "PC"))
+    with_filters(sex = "T", field = "SCI", unit = "PC", levels = "LOW"))
 )
 
 inside(JAF_INDICATORS, indicator_named = "PA9.2.S2.") = 
